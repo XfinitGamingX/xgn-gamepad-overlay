@@ -48,34 +48,70 @@ body {
   inset: 0 !important;
   width: 750px !important;
   height: 500px !important;
+  z-index: 4 !important;
+}
+
+.xbox .sticks::before,
+.xbox .sticks::after {
+  content: "";
+  position: absolute;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #05070c 0 55%,
+    #111827 58% 65%,
+    rgba(0, 217, 255, 0.82) 68% 72%,
+    rgba(125, 48, 255, 0.72) 74% 79%,
+    #05070c 82% 100%
+  );
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.95),
+              0 0 10px rgba(0, 217, 255, 0.5);
+  z-index: 0;
+}
+
+.xbox .sticks::before {
+  top: 100px;
+  left: 150px;
+}
+
+.xbox .sticks::after {
+  top: 208px;
+  left: 458px;
 }
 
 .xbox .stick {
   position: absolute !important;
-  width: 80px !important;
-  height: 80px !important;
+  width: 58px !important;
+  height: 58px !important;
   border-radius: 50% !important;
-  opacity: 0.38;
+  opacity: 1 !important;
   background: radial-gradient(
-    circle at 42% 38%,
-    rgba(255, 255, 255, 0.48) 0 9%,
-    rgba(10, 16, 32, 0.72) 12% 51%,
-    rgba(0, 217, 255, 0.95) 55% 61%,
-    rgba(125, 48, 255, 0.72) 66% 73%,
-    transparent 76%
+    circle at 40% 34%,
+    rgba(255, 255, 255, 0.5) 0 7%,
+    #343d4c 9% 18%,
+    #0c111b 21% 56%,
+    #02040a 58% 67%,
+    var(--xgn-cyan) 70% 74%,
+    var(--xgn-violet) 77% 82%,
+    #05070c 85% 100%
   ) !important;
-  box-shadow: 0 0 12px rgba(0, 217, 255, 0.55),
-              0 0 22px rgba(125, 48, 255, 0.4);
+  border: 1px solid rgba(205, 230, 255, 0.7) !important;
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.9),
+              0 0 10px rgba(0, 217, 255, 0.75),
+              0 0 18px rgba(125, 48, 255, 0.55);
+  z-index: 1;
 }
 
 .xbox .stick.left {
-  top: 99px !important;
-  left: 149px !important;
+  top: 110px !important;
+  left: 160px !important;
 }
 
 .xbox .stick.right {
-  top: 207px !important;
-  left: 457px !important;
+  top: 218px !important;
+  left: 468px !important;
 }
 
 .xbox .stick.pressed {
@@ -241,55 +277,64 @@ body {
 /* Shoulder and trigger feedback along the top armor. */
 .xbox .triggers {
   position: absolute !important;
-  top: 0 !important;
-  left: 65px !important;
-  width: 620px !important;
-  height: 72px !important;
+  top: 22px !important;
+  left: 112px !important;
+  width: 526px !important;
+  height: 58px !important;
+  z-index: 4 !important;
 }
 
 .xbox .trigger {
-  width: 180px !important;
-  height: 72px !important;
-  border-radius: 30px 30px 12px 12px !important;
+  width: 165px !important;
+  height: 58px !important;
   opacity: 0;
-  background: linear-gradient(180deg, rgba(0, 217, 255, 0.8), rgba(119, 48, 255, 0.18) 72%, transparent) !important;
-  box-shadow: 0 0 20px rgba(0, 217, 255, 0.85);
+  background: linear-gradient(180deg, rgba(205, 245, 255, 0.88), rgba(0, 217, 255, 0.58) 42%, rgba(119, 48, 255, 0.24) 82%, transparent) !important;
+  filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.95));
+  mix-blend-mode: screen;
 }
 
 .xbox .trigger.left {
   float: left !important;
+  clip-path: polygon(7% 0, 100% 12%, 88% 100%, 18% 86%, 0 45%);
 }
 
 .xbox .trigger.right {
   float: right !important;
   transform: none !important;
+  clip-path: polygon(0 12%, 93% 0, 100% 45%, 82% 86%, 12% 100%);
+}
+
+.xbox .trigger.pressed {
+  opacity: 0.95 !important;
 }
 
 .xbox .bumpers {
   position: absolute !important;
-  top: 43px !important;
-  left: 85px !important;
-  width: 580px !important;
-  height: 45px !important;
+  top: 48px !important;
+  left: 126px !important;
+  width: 498px !important;
+  height: 36px !important;
+  z-index: 5 !important;
 }
 
 .xbox .bumper {
-  width: 180px !important;
-  height: 45px !important;
-  border-radius: 22px !important;
+  width: 150px !important;
+  height: 36px !important;
   opacity: 0 !important;
-  background: linear-gradient(90deg, rgba(0, 217, 255, 0.18), rgba(0, 217, 255, 0.9), rgba(119, 48, 255, 0.22)) !important;
-  box-shadow: 0 0 18px var(--xgn-cyan),
-              inset 0 0 12px rgba(255, 255, 255, 0.45);
+  background: linear-gradient(180deg, rgba(230, 250, 255, 0.96), rgba(0, 217, 255, 0.72) 44%, rgba(85, 46, 255, 0.32) 100%) !important;
+  filter: drop-shadow(0 0 7px var(--xgn-cyan));
+  mix-blend-mode: screen;
 }
 
 .xbox .bumper.left {
   float: left !important;
+  clip-path: polygon(7% 0, 100% 20%, 85% 100%, 0 75%);
 }
 
 .xbox .bumper.right {
   float: right !important;
   transform: none !important;
+  clip-path: polygon(0 20%, 93% 0, 100% 75%, 15% 100%);
 }
 
 .xbox .bumper.pressed {
