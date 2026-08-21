@@ -1,0 +1,77 @@
+/* Detailed XGN PS4 skin for GamePad Viewer style s=5. */
+
+@import url("https://irlwill.github.io/molten-ps4_overlay/edit.css");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  width: 806px !important;
+  height: 598px !important;
+  background: url("./xgn-ps4-detailed.png") 0 0 / 806px 598px no-repeat !important;
+  filter: none !important;
+  contain: layout paint style;
+}
+
+.controller.ds4.disconnected {
+  filter: grayscale(0.75) brightness(0.55) !important;
+  opacity: 0.55;
+}
+
+/* Align the live DS4 sprites with the detailed controller artwork. */
+.ds4 .triggers {
+  left: 127px !important;
+  top: 8px !important;
+  width: 552px !important;
+}
+
+.ds4 .bumpers {
+  left: 121px !important;
+  top: 88px !important;
+  width: 564px !important;
+}
+
+.ds4 .dpad {
+  left: 107px !important;
+  top: 162px !important;
+}
+
+.ds4 .abxy {
+  left: 563px !important;
+  top: 143px !important;
+}
+
+.ds4 .sticks {
+  left: 234px !important;
+  top: 278px !important;
+  width: 355px !important;
+}
+
+.ds4 .meta {
+  top: 323px !important;
+  bottom: auto !important;
+}
+
+.ds4 .stick {
+  will-change: transform;
+  backface-visibility: hidden;
+  filter: none !important;
+}
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start,
+.ds4 .meta {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
