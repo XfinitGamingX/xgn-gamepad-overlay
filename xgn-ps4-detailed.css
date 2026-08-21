@@ -1,0 +1,426 @@
+/* Detailed XGN PS4 skin for GamePad Viewer style s=5.
+   All press masks are local so they stay aligned with this controller art. */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  width: 806px !important;
+  height: 598px !important;
+  background: url("./xgn-ps4-detailed.png") 0 0 / 806px 598px no-repeat !important;
+  filter: none !important;
+  isolation: isolate;
+  contain: layout paint style;
+}
+
+.controller.ds4.disconnected {
+  filter: grayscale(0.75) brightness(0.55) !important;
+  opacity: 0.55;
+}
+
+.controller.ds4.disconnected div {
+  display: none !important;
+}
+
+.ds4 .quadrant {
+  display: none !important;
+}
+
+/* L2/R2 fill the rounded trigger caps instead of drawing the old floating
+   rectangular sprites. Keep analog opacity non-important: GPV writes the
+   trigger pressure directly on each element. */
+.ds4 .triggers {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+  pointer-events: none;
+  z-index: 5 !important;
+}
+
+.ds4 .trigger {
+  position: absolute !important;
+  top: 11px !important;
+  width: 95px !important;
+  height: 79px !important;
+  margin: 0 !important;
+  opacity: 0;
+  background: linear-gradient(180deg, rgba(245, 254, 255, 0.68), rgba(0, 217, 255, 0.48) 48%, rgba(72, 70, 255, 0.25)) !important;
+  box-shadow: inset 0 0 0 2px rgba(215, 250, 255, 0.48), inset 0 0 14px rgba(0, 217, 255, 0.54) !important;
+  clip-path: polygon(43% 0, 58% 0, 72% 5%, 79% 11%, 88% 24%, 92% 37%, 95% 49%, 96% 62%, 97% 75%, 98% 87%, 100% 94%, 100% 100%, 0 100%, 0 94%, 1% 87%, 3% 75%, 6% 62%, 10% 49%, 15% 37%, 20% 24%, 29% 11%, 38% 5%) !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  float: none !important;
+  filter: none !important;
+}
+
+.ds4 .trigger.left {
+  left: 123px !important;
+  right: auto !important;
+}
+
+.ds4 .trigger.right {
+  left: 587px !important;
+  right: auto !important;
+  width: 94px !important;
+}
+
+.ds4 .trigger.pressed {
+  opacity: 0.9;
+}
+
+.ds4 .trigger-button {
+  position: absolute !important;
+  top: 11px !important;
+  width: 95px !important;
+  height: 79px !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  background: rgba(0, 217, 255, 0.18) !important;
+  box-shadow: inset 0 0 0 2px rgba(225, 252, 255, 0.74), inset 0 0 14px rgba(0, 217, 255, 0.62) !important;
+  clip-path: polygon(43% 0, 58% 0, 72% 5%, 79% 11%, 88% 24%, 92% 37%, 95% 49%, 96% 62%, 97% 75%, 98% 87%, 100% 94%, 100% 100%, 0 100%, 0 94%, 1% 87%, 3% 75%, 6% 62%, 10% 49%, 15% 37%, 20% 24%, 29% 11%, 38% 5%) !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  float: none !important;
+}
+
+.ds4 .trigger-button.left {
+  left: 123px !important;
+  right: auto !important;
+}
+
+.ds4 .trigger-button.right {
+  left: 587px !important;
+  right: auto !important;
+  width: 94px !important;
+}
+
+/* The R2 cap is asymmetric, so mirroring L2's box without a right-specific
+   contour shifts the highlight several pixels into the outer edge. */
+.ds4 .trigger.right,
+.ds4 .trigger-button.right {
+  height: 78px !important;
+  clip-path: polygon(
+    39% 0, 51% 0,
+    63% 5%, 70% 12%, 80% 24%, 85% 37%,
+    89% 50%, 93% 63%, 96% 76%, 99% 88%,
+    100% 95%, 100% 100%,
+    0 100%, 0 95%, 0 88%, 1% 76%,
+    2% 63%, 3% 50%, 6% 37%, 11% 24%,
+    20% 12%, 28% 5%
+  ) !important;
+}
+
+.ds4 .trigger-button.pressed {
+  opacity: 0.9 !important;
+}
+
+/* L1/R1 use the shallow shoulder-button silhouette directly below each cap. */
+.ds4 .bumpers {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+  pointer-events: none;
+  z-index: 6 !important;
+}
+
+.ds4 .bumper {
+  position: absolute !important;
+  top: 90px !important;
+  width: 109px !important;
+  height: 23px !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  background: linear-gradient(180deg, rgba(245, 254, 255, 0.68), rgba(0, 217, 255, 0.5) 55%, rgba(72, 70, 255, 0.28)) !important;
+  box-shadow: inset 0 0 0 1px rgba(225, 252, 255, 0.64), inset 0 0 8px rgba(0, 217, 255, 0.55) !important;
+  filter: none !important;
+  border-radius: 0 !important;
+  clip-path: polygon(44% 0, 58% 0, 68% 5%, 83% 23%, 90% 45%, 91% 68%, 100% 100%, 0 100%, 5% 68%, 7% 45%, 20% 23%, 35% 5%) !important;
+  transform: none !important;
+  float: none !important;
+}
+
+.ds4 .bumper.left {
+  left: 118px !important;
+  right: auto !important;
+}
+
+.ds4 .bumper.right {
+  left: 578px !important;
+  right: auto !important;
+  width: 113px !important;
+}
+
+.ds4 .bumper.pressed {
+  opacity: 0.88 !important;
+}
+
+.ds4 .abxy {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+}
+
+.ds4 .button {
+  position: absolute !important;
+  width: 44px !important;
+  height: 44px !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: none !important;
+  transition: none !important;
+}
+
+.ds4 .button.y {
+  left: 615px !important;
+  top: 151px !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+.ds4 .button.x {
+  left: 561px !important;
+  top: 203px !important;
+  right: auto !important;
+  bottom: auto !important;
+  height: 43px !important;
+}
+
+.ds4 .button.b {
+  left: 669px !important;
+  top: 203px !important;
+  right: auto !important;
+  bottom: auto !important;
+  height: 43px !important;
+}
+
+.ds4 .button.a {
+  left: 615px !important;
+  top: 253px !important;
+  right: auto !important;
+  bottom: auto !important;
+  height: 45px !important;
+}
+
+.ds4 .button.pressed {
+  opacity: 1 !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 16%, rgba(0, 217, 255, 0.46) 44%, rgba(72, 70, 255, 0.28) 74%, rgba(0, 217, 255, 0.12) 100%) !important;
+  box-shadow: inset 0 0 0 1px rgba(225, 252, 255, 0.62), inset 0 0 8px rgba(0, 217, 255, 0.68) !important;
+}
+
+.ds4 .dpad {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+}
+
+.ds4 .face {
+  position: absolute !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border-radius: 8px;
+  transition: none !important;
+}
+
+.ds4 .face.up {
+  left: 148px !important;
+  top: 169px !important;
+  width: 33px !important;
+  height: 44px !important;
+  clip-path: polygon(12% 0, 88% 0, 100% 14%, 100% 64%, 54% 100%, 46% 100%, 0 64%, 0 14%) !important;
+}
+
+.ds4 .face.down {
+  left: 148px !important;
+  top: 235px !important;
+  bottom: auto !important;
+  width: 33px !important;
+  height: 42px !important;
+  clip-path: polygon(48% 0, 52% 0, 100% 34%, 100% 90%, 85% 100%, 15% 100%, 0 90%, 0 34%) !important;
+}
+
+.ds4 .face.left {
+  left: 110px !important;
+  top: 207px !important;
+  width: 45px !important;
+  height: 33px !important;
+  clip-path: polygon(9% 0, 58% 0, 100% 50%, 58% 100%, 11% 100%, 0 86%, 0 14%) !important;
+}
+
+.ds4 .face.right {
+  left: 176px !important;
+  right: auto !important;
+  top: 207px !important;
+  width: 45px !important;
+  height: 33px !important;
+  clip-path: polygon(0 50%, 40% 0, 87% 0, 100% 14%, 100% 86%, 89% 100%, 40% 100%) !important;
+}
+
+.ds4 .face.pressed {
+  opacity: 0.86 !important;
+  background: linear-gradient(180deg, rgba(245, 254, 255, 0.64), rgba(0, 217, 255, 0.5) 52%, rgba(72, 70, 255, 0.3)) !important;
+  box-shadow: inset 0 0 0 1px rgba(225, 252, 255, 0.58), inset 0 0 7px rgba(0, 217, 255, 0.62) !important;
+}
+
+.ds4 .sticks {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+}
+
+/* Cover the stick caps baked into the artwork with fixed dark wells. The live
+   stick elements sit above these wells, so movement does not reveal a ghost
+   copy of the neutral cap underneath. */
+.ds4 .sticks::before,
+.ds4 .sticks::after {
+  content: "";
+  position: absolute;
+  top: 280px;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 48%, #0b111a 0 55%, #04070d 68%, #020309 80%, rgba(0, 217, 255, 0.18) 87%, rgba(72, 70, 255, 0.16) 93%, #03050a 100%);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.96), inset 0 0 0 2px rgba(0, 217, 255, 0.12);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ds4 .sticks::before {
+  left: 228px;
+}
+
+.ds4 .sticks::after {
+  left: 474px;
+}
+
+.ds4 .stick {
+  position: absolute !important;
+  width: 76px !important;
+  height: 76px !important;
+  /* GPV animates stick travel with inline margin-left/margin-top values. */
+  margin: 0;
+  border-radius: 50% !important;
+  opacity: 0.9 !important;
+  background: radial-gradient(circle at 42% 36%, #515968 0 7%, #262d38 10% 22%, #080b11 55%, #020309 72%, rgba(0, 217, 255, 0.54) 78%, rgba(87, 52, 255, 0.48) 86%, #05070d 91%) !important;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+  will-change: transform;
+  backface-visibility: hidden;
+  filter: none !important;
+  z-index: 1;
+}
+
+.ds4 .stick.left {
+  left: 242px !important;
+  top: 294px !important;
+}
+
+.ds4 .stick.right {
+  left: 488px !important;
+  top: 294px !important;
+}
+
+.ds4 .stick.pressed {
+  background-position: 0 0 !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 217, 255, 0.85);
+}
+
+.ds4 .arrows {
+  position: absolute !important;
+  left: 234px !important;
+  top: 130px !important;
+  width: 337px !important;
+  height: 46px !important;
+}
+
+.ds4 .back,
+.ds4 .start {
+  position: absolute !important;
+  top: 0 !important;
+  width: 28px !important;
+  height: 46px !important;
+  margin: 0 !important;
+  border-radius: 15px !important;
+  opacity: 0 !important;
+  background: none !important;
+}
+
+.ds4 .back {
+  left: 0 !important;
+  right: auto !important;
+  float: none !important;
+}
+
+.ds4 .start {
+  left: auto !important;
+  right: 0 !important;
+  float: none !important;
+}
+
+.ds4 .back.pressed,
+.ds4 .start.pressed {
+  opacity: 0.86 !important;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.75), rgba(0, 217, 255, 0.42) 55%, transparent 75%) !important;
+}
+
+.ds4 .touchpad {
+  position: absolute !important;
+  left: 276px !important;
+  top: 117px !important;
+  width: 254px !important;
+  height: 136px !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border-radius: 8px !important;
+  clip-path: polygon(2% 0, 98% 0, 100% 6%, 100% 94%, 98% 100%, 2% 100%, 0 94%, 0 6%) !important;
+}
+
+.ds4 .touchpad.pressed {
+  opacity: 0.66 !important;
+  background: radial-gradient(ellipse, rgba(225, 252, 255, 0.48), rgba(0, 217, 255, 0.34) 62%, rgba(72, 70, 255, 0.2)) !important;
+  box-shadow: inset 0 0 0 2px rgba(225, 252, 255, 0.46), inset 0 0 18px rgba(0, 217, 255, 0.42) !important;
+}
+
+.ds4 .meta {
+  position: absolute !important;
+  left: 380px !important;
+  top: 326px !important;
+  bottom: auto !important;
+  width: 42px !important;
+  height: 42px !important;
+  margin: 0 !important;
+  border-radius: 50%;
+  opacity: 0 !important;
+  background: none !important;
+}
+
+.ds4 .meta.pressed {
+  opacity: 0.9 !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.78), rgba(0, 217, 255, 0.38) 52%, transparent 72%) !important;
+}
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .trigger-button,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start,
+.ds4 .touchpad,
+.ds4 .meta {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
