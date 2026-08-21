@@ -25,8 +25,10 @@ body {
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: 750px 500px !important;
-  filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.35))
-          drop-shadow(0 0 18px rgba(104, 48, 255, 0.25));
+  /* Filtering the whole controller forces a 750x500 repaint on every input. */
+  filter: none !important;
+  isolation: isolate;
+  contain: layout paint style;
 }
 
 .controller.xbox.disconnected {
@@ -67,7 +69,7 @@ body {
     #05070c 82% 100%
   );
   box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.95),
-              0 0 10px rgba(0, 217, 255, 0.5);
+              0 0 6px rgba(0, 217, 255, 0.46);
   z-index: 0;
 }
 
@@ -98,9 +100,10 @@ body {
     #05070c 85% 100%
   ) !important;
   border: 1px solid rgba(205, 230, 255, 0.7) !important;
-  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.9),
-              0 0 10px rgba(0, 217, 255, 0.75),
-              0 0 18px rgba(125, 48, 255, 0.55);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9),
+              0 0 6px rgba(0, 217, 255, 0.68);
+  will-change: transform;
+  backface-visibility: hidden;
   z-index: 1;
 }
 
@@ -116,9 +119,9 @@ body {
 
 .xbox .stick.pressed {
   opacity: 1 !important;
-  filter: brightness(1.35);
-  box-shadow: 0 0 15px var(--xgn-cyan),
-              0 0 32px var(--xgn-violet);
+  filter: none !important;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9),
+              0 0 9px var(--xgn-cyan);
 }
 
 /* ABXY live press glows, aligned with the artwork. */
@@ -138,15 +141,15 @@ body {
   border-radius: 50% !important;
   opacity: 0 !important;
   background: transparent !important;
-  transform: scale(0.9);
-  transition: opacity 55ms linear, transform 55ms linear;
+  transform: scale(0.94);
+  transition: none !important;
 }
 
 .xbox .button.pressed {
   opacity: 1 !important;
   margin: 0 !important;
   transform: scale(1);
-  animation: xgn-press 220ms ease-out;
+  animation: none !important;
 }
 
 .xbox .button.a {
@@ -171,22 +174,22 @@ body {
 
 .xbox .button.a.pressed {
   background: radial-gradient(circle, rgba(180, 255, 180, 0.95), rgba(50, 255, 80, 0.42) 48%, transparent 72%) !important;
-  box-shadow: 0 0 14px #39ff65, 0 0 30px #39ff65;
+  box-shadow: 0 0 12px #39ff65;
 }
 
 .xbox .button.b.pressed {
   background: radial-gradient(circle, rgba(255, 190, 190, 0.95), rgba(255, 55, 70, 0.42) 48%, transparent 72%) !important;
-  box-shadow: 0 0 14px #ff4055, 0 0 30px #ff4055;
+  box-shadow: 0 0 12px #ff4055;
 }
 
 .xbox .button.x.pressed {
   background: radial-gradient(circle, rgba(185, 240, 255, 0.95), rgba(0, 190, 255, 0.42) 48%, transparent 72%) !important;
-  box-shadow: 0 0 14px #00c8ff, 0 0 30px #00c8ff;
+  box-shadow: 0 0 12px #00c8ff;
 }
 
 .xbox .button.y.pressed {
   background: radial-gradient(circle, rgba(255, 248, 180, 0.95), rgba(255, 215, 40, 0.42) 48%, transparent 72%) !important;
-  box-shadow: 0 0 14px #ffd72f, 0 0 30px #ffd72f;
+  box-shadow: 0 0 12px #ffd72f;
 }
 
 /* D-pad live press glows. */
@@ -204,12 +207,12 @@ body {
   border-radius: 10px !important;
   background: linear-gradient(135deg, rgba(0, 217, 255, 0.92), rgba(114, 48, 255, 0.68)) !important;
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.55),
-              0 0 18px var(--xgn-cyan);
+              0 0 9px var(--xgn-cyan);
 }
 
 .xbox .face.pressed {
   opacity: 0.82 !important;
-  animation: xgn-press 220ms ease-out;
+  animation: none !important;
 }
 
 .xbox .face.up {
@@ -256,8 +259,7 @@ body {
   border-radius: 50% !important;
   opacity: 0 !important;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.85), rgba(0, 217, 255, 0.46) 45%, transparent 72%) !important;
-  box-shadow: 0 0 14px var(--xgn-cyan),
-              0 0 24px var(--xgn-violet);
+  box-shadow: 0 0 10px var(--xgn-cyan);
 }
 
 .xbox .back {
@@ -271,7 +273,7 @@ body {
 .xbox .back.pressed,
 .xbox .start.pressed {
   opacity: 0.95 !important;
-  animation: xgn-press 220ms ease-out;
+  animation: none !important;
 }
 
 /* Shoulder and trigger feedback along the top armor. */
@@ -289,8 +291,8 @@ body {
   height: 58px !important;
   opacity: 0;
   background: linear-gradient(180deg, rgba(205, 245, 255, 0.88), rgba(0, 217, 255, 0.58) 42%, rgba(119, 48, 255, 0.24) 82%, transparent) !important;
-  filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.95));
-  mix-blend-mode: screen;
+  filter: none !important;
+  box-shadow: inset 0 0 8px rgba(0, 217, 255, 0.68);
 }
 
 .xbox .trigger.left {
@@ -322,8 +324,8 @@ body {
   height: 36px !important;
   opacity: 0 !important;
   background: linear-gradient(180deg, rgba(230, 250, 255, 0.96), rgba(0, 217, 255, 0.72) 44%, rgba(85, 46, 255, 0.32) 100%) !important;
-  filter: drop-shadow(0 0 7px var(--xgn-cyan));
-  mix-blend-mode: screen;
+  filter: none !important;
+  box-shadow: inset 0 0 7px rgba(0, 217, 255, 0.72);
 }
 
 .xbox .bumper.left {
@@ -339,16 +341,5 @@ body {
 
 .xbox .bumper.pressed {
   opacity: 0.92 !important;
-  animation: xgn-press 220ms ease-out;
-}
-
-@keyframes xgn-press {
-  from {
-    filter: brightness(1.8);
-    transform: scale(1.12);
-  }
-  to {
-    filter: brightness(1);
-    transform: scale(1);
-  }
+  animation: none !important;
 }
