@@ -1,0 +1,300 @@
+/* Detailed XGN PS4 skin for GamePad Viewer style s=5. */
+
+@import url("https://irlwill.github.io/molten-ps4_overlay/edit.css");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  width: 806px !important;
+  height: 598px !important;
+  background: url("./xgn-ps4-detailed.png") 0 0 / 806px 598px no-repeat !important;
+  filter: none !important;
+  contain: layout paint style;
+}
+
+.controller.ds4.disconnected {
+  filter: grayscale(0.75) brightness(0.55) !important;
+  opacity: 0.55;
+}
+
+/* Align live controls directly to the detailed artwork. The imported molten
+   sprites are intentionally replaced because their white press masks use
+   different button spacing. */
+.ds4 .triggers {
+  left: 137px !important;
+  top: 16px !important;
+  width: 532px !important;
+}
+
+.ds4 .trigger {
+  position: absolute !important;
+  width: 70px !important;
+  height: 64px !important;
+  /* Do not make this important: GPV writes analog L2/R2 opacity inline. */
+  opacity: 0;
+  background: radial-gradient(ellipse at 50% 58%, rgba(210, 250, 255, 0.52), rgba(0, 217, 255, 0.36) 42%, rgba(63, 65, 255, 0.16) 63%, transparent 76%) !important;
+  border-radius: 50% 50% 18px 18px / 60% 60% 24% 24% !important;
+  filter: none !important;
+}
+
+.ds4 .trigger.left {
+  left: 0 !important;
+  clip-path: none !important;
+}
+
+.ds4 .trigger.right {
+  right: 0 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
+.ds4 .trigger.pressed {
+  opacity: 0.88;
+}
+
+.ds4 .trigger-button {
+  position: absolute !important;
+  top: 0 !important;
+  width: 70px !important;
+  height: 64px !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  border-radius: 50% 50% 18px 18px / 60% 60% 24% 24% !important;
+  box-shadow: inset 0 0 0 2px rgba(210, 250, 255, 0.64), inset 0 0 10px rgba(0, 217, 255, 0.44);
+}
+
+.ds4 .trigger-button.left {
+  left: 0 !important;
+  clip-path: none !important;
+}
+
+.ds4 .trigger-button.right {
+  right: 0 !important;
+  clip-path: none !important;
+}
+
+.ds4 .trigger-button.pressed {
+  opacity: 0.95 !important;
+}
+
+.ds4 .bumpers {
+  left: 132px !important;
+  top: 99px !important;
+  width: 542px !important;
+}
+
+.ds4 .bumper {
+  position: absolute !important;
+  width: 72px !important;
+  height: 11px !important;
+  opacity: 0 !important;
+  background: linear-gradient(180deg, rgba(210, 250, 255, 0.7), rgba(0, 217, 255, 0.42)) !important;
+  filter: none !important;
+  border-radius: 4px;
+  clip-path: none !important;
+}
+
+.ds4 .bumper.left {
+  left: 0 !important;
+}
+
+.ds4 .bumper.right {
+  right: 0 !important;
+  transform: none !important;
+}
+
+.ds4 .bumper.pressed {
+  opacity: 0.84 !important;
+}
+
+.ds4 .abxy {
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+}
+
+.ds4 .button {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: none !important;
+  transition: none !important;
+}
+
+.ds4 .button.y {
+  left: 609px !important;
+  top: 145px !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+.ds4 .button.x {
+  left: 554px !important;
+  top: 196px !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+.ds4 .button.b {
+  left: 666px !important;
+  top: 196px !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+.ds4 .button.a {
+  left: 609px !important;
+  top: 249px !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+.ds4 .button.pressed {
+  opacity: 1 !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.82) 0 18%, rgba(0, 217, 255, 0.44) 38%, rgba(72, 70, 255, 0.22) 62%, transparent 72%) !important;
+  box-shadow: inset 0 0 7px rgba(255, 255, 255, 0.72), 0 0 8px rgba(0, 217, 255, 0.68);
+}
+
+.ds4 .dpad {
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+}
+
+.ds4 .face {
+  opacity: 0 !important;
+  background: none !important;
+  border-radius: 9px;
+  transition: none !important;
+}
+
+.ds4 .face.up {
+  left: 140px !important;
+  top: 164px !important;
+  width: 36px !important;
+  height: 48px !important;
+  clip-path: polygon(50% 0, 100% 35%, 100% 100%, 0 100%, 0 35%);
+}
+
+.ds4 .face.down {
+  left: 140px !important;
+  top: 234px !important;
+  bottom: auto !important;
+  width: 36px !important;
+  height: 47px !important;
+  clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+}
+
+.ds4 .face.left {
+  left: 103px !important;
+  top: 207px !important;
+  width: 50px !important;
+  height: 33px !important;
+  clip-path: polygon(35% 0, 100% 0, 100% 100%, 35% 100%, 0 50%);
+}
+
+.ds4 .face.right {
+  left: 163px !important;
+  right: auto !important;
+  top: 207px !important;
+  width: 50px !important;
+  height: 33px !important;
+  clip-path: polygon(0 0, 65% 0, 100% 50%, 65% 100%, 0 100%);
+}
+
+.ds4 .face.pressed {
+  opacity: 0.82 !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(0, 217, 255, 0.48), rgba(82, 66, 255, 0.34)) !important;
+  box-shadow: inset 0 0 7px rgba(255, 255, 255, 0.62), 0 0 7px rgba(0, 217, 255, 0.58);
+}
+
+.ds4 .sticks {
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+}
+
+.ds4 .stick {
+  width: 76px !important;
+  height: 76px !important;
+  border-radius: 50% !important;
+  opacity: 0.9 !important;
+  background: radial-gradient(circle at 42% 36%, #515968 0 7%, #262d38 10% 22%, #080b11 55%, #020309 72%, rgba(0, 217, 255, 0.54) 78%, rgba(87, 52, 255, 0.48) 86%, #05070d 91%) !important;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+  will-change: transform;
+  backface-visibility: hidden;
+  filter: none !important;
+}
+
+.ds4 .stick.left {
+  left: 242px !important;
+  top: 294px !important;
+}
+
+.ds4 .stick.right {
+  left: 488px !important;
+  top: 294px !important;
+}
+
+.ds4 .stick.pressed {
+  background-position: 0 0 !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 217, 255, 0.85);
+}
+
+.ds4 .arrows {
+  left: 234px !important;
+  top: 130px !important;
+  width: 337px !important;
+}
+
+.ds4 .back,
+.ds4 .start {
+  width: 28px !important;
+  height: 46px !important;
+  border-radius: 15px !important;
+  opacity: 0 !important;
+  background: none !important;
+}
+
+.ds4 .back.pressed,
+.ds4 .start.pressed {
+  opacity: 0.86 !important;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.75), rgba(0, 217, 255, 0.42) 55%, transparent 75%) !important;
+}
+
+.ds4 .meta {
+  left: 380px !important;
+  top: 326px !important;
+  bottom: auto !important;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50%;
+  opacity: 0 !important;
+  background: none !important;
+}
+
+.ds4 .meta.pressed {
+  opacity: 0.9 !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.78), rgba(0, 217, 255, 0.38) 52%, transparent 72%) !important;
+}
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .trigger-button,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start,
+.ds4 .meta {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
