@@ -1,0 +1,48 @@
+/* XGN PS4 skin for GamePad Viewer style s=5.
+   Uses the proven molten PS4 input sprites and replaces only the static base. */
+
+@import url("https://irlwill.github.io/molten-ps4_overlay/edit.css");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  width: 806px !important;
+  height: 598px !important;
+  background-image: url("./xgn-ps4-base.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0 0 !important;
+  /* The reference PNG is 806x599; the original 598px container clips its last row. */
+  background-size: 806px 599px !important;
+  filter: none !important;
+  contain: layout paint style;
+}
+
+.controller.ds4.disconnected {
+  filter: grayscale(0.75) brightness(0.55) !important;
+  opacity: 0.55;
+}
+
+/* No animated filters or transitions: input changes remain immediate. */
+.ds4 .stick {
+  will-change: transform;
+  backface-visibility: hidden;
+  filter: none !important;
+}
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
