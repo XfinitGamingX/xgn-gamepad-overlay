@@ -1,0 +1,480 @@
+/* Detailed XFG PS5/DualSense visual skin for GamePad Viewer Classic style s=5.
+   GamePad Viewer has no native PS5 skin, so this uses its DS4 input DOM while
+   replacing all artwork and press masks with local XFG assets. */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  width: 806px !important;
+  height: 598px !important;
+  background: url("./xfg-ps5-detailed.png") 0 0 / 806px 598px no-repeat !important;
+  filter: none !important;
+  isolation: isolate;
+  contain: layout paint style;
+}
+
+/* The ambient rail layer and the brighter sweep both sit beneath every GPV
+   input element. The sweep is alpha-masked so it can only cross red rails. */
+.controller.ds4::before,
+.controller.ds4::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 806px;
+  height: 598px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.controller.ds4::before {
+  background: url("./xfg-ps5-red-lights.png") 0 0 / 806px 598px no-repeat;
+  opacity: 0.42;
+  animation: xfg-red-rail-pulse 5.8s ease-in-out infinite;
+}
+
+.controller.ds4::after {
+  background: linear-gradient(
+    104deg,
+    transparent 0 20%,
+    rgba(255, 12, 0, 0.35) 28%,
+    rgba(255, 45, 10, 0.95) 36%,
+    rgba(255, 165, 90, 1) 43%,
+    rgba(255, 253, 248, 1) 47% 57%,
+    rgba(255, 90, 28, 1) 64%,
+    rgba(255, 12, 0, 0.72) 73%,
+    transparent 84%
+  ) -420px 0 / 420px 100% no-repeat;
+  -webkit-mask: url("./xfg-ps5-red-lights.png") 0 0 / 806px 598px no-repeat;
+  mask: url("./xfg-ps5-red-lights.png") 0 0 / 806px 598px no-repeat;
+  opacity: 0;
+  animation: xfg-red-laser-pass 5.8s linear infinite;
+}
+
+@keyframes xfg-red-rail-pulse {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+
+  38% {
+    opacity: 0.62;
+  }
+
+  72% {
+    opacity: 0.46;
+  }
+}
+
+@keyframes xfg-red-laser-pass {
+  0%,
+  8% {
+    background-position: -420px 0;
+    opacity: 0;
+  }
+
+  14% {
+    opacity: 1;
+  }
+
+  72% {
+    background-position: 880px 0;
+    opacity: 1;
+  }
+
+  78%,
+  100% {
+    background-position: 880px 0;
+    opacity: 0;
+  }
+}
+
+.controller.ds4.disconnected::before,
+.controller.ds4.disconnected::after {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .controller.ds4::before {
+    animation: none;
+    opacity: 0.46;
+  }
+
+  .controller.ds4::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .controller.ds4.disconnected::before,
+  .controller.ds4.disconnected::after {
+    opacity: 0 !important;
+  }
+}
+
+.controller.ds4.disconnected {
+  filter: grayscale(0.8) brightness(0.5) !important;
+  opacity: 0.55;
+}
+
+.controller.ds4.disconnected div {
+  display: none !important;
+}
+
+.ds4 .quadrant,
+.ds4 .wheels,
+.ds4 .fstick {
+  display: none !important;
+}
+
+/* Every GPV wrapper becomes a local 806x598 coordinate plane. */
+.ds4 .triggers,
+.ds4 .bumpers,
+.ds4 .abxy,
+.ds4 .dpad,
+.ds4 .sticks,
+.ds4 .arrows {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+  margin: 0 !important;
+  background: none !important;
+  pointer-events: none;
+}
+
+.ds4 .triggers {
+  z-index: 5 !important;
+}
+
+.ds4 .bumpers {
+  z-index: 6 !important;
+}
+
+/* L2/R2 use the upper shoulder planes. Keep analog opacity non-important:
+   GPV writes trigger pressure directly as an inline opacity value. */
+.ds4 .trigger,
+.ds4 .trigger-button {
+  position: absolute !important;
+  top: 34px !important;
+  width: 101px !important;
+  height: 26px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  float: none !important;
+  filter: none !important;
+  background: linear-gradient(180deg, rgba(255, 244, 224, 0.74), rgba(255, 77, 28, 0.52) 48%, rgba(133, 0, 10, 0.38)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 215, 157, 0.64), inset 0 0 10px rgba(255, 39, 12, 0.62) !important;
+}
+
+.ds4 .trigger {
+  opacity: 0;
+}
+
+.ds4 .trigger-button {
+  opacity: 0 !important;
+  background: rgba(255, 54, 20, 0.2) !important;
+  box-shadow: inset 0 0 0 2px rgba(255, 231, 193, 0.78), inset 0 0 12px rgba(255, 39, 12, 0.7) !important;
+}
+
+.ds4 .trigger.left,
+.ds4 .trigger-button.left {
+  left: 111px !important;
+  right: auto !important;
+  clip-path: polygon(0 100%, 3% 73%, 10% 50%, 21% 27%, 37% 12%, 52% 0, 79% 0, 90% 12%, 97% 31%, 100% 50%, 100% 58%, 95% 42%, 82% 42%, 62% 54%, 42% 65%, 20% 85%) !important;
+}
+
+.ds4 .trigger.right,
+.ds4 .trigger-button.right {
+  left: 599px !important;
+  right: auto !important;
+  clip-path: polygon(0 31%, 5% 15%, 21% 0, 47% 0, 61% 12%, 74% 27%, 86% 50%, 97% 81%, 100% 100%, 98% 88%, 82% 73%, 61% 58%, 39% 46%, 17% 38%, 0 35%) !important;
+}
+
+.ds4 .trigger-button.pressed {
+  opacity: 0.95 !important;
+}
+
+/* L1/R1 fill the black front bands below the trigger planes. */
+.ds4 .bumper {
+  position: absolute !important;
+  top: 42px !important;
+  height: 32px !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg, rgba(255, 239, 212, 0.68), rgba(255, 74, 27, 0.5) 52%, rgba(112, 0, 8, 0.34)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 215, 157, 0.62), inset 0 0 8px rgba(255, 40, 13, 0.58) !important;
+  transform: none !important;
+  float: none !important;
+  filter: none !important;
+}
+
+.ds4 .bumper.left {
+  left: 108px !important;
+  right: auto !important;
+  width: 104px !important;
+  clip-path: polygon(3% 44%, 18% 34%, 42% 22%, 67% 9%, 92% 0, 99% 6%, 100% 50%, 90% 47%, 72% 56%, 50% 66%, 24% 81%, 0 100%, 0 50%) !important;
+}
+
+.ds4 .bumper.right {
+  left: 599px !important;
+  right: auto !important;
+  width: 101px !important;
+  clip-path: polygon(0 0, 17% 6%, 39% 13%, 61% 22%, 82% 34%, 98% 50%, 100% 100%, 82% 88%, 60% 78%, 38% 66%, 16% 56%, 0 47%) !important;
+}
+
+.ds4 .bumper.pressed {
+  opacity: 0.9 !important;
+}
+
+/* GPV uses Xbox-style letters internally: a=Cross, b=Circle, x=Square,
+   y=Triangle. Each mask fills only the raised face inside its bezel. */
+.ds4 .button {
+  position: absolute !important;
+  width: 48px !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: none !important;
+  transition: none !important;
+}
+
+.ds4 .button.y {
+  left: 620px !important;
+  top: 104px !important;
+  right: auto !important;
+  bottom: auto !important;
+  height: 48px !important;
+}
+
+.ds4 .button.x {
+  left: 563px !important;
+  top: 160px !important;
+  right: auto !important;
+  bottom: auto !important;
+  height: 49px !important;
+}
+
+.ds4 .button.b {
+  left: 676px !important;
+  top: 160px !important;
+  right: auto !important;
+  bottom: auto !important;
+  height: 49px !important;
+}
+
+.ds4 .button.a {
+  left: 620px !important;
+  top: 218px !important;
+  right: auto !important;
+  bottom: auto !important;
+  height: 48px !important;
+}
+
+.ds4 .button.pressed {
+  opacity: 0.94 !important;
+  background: radial-gradient(circle, rgba(255, 250, 235, 0.8) 0 15%, rgba(255, 86, 34, 0.54) 43%, rgba(142, 9, 8, 0.34) 74%, rgba(217, 139, 58, 0.16) 100%) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 227, 184, 0.68), inset 0 0 9px rgba(255, 48, 18, 0.7) !important;
+}
+
+/* D-pad masks follow the four raised direction caps, not the bronze housing. */
+.ds4 .face {
+  position: absolute !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border-radius: 7px;
+  transition: none !important;
+}
+
+.ds4 .face.up {
+  left: 138px !important;
+  top: 123px !important;
+  width: 38px !important;
+  height: 48px !important;
+  clip-path: polygon(18% 0, 82% 0, 100% 10%, 100% 64%, 58% 100%, 42% 100%, 0 64%, 0 10%) !important;
+}
+
+.ds4 .face.down {
+  left: 138px !important;
+  top: 196px !important;
+  bottom: auto !important;
+  width: 39px !important;
+  height: 51px !important;
+  clip-path: polygon(44% 0, 56% 0, 100% 38%, 100% 87%, 84% 100%, 16% 100%, 0 87%, 0 38%) !important;
+}
+
+.ds4 .face.left {
+  left: 94px !important;
+  top: 165px !important;
+  width: 52px !important;
+  height: 39px !important;
+  clip-path: polygon(18% 0, 64% 0, 100% 43%, 100% 57%, 64% 100%, 18% 100%, 0 84%, 0 16%) !important;
+}
+
+.ds4 .face.right {
+  left: 170px !important;
+  right: auto !important;
+  top: 165px !important;
+  width: 50px !important;
+  height: 39px !important;
+  clip-path: polygon(0 43%, 38% 0, 84% 0, 100% 16%, 100% 84%, 84% 100%, 38% 100%, 0 57%) !important;
+}
+
+.ds4 .face.pressed {
+  opacity: 0.9 !important;
+  background: linear-gradient(180deg, rgba(255, 245, 225, 0.72), rgba(255, 75, 27, 0.54) 52%, rgba(128, 0, 9, 0.38)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 220, 170, 0.62), inset 0 0 8px rgba(255, 41, 14, 0.68) !important;
+}
+
+/* The fixed wells cover the stick caps baked into the art. The live caps sit
+   above them, so moving a stick never reveals a ghost copy underneath. */
+.ds4 .sticks::before,
+.ds4 .sticks::after {
+  content: "";
+  position: absolute;
+  top: 241px;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 48%, #08090c 0 55%, #14151a 64%, #050507 73%, #4a271b 76%, rgba(141, 10, 7, 0.78) 80%, #050506 86%, #020203 100%);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.96), inset 0 0 0 2px rgba(191, 113, 55, 0.28);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ds4 .sticks::before {
+  left: 221px;
+}
+
+.ds4 .sticks::after {
+  left: 472px;
+}
+
+.ds4 .stick {
+  position: absolute !important;
+  width: 80px !important;
+  height: 80px !important;
+  /* GPV writes live travel through inline margin-left/margin-top. */
+  margin: 0;
+  border-radius: 50% !important;
+  opacity: 0.96 !important;
+  background: radial-gradient(circle at 42% 35%, #4f5055 0 6%, #25262a 10% 22%, #101114 42%, #050507 62%, #020203 71%, rgba(174, 86, 36, 0.72) 77%, rgba(145, 7, 7, 0.58) 83%, #050507 90%) !important;
+  box-shadow: inset 0 0 13px rgba(0, 0, 0, 0.94);
+  will-change: margin-left, margin-top;
+  backface-visibility: hidden;
+  filter: none !important;
+  z-index: 1;
+}
+
+.ds4 .stick.left {
+  left: 235px !important;
+  top: 255px !important;
+}
+
+.ds4 .stick.right {
+  left: 486px !important;
+  top: 255px !important;
+}
+
+.ds4 .stick.pressed {
+  background-position: 0 0 !important;
+  box-shadow: inset 0 0 11px rgba(0, 0, 0, 0.92), 0 0 9px rgba(255, 52, 17, 0.9), 0 0 3px rgba(226, 153, 77, 0.9);
+}
+
+/* Create and Options are the narrow vertical pills beside the touchpad. */
+.ds4 .back,
+.ds4 .start {
+  position: absolute !important;
+  top: 81px !important;
+  width: 22px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  border-radius: 11px !important;
+  opacity: 0 !important;
+  background: none !important;
+  float: none !important;
+}
+
+.ds4 .back {
+  left: 208px !important;
+  right: auto !important;
+}
+
+.ds4 .start {
+  left: 572px !important;
+  right: auto !important;
+}
+
+.ds4 .back.pressed,
+.ds4 .start.pressed {
+  opacity: 0.9 !important;
+  background: radial-gradient(ellipse, rgba(255, 248, 230, 0.8), rgba(255, 68, 23, 0.52) 55%, rgba(119, 0, 8, 0.12) 78%) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 216, 160, 0.64), inset 0 0 7px rgba(255, 43, 14, 0.7) !important;
+}
+
+/* Keep the lion readable when the touchpad is clicked. */
+.ds4 .touchpad {
+  position: absolute !important;
+  left: 245px !important;
+  top: 50px !important;
+  width: 313px !important;
+  height: 158px !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border-radius: 18px !important;
+  clip-path: polygon(7% 0, 93% 0, 98% 6%, 100% 26%, 99% 79%, 96% 92%, 90% 100%, 10% 100%, 4% 92%, 1% 79%, 0 26%, 2% 6%) !important;
+  z-index: 3;
+}
+
+.ds4 .touchpad.pressed {
+  opacity: 0.52 !important;
+  background: radial-gradient(ellipse at center, rgba(255, 244, 220, 0.42), rgba(255, 63, 20, 0.3) 58%, rgba(107, 0, 8, 0.2)) !important;
+  box-shadow: inset 0 0 0 2px rgba(226, 157, 86, 0.52), inset 0 0 22px rgba(255, 39, 12, 0.5) !important;
+}
+
+/* Home/PS input illuminates the inner XFG diamond. The decorative mute pill
+   remains static because Classic s=5 exposes no separate mute element. */
+.ds4 .meta {
+  position: absolute !important;
+  left: 383px !important;
+  top: 277px !important;
+  bottom: auto !important;
+  width: 36px !important;
+  height: 35px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  clip-path: polygon(50% 0, 100% 49%, 50% 100%, 0 49%) !important;
+  opacity: 0 !important;
+  background: none !important;
+  z-index: 7;
+}
+
+.ds4 .meta.pressed {
+  opacity: 0.94 !important;
+  background: radial-gradient(circle, rgba(255, 249, 230, 0.82), rgba(255, 67, 21, 0.5) 52%, rgba(128, 0, 9, 0.12) 76%) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 218, 166, 0.68), inset 0 0 8px rgba(255, 40, 12, 0.76) !important;
+}
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .trigger-button,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start,
+.ds4 .touchpad,
+.ds4 .meta {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
