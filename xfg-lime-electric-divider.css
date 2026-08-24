@@ -1,0 +1,166 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --xfg-preview-delay: 0ms;
+  --xfg-preview-play-state: running;
+  --xfg-packet-duration: 2000ms;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+}
+
+html[data-xfg-preview="checker"] body {
+  background-color: #0c120d !important;
+  background-image:
+    linear-gradient(45deg, #1a241b 25%, transparent 25%),
+    linear-gradient(-45deg, #1a241b 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1a241b 75%),
+    linear-gradient(-45deg, transparent 75%, #1a241b 75%) !important;
+  background-position: 0 0, 0 32px, 32px -32px, -32px 0 !important;
+  background-size: 64px 64px !important;
+}
+
+.divider-stage,
+.divider-canvas,
+.divider-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.divider-stage {
+  overflow: hidden;
+  contain: strict;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.divider-canvas {
+  z-index: 2;
+  display: block;
+  object-fit: fill;
+  background: transparent;
+  transform: none;
+  animation: none;
+}
+
+/* This understated duplicate keeps unmistakable spatial movement visible if
+   LIVE Studio pauses the canvas scheduler. The Canvas artwork renders over it. */
+.divider-fallback {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fallback-rail {
+  position: absolute;
+  top: calc(50% - 8px);
+  width: 446px;
+  height: 16px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(3, 10, 5, 0.78), rgba(9, 25, 9, 0.86)),
+    linear-gradient(90deg, rgba(104, 230, 0, 0.05), rgba(157, 255, 37, 0.38), rgba(104, 230, 0, 0.05));
+  border-top: 1px solid rgba(104, 230, 0, 0.24);
+  border-bottom: 1px solid rgba(104, 230, 0, 0.24);
+  filter: drop-shadow(0 0 6px rgba(126, 255, 0, 0.24));
+}
+
+.fallback-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(104, 230, 0, 0.62) 8%, rgba(183, 255, 60, 0.78) 50%, rgba(104, 230, 0, 0.62) 92%, transparent);
+  box-shadow: 0 0 8px rgba(126, 255, 0, 0.42);
+}
+
+.fallback-rail-left {
+  left: 42px;
+  clip-path: polygon(0 50%, 17px 0, 428px 0, 100% 50%, 428px 100%, 17px 100%);
+}
+
+.fallback-rail-right {
+  right: 42px;
+  clip-path: polygon(0 50%, 18px 0, 429px 0, 100% 50%, 429px 100%, 18px 100%);
+}
+
+.fallback-rail i {
+  position: absolute;
+  top: 4px;
+  width: 86px;
+  height: 7px;
+  background: linear-gradient(90deg, transparent, rgba(157, 255, 37, 0.66), rgba(241, 255, 226, 0.96), transparent);
+  filter: drop-shadow(0 0 7px #7eff00);
+  will-change: transform;
+  animation: xfg-fallback-packet var(--xfg-packet-duration) linear infinite;
+  animation-delay: var(--xfg-preview-delay);
+  animation-play-state: var(--xfg-preview-play-state);
+}
+
+.fallback-rail-left i {
+  right: -86px;
+  --xfg-packet-travel: -532px;
+}
+
+.fallback-rail-right i {
+  left: -86px;
+  --xfg-packet-travel: 532px;
+}
+
+.fallback-cell {
+  position: absolute;
+  z-index: 2;
+  left: calc(50% - 52px);
+  top: calc(50% - 22px);
+  width: 104px;
+  height: 44px;
+  clip-path: polygon(0 50%, 20px 0, 84px 0, 100% 50%, 84px 100%, 20px 100%);
+  background: linear-gradient(180deg, rgba(7, 19, 8, 0.94), rgba(2, 8, 4, 0.98));
+  border: 1px solid rgba(157, 255, 37, 0.42);
+  filter: drop-shadow(0 0 7px rgba(126, 255, 0, 0.35));
+}
+
+.fallback-cell::before {
+  content: "";
+  position: absolute;
+  left: 45px;
+  top: 18px;
+  width: 14px;
+  height: 8px;
+  border-radius: 6px;
+  background: #f1ffe2;
+  box-shadow: 0 0 9px #9dff25;
+  will-change: left, width;
+  animation: xfg-fallback-cell-discharge var(--xfg-packet-duration) linear infinite;
+  animation-delay: var(--xfg-preview-delay);
+  animation-play-state: var(--xfg-preview-play-state);
+}
+
+@keyframes xfg-fallback-packet {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--xfg-packet-travel)); }
+}
+
+@keyframes xfg-fallback-cell-discharge {
+  0%, 100% { left: 45px; width: 14px; }
+  7% { left: 37px; width: 30px; }
+  18% { left: 45px; width: 14px; }
+}
