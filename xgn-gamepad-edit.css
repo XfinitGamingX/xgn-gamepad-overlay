@@ -1,0 +1,549 @@
+/* XFG — detailed translucent-lime Xbox One GamePad Viewer overlay — v6 FAST
+   Host this file beside xfg-xbox-one-detailed.png and
+   xfg-xbox-one-lime-lights-v2.png.
+
+   The unified controller artwork never moves. Only transparent, mask-clipped
+   internal energy layers travel through it. The 6-second master cycle makes
+   two fast spatial laps and is designed for a 750x500 browser source. */
+
+:root {
+  --xgn-cyan: #b6ff27;
+  --xgn-blue: #78e600;
+  --xgn-violet: #3c9f00;
+  --xgn-gold: #f3c45c;
+  --xfg-controller-cycle: 6s;
+  --xfg-preview-delay: 0s;
+  --xfg-preview-play-state: running;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.xbox {
+  width: 750px !important;
+  height: 500px !important;
+  background-image: url("./xfg-xbox-one-detailed.png?v=6") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 750px 500px !important;
+  /* Filtering the whole controller forces a 750x500 repaint on every input. */
+  filter: none !important;
+  isolation: isolate;
+  contain: layout paint style;
+}
+
+/* Continuous liquid energy and drifting particles. This is genuine spatial
+   background travel, clipped to the authored lime-light alpha mask. */
+.controller.xbox::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 750px;
+  height: 500px;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(
+      100deg,
+      transparent 0 12%,
+      rgba(126, 255, 0, 0.18) 20%,
+      rgba(180, 255, 25, 0.78) 31%,
+      rgba(238, 255, 186, 1) 43%,
+      #fff 48% 55%,
+      rgba(198, 255, 70, 0.95) 64%,
+      rgba(82, 224, 0, 0.48) 76%,
+      transparent 87%
+    ) -340px -20px / 320px 120% no-repeat,
+    radial-gradient(circle, #fff 0 3px, #caff55 4px 7px, rgba(118, 255, 0, 0.28) 8px 12px, transparent 13px) 0 0 / 96px 80px repeat,
+    repeating-linear-gradient(118deg, transparent 0 34px, rgba(201, 255, 79, 0.08) 38px 44px, rgba(232, 255, 181, 0.50) 46px 51px, transparent 55px 94px) -240px -120px / 240px 240px repeat;
+  -webkit-mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
+  mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
+  opacity: 0.86;
+  mix-blend-mode: screen;
+  will-change: background-position;
+  animation: xfg-xbox-liquid-travel var(--xfg-controller-cycle) linear infinite;
+  animation-delay: var(--xfg-preview-delay);
+  animation-play-state: var(--xfg-preview-play-state);
+}
+
+/* Six bright packets follow the real top, grip, and lower-handle routes. */
+.controller.xbox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 750px;
+  height: 500px;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse, #fff 0 9%, #dfff7b 13% 27%, rgba(139, 255, 0, 0.68) 34% 48%, transparent 70%) 129px 74px / 70px 28px no-repeat,
+    radial-gradient(ellipse, #fff 0 9%, #dfff7b 13% 27%, rgba(139, 255, 0, 0.68) 34% 48%, transparent 70%) 369px 98px / 70px 28px no-repeat,
+    radial-gradient(ellipse, #fff 0 8%, #caff55 14% 26%, rgba(111, 255, 0, 0.66) 34% 52%, transparent 72%) 181px 169px / 60px 36px no-repeat,
+    radial-gradient(ellipse, #fff 0 8%, #caff55 14% 26%, rgba(111, 255, 0, 0.66) 34% 52%, transparent 72%) 592px 170px / 60px 36px no-repeat,
+    radial-gradient(ellipse, #fff 0 8%, #d8ff72 13% 25%, rgba(102, 255, 0, 0.58) 34% 50%, transparent 72%) 86px 296px / 60px 36px no-repeat,
+    radial-gradient(ellipse, #fff 0 8%, #d8ff72 13% 25%, rgba(102, 255, 0, 0.58) 34% 50%, transparent 72%) 604px 296px / 60px 36px no-repeat;
+  -webkit-mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
+  mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
+  mix-blend-mode: screen;
+  will-change: background-position;
+  animation: xfg-xbox-circuit-packets var(--xfg-controller-cycle) linear infinite;
+  animation-delay: var(--xfg-preview-delay);
+  animation-play-state: var(--xfg-preview-play-state);
+}
+
+@keyframes xfg-xbox-liquid-travel {
+  0%,
+  50% {
+    background-position: -340px -20px, 0 0, -240px -120px;
+  }
+
+  49.8%,
+  99.8%,
+  100% {
+    background-position: 780px 20px, 384px -240px, 240px 120px;
+  }
+}
+
+@keyframes xfg-xbox-circuit-packets {
+  0%, 50% {
+    background-position: 129px 74px, 369px 98px, 181px 169px, 592px 170px, 86px 296px, 604px 296px;
+  }
+  8%, 58% {
+    background-position: 167px 45px, 397px 77px, 148px 186px, 564px 189px, 66px 332px, 623px 332px;
+  }
+  16%, 66% {
+    background-position: 215px 41px, 424px 51px, 158px 213px, 582px 215px, 42px 376px, 652px 376px;
+  }
+  24%, 74% {
+    background-position: 258px 56px, 465px 49px, 131px 228px, 552px 231px, 53px 425px, 640px 420px;
+  }
+  32%, 82% {
+    background-position: 292px 82px, 500px 70px, 92px 256px, 521px 258px, 65px 444px, 630px 443px;
+  }
+  40%, 90% {
+    background-position: 311px 98px, 510px 93px, 109px 288px, 545px 285px, 86px 449px, 604px 448px;
+  }
+  49.8%, 99.8%, 100% {
+    background-position: 331px 108px, 530px 103px, 172px 332px, 608px 326px, 106px 455px, 584px 454px;
+  }
+}
+
+/* Keep the ambient artwork alive when a wireless controller sleeps or GPV
+   briefly reports a disconnect. Only the live input surfaces are hidden. */
+.controller.xbox.disconnected::before {
+  opacity: 0.86 !important;
+  animation: xfg-xbox-liquid-travel var(--xfg-controller-cycle) linear infinite !important;
+  animation-delay: var(--xfg-preview-delay) !important;
+  animation-play-state: var(--xfg-preview-play-state) !important;
+}
+
+.controller.xbox.disconnected::after {
+  opacity: 1 !important;
+  animation: xfg-xbox-circuit-packets var(--xfg-controller-cycle) linear infinite !important;
+  animation-delay: var(--xfg-preview-delay) !important;
+  animation-play-state: var(--xfg-preview-play-state) !important;
+}
+
+.controller.xbox.disconnected {
+  display: block !important;
+  visibility: visible !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.controller.xbox.disconnected div {
+  display: none !important;
+}
+
+.xbox .quadrant {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 750px !important;
+  height: 500px !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+  background:
+    radial-gradient(ellipse at 332.9px 198.3px, #fff 0 2px, #dbff80 3px 5px, rgba(142, 255, 0, 0.86) 6px 10px, transparent 15px),
+    radial-gradient(ellipse at 415.6px 198.5px, #fff 0 2px, #dbff80 3px 5px, rgba(142, 255, 0, 0.86) 6px 10px, transparent 15px) !important;
+}
+
+.controller.xbox.disconnected .quadrant {
+  display: block !important;
+}
+
+.xbox .quadrant::before,
+.xbox .quadrant::after {
+  content: "";
+  position: absolute;
+  top: 192px;
+  width: 20px;
+  height: 13px;
+  border-radius: 58% 42% 58% 42%;
+  background: linear-gradient(180deg, rgba(20, 43, 5, 0.98), rgba(2, 7, 1, 1) 48% 72%, rgba(56, 104, 10, 0.96));
+  transform-origin: center;
+  will-change: transform;
+  animation: xfg-xbox-eye-blink var(--xfg-controller-cycle) linear infinite;
+  animation-delay: var(--xfg-preview-delay);
+  animation-play-state: var(--xfg-preview-play-state);
+}
+
+.xbox .quadrant::before {
+  --xfg-eye-tilt: 10deg;
+  left: 323px;
+}
+
+.xbox .quadrant::after {
+  --xfg-eye-tilt: -10deg;
+  left: 406px;
+}
+
+@keyframes xfg-xbox-eye-blink {
+  0%, 28%, 33%, 67%, 75%, 100% {
+    transform: rotate(var(--xfg-eye-tilt)) scaleY(0.06);
+  }
+  30.5%, 70%, 73% {
+    transform: rotate(var(--xfg-eye-tilt)) scaleY(1.08);
+  }
+}
+
+/* Analog sticks: the glowing indicator follows GPV stick movement. */
+.xbox .sticks {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 750px !important;
+  height: 500px !important;
+  z-index: 4 !important;
+}
+
+.xbox .sticks::before,
+.xbox .sticks::after {
+  content: "";
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #05070c 0 55%,
+    #111827 58% 65%,
+    rgba(182, 255, 39, 0.82) 68% 72%,
+    rgba(60, 159, 0, 0.72) 74% 79%,
+    #05070c 82% 100%
+  );
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.95),
+              0 0 6px rgba(182, 255, 39, 0.46);
+  z-index: 0;
+}
+
+.xbox .sticks::before {
+  top: 93px;
+  left: 156px;
+}
+
+.xbox .sticks::after {
+  top: 203px;
+  left: 421px;
+}
+
+.xbox .stick {
+  position: absolute !important;
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  background: radial-gradient(
+    circle at 40% 34%,
+    rgba(255, 255, 255, 0.5) 0 7%,
+    #343d4c 9% 18%,
+    #0c111b 21% 56%,
+    #02040a 58% 67%,
+    var(--xgn-cyan) 70% 74%,
+    var(--xgn-violet) 77% 82%,
+    #05070c 85% 100%
+  ) !important;
+  border: 1px solid rgba(205, 230, 255, 0.7) !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9),
+              0 0 6px rgba(182, 255, 39, 0.68);
+  will-change: transform;
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+.xbox .stick.left {
+  top: 107px !important;
+  left: 172px !important;
+}
+
+.xbox .stick.right {
+  top: 218px !important;
+  left: 437px !important;
+}
+
+.xbox .stick.pressed {
+  opacity: 1 !important;
+  filter: none !important;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9),
+              0 0 9px var(--xgn-cyan);
+}
+
+/* ABXY live press glows, aligned with the artwork. */
+.xbox .abxy {
+  position: absolute !important;
+  top: 79px !important;
+  left: 481px !important;
+  width: 137px !important;
+  height: 134px !important;
+}
+
+.xbox .button {
+  position: absolute !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  transform: scale(0.94);
+  transition: none !important;
+}
+
+.xbox .button.pressed {
+  opacity: 1 !important;
+  margin: 0 !important;
+  transform: scale(1);
+  animation: none !important;
+}
+
+.xbox .button.a {
+  top: 86px !important;
+  left: 46px !important;
+}
+
+.xbox .button.b {
+  top: 42px !important;
+  right: 0 !important;
+}
+
+.xbox .button.x {
+  top: 42px !important;
+  left: 0 !important;
+}
+
+.xbox .button.y {
+  top: 0 !important;
+  left: 46px !important;
+}
+
+.xbox .button.a.pressed {
+  background: radial-gradient(circle, rgba(180, 255, 180, 0.95), rgba(50, 255, 80, 0.42) 48%, transparent 72%) !important;
+  box-shadow: 0 0 10px #39ff65,
+              0 0 24px rgba(57, 255, 101, 0.86);
+}
+
+.xbox .button.b.pressed {
+  background: radial-gradient(circle, rgba(255, 190, 190, 0.95), rgba(255, 55, 70, 0.42) 48%, transparent 72%) !important;
+  box-shadow: 0 0 10px #ff4055,
+              0 0 24px rgba(255, 64, 85, 0.86);
+}
+
+.xbox .button.x.pressed {
+  background: radial-gradient(circle, rgba(185, 240, 255, 0.95), rgba(0, 190, 255, 0.42) 48%, transparent 72%) !important;
+  box-shadow: 0 0 10px #00c8ff,
+              0 0 24px rgba(0, 200, 255, 0.86);
+}
+
+.xbox .button.y.pressed {
+  background: radial-gradient(circle, rgba(255, 248, 180, 0.95), rgba(255, 215, 40, 0.42) 48%, transparent 72%) !important;
+  box-shadow: 0 0 10px #ffd72f,
+              0 0 24px rgba(255, 215, 47, 0.86);
+}
+
+/* D-pad live press glows. */
+.xbox .dpad {
+  position: absolute !important;
+  top: 210px !important;
+  left: 239px !important;
+  width: 96px !important;
+  height: 93px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-sizing: border-box !important;
+  z-index: 6 !important;
+}
+
+.xbox .face {
+  position: absolute !important;
+  float: none !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+  opacity: 0 !important;
+  border-radius: 4px !important;
+  background: linear-gradient(135deg, rgba(225, 255, 137, 0.94), rgba(78, 197, 0, 0.74)) !important;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.55),
+              0 0 9px var(--xgn-cyan);
+}
+
+.xbox .face.pressed {
+  opacity: 0.82 !important;
+  animation: none !important;
+}
+
+.xbox .face.up {
+  top: 0 !important;
+  left: 30px !important;
+  width: 36px !important;
+  height: 30px !important;
+  clip-path: polygon(12% 0, 88% 0, 100% 13%, 100% 100%, 0 100%, 0 13%) !important;
+}
+
+.xbox .face.down {
+  top: 59px !important;
+  left: 30px !important;
+  width: 36px !important;
+  height: 34px !important;
+  clip-path: polygon(0 0, 100% 0, 100% 87%, 88% 100%, 12% 100%, 0 87%) !important;
+}
+
+.xbox .face.left {
+  top: 28px !important;
+  left: 0 !important;
+  width: 32px !important;
+  height: 33px !important;
+  clip-path: polygon(13% 0, 100% 0, 100% 100%, 13% 100%, 0 87%, 0 13%) !important;
+}
+
+.xbox .face.right {
+  top: 28px !important;
+  left: 64px !important;
+  width: 32px !important;
+  height: 33px !important;
+  clip-path: polygon(0 0, 87% 0, 100% 13%, 100% 87%, 87% 100%, 0 100%) !important;
+}
+
+/* View and Menu button glows. */
+.xbox .arrows {
+  position: absolute !important;
+  top: 122px !important;
+  left: 306px !important;
+  width: 140px !important;
+  height: 40px !important;
+}
+
+.xbox .back,
+.xbox .start {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: radial-gradient(circle, rgba(252, 255, 236, 0.9), rgba(182, 255, 39, 0.5) 45%, transparent 72%) !important;
+  box-shadow: 0 0 10px var(--xgn-cyan);
+}
+
+.xbox .back {
+  float: left !important;
+}
+
+.xbox .start {
+  float: right !important;
+}
+
+.xbox .back.pressed,
+.xbox .start.pressed {
+  opacity: 0.95 !important;
+  animation: none !important;
+}
+
+/* Shoulder and trigger feedback along the top armor. */
+.xbox .triggers {
+  position: absolute !important;
+  top: 18px !important;
+  left: 153px !important;
+  width: 444px !important;
+  height: 40px !important;
+  z-index: 4 !important;
+}
+
+.xbox .trigger {
+  width: 140px !important;
+  height: 40px !important;
+  opacity: 0;
+  background: linear-gradient(180deg, rgba(242, 255, 220, 0.9), rgba(182, 255, 39, 0.62) 42%, rgba(60, 159, 0, 0.28) 82%, transparent) !important;
+  filter: none !important;
+  box-shadow: inset 0 0 8px rgba(182, 255, 39, 0.7);
+}
+
+.xbox .trigger.left {
+  float: left !important;
+  clip-path: polygon(10.7% 87.5%, 15% 70%, 26.4% 42.5%, 45% 17.5%, 69.3% 2.5%, 80.7% 5%, 92.9% 35%, 96.4% 47.5%, 89.3% 57.5%, 53.6% 60%, 27.9% 80%);
+}
+
+.xbox .trigger.right {
+  float: right !important;
+  transform: none !important;
+  clip-path: polygon(89.3% 87.5%, 85% 70%, 73.6% 42.5%, 55% 17.5%, 30.7% 2.5%, 19.3% 5%, 7.1% 35%, 3.6% 47.5%, 10.7% 57.5%, 46.4% 60%, 72.1% 80%);
+}
+
+.xbox .trigger.pressed {
+  opacity: 0.95 !important;
+}
+
+.xbox .bumpers {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 750px !important;
+  height: 500px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
+  z-index: 6 !important;
+}
+
+.xbox .bumper {
+  position: absolute !important;
+  float: none !important;
+  top: 20px !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 126px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+  transform-origin: center !important;
+  opacity: 0 !important;
+  background: linear-gradient(180deg, rgba(248, 255, 232, 0.96), rgba(182, 255, 39, 0.76) 44%, rgba(60, 159, 0, 0.36) 100%) !important;
+  filter: none !important;
+  box-shadow: inset 0 0 7px rgba(182, 255, 39, 0.74);
+}
+
+.xbox .bumper.left {
+  left: 160px !important;
+  clip-path: polygon(0 95%, 4% 78%, 8% 65%, 16% 50%, 24% 35%, 36% 20%, 52% 8%, 68% 0, 75% 0, 83% 8%, 91% 30%, 99% 38%, 100% 60%, 91% 63%, 79% 65%, 64% 65%, 48% 70%, 32% 75%, 16% 85%, 0 100%) !important;
+}
+
+.xbox .bumper.right {
+  left: 464px !important;
+  clip-path: polygon(100% 95%, 96% 78%, 92% 65%, 84% 50%, 76% 35%, 64% 20%, 48% 8%, 32% 0, 25% 0, 17% 8%, 9% 30%, 1% 38%, 0 60%, 9% 63%, 21% 65%, 36% 65%, 52% 70%, 68% 75%, 84% 85%, 100% 100%) !important;
+}
+
+.xbox .bumper.pressed {
+  opacity: 0.92 !important;
+  animation: none !important;
+}
