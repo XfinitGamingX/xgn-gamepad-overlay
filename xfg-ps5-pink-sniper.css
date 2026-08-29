@@ -1,4 +1,4 @@
-/* XFG PinkSniper DualSense v1 — clean 806x598 GPV skin. */
+/* XFG PinkSniper DualSense v2 — corrected shoulder controls, 806x598 GPV skin. */
 :root {
   --xfg-pink: 255, 8, 145;
   --xfg-highlight: 255, 186, 229;
@@ -17,7 +17,7 @@ body {
   width: 806px !important;
   height: 598px !important;
   margin: 0 !important;
-  background: url("./xfg-ps5-pink-sniper.png?v=1") 0 0 / 806px 598px no-repeat !important;
+  background: url("./xfg-ps5-pink-sniper.png?v=2") 0 0 / 806px 598px no-repeat !important;
   image-rendering: auto !important;
   filter: none !important;
   isolation: isolate;
@@ -61,8 +61,7 @@ body {
 .ds4 .trigger-button {
   position: absolute !important;
   top: 35px !important;
-  width: 99px !important;
-  height: 26px !important;
+  height: 24px !important;
   margin: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -77,23 +76,24 @@ body {
 .ds4 .trigger.left,
 .ds4 .trigger-button.left {
   left: 109px !important;
+  width: 102px !important;
   right: auto !important;
-  clip-path: polygon(0 100%,4% 52%,18% 20%,48% 0,82% 2%,97% 31%,100% 67%,79% 59%,49% 68%,20% 88%) !important;
+  clip-path: polygon(0 96%,7% 68%,20% 40%,40% 16%,60% 0,80% 0,94% 12%,100% 32%,98% 52%,88% 36%,78% 28%,60% 44%,42% 52%,23% 76%,4% 100%) !important;
 }
 .ds4 .trigger.right,
 .ds4 .trigger-button.right {
-  left: 603px !important;
+  left: 600px !important;
+  width: 102px !important;
   right: auto !important;
-  clip-path: polygon(0 31%,18% 2%,52% 0,82% 20%,96% 52%,100% 100%,80% 88%,51% 68%,21% 59%,0 67%) !important;
+  clip-path: polygon(99% 92%,92% 72%,80% 44%,60% 16%,40% 0,20% 0,6% 12%,0 32%,2% 52%,12% 36%,22% 28%,40% 44%,58% 52%,77% 76%,96% 100%) !important;
 }
 .ds4 .trigger-button.pressed { opacity: .90 !important; }
 
-/* L1/R1 follow the photographed sloped front planes. */
+/* L1/R1 follow the lower/front faces of the physical black shoulder slabs. */
 .ds4 .bumper {
   position: absolute !important;
-  top: 58px !important;
-  width: 122px !important;
-  height: 60px !important;
+  top: 41px !important;
+  height: 30px !important;
   margin: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -105,14 +105,16 @@ body {
               inset 0 0 11px rgba(var(--xfg-pink), .82) !important;
 }
 .ds4 .bumper.left {
-  left: 74px !important;
+  left: 107px !important;
+  width: 104px !important;
   right: auto !important;
-  clip-path: polygon(0 78%,58% 43%,80% 18%,90% 0,100% 0,90% 34%,72% 60%,8% 94%) !important;
+  clip-path: polygon(0 57%,5% 50%,13% 43%,22% 37%,32% 27%,42% 20%,51% 13%,61% 10%,70% 3%,80% 0,90% 3%,97% 13%,100% 33%,97% 37%,90% 40%,80% 43%,73% 47%,61% 57%,47% 63%,33% 70%,18% 77%,8% 87%,2% 93%,0 87%) !important;
 }
 .ds4 .bumper.right {
-  left: 610px !important;
+  left: 599px !important;
+  width: 102px !important;
   right: auto !important;
-  clip-path: polygon(100% 78%,42% 43%,20% 18%,10% 0,0 0,10% 34%,28% 60%,92% 94%) !important;
+  clip-path: polygon(100% 57%,95% 50%,87% 43%,78% 37%,68% 27%,58% 20%,49% 13%,39% 10%,30% 3%,20% 0,10% 3%,3% 13%,0 33%,3% 37%,10% 40%,20% 43%,27% 47%,39% 57%,53% 63%,67% 70%,82% 77%,92% 87%,98% 93%,100% 87%) !important;
 }
 .ds4 .bumper.pressed { opacity: .91 !important; }
 
