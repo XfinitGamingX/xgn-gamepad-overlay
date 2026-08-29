@@ -1,4 +1,4 @@
-/* XFG — detailed translucent-lime Xbox One GamePad Viewer overlay — v6 FAST
+/* XFG — detailed translucent-lime Xbox controller overlay — v7 INPUT FIX
    Host this file beside xfg-xbox-one-detailed.png and
    xfg-xbox-one-lime-lights-v2.png.
 
@@ -25,10 +25,17 @@ body {
   background: transparent !important;
 }
 
+body {
+  position: relative !important;
+}
+
 .controller.xbox {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
   width: 750px !important;
   height: 500px !important;
-  background-image: url("./xfg-xbox-one-detailed.png?v=6") !important;
+  background-image: url("./xfg-xbox-one-detailed.png?v=7") !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: 750px 500px !important;
@@ -62,8 +69,8 @@ body {
     ) -340px -20px / 320px 120% no-repeat,
     radial-gradient(circle, #fff 0 3px, #caff55 4px 7px, rgba(118, 255, 0, 0.28) 8px 12px, transparent 13px) 0 0 / 96px 80px repeat,
     repeating-linear-gradient(118deg, transparent 0 34px, rgba(201, 255, 79, 0.08) 38px 44px, rgba(232, 255, 181, 0.50) 46px 51px, transparent 55px 94px) -240px -120px / 240px 240px repeat;
-  -webkit-mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
-  mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
+  -webkit-mask: url("./xfg-xbox-one-lime-lights-v2.png?v=7") 0 0 / 750px 500px no-repeat;
+  mask: url("./xfg-xbox-one-lime-lights-v2.png?v=7") 0 0 / 750px 500px no-repeat;
   opacity: 0.86;
   mix-blend-mode: screen;
   will-change: background-position;
@@ -88,8 +95,8 @@ body {
     radial-gradient(ellipse, #fff 0 8%, #caff55 14% 26%, rgba(111, 255, 0, 0.66) 34% 52%, transparent 72%) 592px 170px / 60px 36px no-repeat,
     radial-gradient(ellipse, #fff 0 8%, #d8ff72 13% 25%, rgba(102, 255, 0, 0.58) 34% 50%, transparent 72%) 86px 296px / 60px 36px no-repeat,
     radial-gradient(ellipse, #fff 0 8%, #d8ff72 13% 25%, rgba(102, 255, 0, 0.58) 34% 50%, transparent 72%) 604px 296px / 60px 36px no-repeat;
-  -webkit-mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
-  mask: url("./xfg-xbox-one-lime-lights-v2.png?v=6") 0 0 / 750px 500px no-repeat;
+  -webkit-mask: url("./xfg-xbox-one-lime-lights-v2.png?v=7") 0 0 / 750px 500px no-repeat;
+  mask: url("./xfg-xbox-one-lime-lights-v2.png?v=7") 0 0 / 750px 500px no-repeat;
   mix-blend-mode: screen;
   will-change: background-position;
   animation: xfg-xbox-circuit-packets var(--xfg-controller-cycle) linear infinite;
@@ -134,8 +141,7 @@ body {
   }
 }
 
-/* Keep the ambient artwork alive when a wireless controller sleeps or GPV
-   briefly reports a disconnect. Only the live input surfaces are hidden. */
+/* Keep both the ambient artwork and input DOM alive during reconnects. */
 .controller.xbox.disconnected::before {
   opacity: 0.86 !important;
   animation: xfg-xbox-liquid-travel var(--xfg-controller-cycle) linear infinite !important;
@@ -155,10 +161,6 @@ body {
   visibility: visible !important;
   filter: none !important;
   opacity: 1 !important;
-}
-
-.controller.xbox.disconnected div {
-  display: none !important;
 }
 
 .xbox .quadrant {
@@ -300,6 +302,7 @@ body {
   left: 481px !important;
   width: 137px !important;
   height: 134px !important;
+  z-index: 8 !important;
 }
 
 .xbox .button {
@@ -311,14 +314,20 @@ body {
   opacity: 0 !important;
   background: transparent !important;
   transform: scale(0.94);
-  transition: none !important;
+  transition: transform 45ms linear, opacity 45ms linear !important;
+  z-index: 1 !important;
 }
 
 .xbox .button.pressed {
   opacity: 1 !important;
   margin: 0 !important;
-  transform: scale(1);
-  animation: none !important;
+  transform: translateY(3px) scale(1.05) !important;
+  animation: xfg-live-button-hit 180ms ease-out !important;
+}
+
+@keyframes xfg-live-button-hit {
+  0% { filter: brightness(2.2); }
+  100% { filter: brightness(1); }
 }
 
 .xbox .button.a {
@@ -376,7 +385,7 @@ body {
   padding: 0 !important;
   border: 0 !important;
   box-sizing: border-box !important;
-  z-index: 6 !important;
+  z-index: 8 !important;
 }
 
 .xbox .face {
@@ -398,7 +407,7 @@ body {
 
 .xbox .face.pressed {
   opacity: 0.82 !important;
-  animation: none !important;
+  filter: brightness(1.45) !important;
 }
 
 .xbox .face.up {
@@ -409,12 +418,20 @@ body {
   clip-path: polygon(12% 0, 88% 0, 100% 13%, 100% 100%, 0 100%, 0 13%) !important;
 }
 
+.xbox .face.up.pressed {
+  transform: translateY(3px) !important;
+}
+
 .xbox .face.down {
   top: 59px !important;
   left: 30px !important;
   width: 36px !important;
   height: 34px !important;
   clip-path: polygon(0 0, 100% 0, 100% 87%, 88% 100%, 12% 100%, 0 87%) !important;
+}
+
+.xbox .face.down.pressed {
+  transform: translateY(-3px) !important;
 }
 
 .xbox .face.left {
@@ -425,12 +442,20 @@ body {
   clip-path: polygon(13% 0, 100% 0, 100% 100%, 13% 100%, 0 87%, 0 13%) !important;
 }
 
+.xbox .face.left.pressed {
+  transform: translateX(3px) !important;
+}
+
 .xbox .face.right {
   top: 28px !important;
   left: 64px !important;
   width: 32px !important;
   height: 33px !important;
   clip-path: polygon(0 0, 87% 0, 100% 13%, 100% 87%, 87% 100%, 0 100%) !important;
+}
+
+.xbox .face.right.pressed {
+  transform: translateX(-3px) !important;
 }
 
 /* View and Menu button glows. */
@@ -440,6 +465,7 @@ body {
   left: 306px !important;
   width: 140px !important;
   height: 40px !important;
+  z-index: 8 !important;
 }
 
 .xbox .back,
@@ -463,7 +489,38 @@ body {
 .xbox .back.pressed,
 .xbox .start.pressed {
   opacity: 0.95 !important;
-  animation: none !important;
+  transform: translateY(2px) scale(1.05) !important;
+  filter: brightness(1.45) !important;
+}
+
+/* Guide/Home and Share are supported when the browser exposes buttons 16/17. */
+.xbox .meta,
+.xbox .touchpad {
+  position: absolute !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 9 !important;
+  background: radial-gradient(circle, #fff 0 12%, #dfff75 18% 38%, rgba(119, 255, 0, 0.55) 48%, transparent 72%) !important;
+  box-shadow: 0 0 11px #c9ff4b, 0 0 24px rgba(111, 255, 0, 0.72) !important;
+}
+
+.xbox .meta {
+  top: 86px !important;
+  left: 356px !important;
+}
+
+.xbox .touchpad {
+  top: 161px !important;
+  left: 356px !important;
+}
+
+.xbox .meta.pressed,
+.xbox .touchpad.pressed {
+  opacity: 0.98 !important;
+  transform: translateY(2px) scale(1.06) !important;
 }
 
 /* Shoulder and trigger feedback along the top armor. */
@@ -473,13 +530,13 @@ body {
   left: 153px !important;
   width: 444px !important;
   height: 40px !important;
-  z-index: 4 !important;
+  z-index: 8 !important;
 }
 
 .xbox .trigger {
   width: 140px !important;
   height: 40px !important;
-  opacity: 0;
+  opacity: calc(var(--xfg-trigger-level, 0) * 0.95);
   background: linear-gradient(180deg, rgba(242, 255, 220, 0.9), rgba(182, 255, 39, 0.62) 42%, rgba(60, 159, 0, 0.28) 82%, transparent) !important;
   filter: none !important;
   box-shadow: inset 0 0 8px rgba(182, 255, 39, 0.7);
@@ -498,6 +555,7 @@ body {
 
 .xbox .trigger.pressed {
   opacity: 0.95 !important;
+  filter: brightness(1.35) !important;
 }
 
 .xbox .bumpers {
@@ -510,7 +568,7 @@ body {
   border: 0 !important;
   box-sizing: border-box !important;
   pointer-events: none !important;
-  z-index: 6 !important;
+  z-index: 8 !important;
 }
 
 .xbox .bumper {
@@ -545,5 +603,6 @@ body {
 
 .xbox .bumper.pressed {
   opacity: 0.92 !important;
-  animation: none !important;
+  transform: translateY(3px) scale(0.99) !important;
+  filter: brightness(1.35) !important;
 }
