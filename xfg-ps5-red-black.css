@@ -18,7 +18,7 @@ body {
   width: 806px !important;
   height: 598px !important;
   margin: 0 !important;
-  background: url("./xfg-ps5-red-black.png?v=8") 0 0 / 806px 598px no-repeat !important;
+  background: url("./xfg-ps5-red-black.png?v=9") 0 0 / 806px 598px no-repeat !important;
   image-rendering: auto !important;
   filter: none !important;
   isolation: isolate;
@@ -90,7 +90,7 @@ body {
 }
 .ds4 .trigger-button.pressed { opacity: .93 !important; }
 
-/* L1/R1 lower/front black shoulder faces. */
+/* L1/R1 traced lower/front faces below the silver shoulder separation lines. */
 .ds4 .bumper {
   position: absolute !important;
   top: 41px !important;
@@ -106,16 +106,20 @@ body {
               inset 0 0 11px rgba(var(--xfg-red), .88) !important;
 }
 .ds4 .bumper.left {
-  left: 105px !important;
-  width: 106px !important;
+  left: 116px !important;
+  top: 43px !important;
+  width: 94px !important;
+  height: 25px !important;
   right: auto !important;
-  clip-path: polygon(38% 0,90% 0,97% 10%,99% 35%,100% 100%,11% 100%,12% 80%,13% 60%,16% 40%,23% 20%) !important;
+  clip-path: polygon(12% 40%,96% 0,100% 16%,100% 84%,94% 100%,0 100%,0 80%,0 56%) !important;
 }
 .ds4 .bumper.right {
-  left: 599px !important;
-  width: 104px !important;
+  left: 598px !important;
+  top: 42px !important;
+  width: 87px !important;
+  height: 25px !important;
   right: auto !important;
-  clip-path: polygon(1% 0,60% 0,70% 20%,77% 40%,82% 60%,85% 80%,87% 100%,0 100%,0 35%) !important;
+  clip-path: polygon(3% 0,57% 0,84% 22%,95% 41%,100% 63%,100% 100%,12% 85%,0 59%,0 22%) !important;
 }
 .ds4 .bumper.pressed { opacity: .93 !important; }
 
@@ -154,10 +158,10 @@ body {
   box-shadow: none !important;
   transition: none !important;
 }
-.ds4 .face.up { left: 137px !important; top: 110px !important; width: 41px !important; height: 51px !important; clip-path: polygon(16% 0,84% 0,100% 14%,100% 60%,62% 91%,58% 100%,42% 100%,38% 91%,0 60%,0 14%) !important; }
-.ds4 .face.down { left: 139px !important; top: 200px !important; width: 41px !important; height: 46px !important; clip-path: polygon(42% 0,58% 0,100% 39%,100% 85%,88% 97%,76% 100%,24% 100%,12% 97%,0 85%,0 39%) !important; }
-.ds4 .face.left { left: 92px !important; top: 158px !important; width: 57px !important; height: 41px !important; clip-path: polygon(15% 0,59% 0,100% 43%,100% 57%,63% 100%,14% 100%,0 86%,0 17%) !important; }
-.ds4 .face.right { left: 169px !important; top: 158px !important; width: 58px !important; height: 41px !important; clip-path: polygon(0 43%,41% 0,85% 0,100% 17%,100% 86%,86% 100%,37% 100%,0 57%) !important; }
+.ds4 .face.up { left: 135px !important; top: 121px !important; width: 44px !important; height: 46px !important; clip-path: polygon(11% 0,89% 0,100% 11%,100% 65%,73% 100%,30% 100%,0 65%,0 11%) !important; }
+.ds4 .face.down { left: 135px !important; top: 193px !important; width: 44px !important; height: 41px !important; clip-path: polygon(41% 0,59% 0,100% 44%,100% 90%,89% 100%,11% 100%,0 90%,0 44%) !important; }
+.ds4 .face.left { left: 96px !important; top: 163px !important; width: 50px !important; height: 36px !important; clip-path: polygon(10% 0,62% 0,100% 39%,100% 61%,62% 100%,10% 100%,0 83%,0 14%) !important; }
+.ds4 .face.right { left: 170px !important; top: 163px !important; width: 54px !important; height: 36px !important; clip-path: polygon(0 39%,32% 0,78% 0,100% 14%,100% 83%,91% 100%,35% 100%,0 61%) !important; }
 .ds4 .face.pressed {
   opacity: .94 !important;
   background: rgba(var(--xfg-hot), .48) !important;
@@ -190,7 +194,7 @@ body {
   border: 0 !important;
   border-radius: 50% !important;
   opacity: 1 !important;
-  background-image: url("./xfg-ps5-red-black.png?v=8") !important;
+  background-image: url("./xfg-ps5-red-black.png?v=9") !important;
   background-size: 806px 598px !important;
   background-repeat: no-repeat !important;
   box-shadow: inset 0 0 7px rgba(0,0,0,.34) !important;
