@@ -1,0 +1,296 @@
+/* XFG Venom DualSense v1 — 806x598 GamePad Viewer s=5 skin. */
+:root {
+  --xfg-blue: 18, 103, 255;
+  --xfg-cyan: 80, 225, 255;
+  --xfg-highlight: 225, 247, 255;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  width: 806px !important;
+  height: 598px !important;
+  margin: 0 !important;
+  background: url("./xfg-ps5-venom.png?v=1") 0 0 / 806px 598px no-repeat !important;
+  image-rendering: auto !important;
+  filter: none !important;
+  isolation: isolate;
+  contain: layout paint style;
+}
+
+.controller.ds4 > .plshalpme,
+.ds4 .quadrant,
+.ds4 .wheels,
+.ds4 .fstick {
+  display: none !important;
+}
+
+.ds4 .triggers,
+.ds4 .bumpers,
+.ds4 .abxy,
+.ds4 .dpad,
+.ds4 .sticks,
+.ds4 .arrows {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  pointer-events: none !important;
+  transform: none !important;
+}
+
+.ds4 .triggers { z-index: 5 !important; }
+.ds4 .bumpers { z-index: 6 !important; }
+.ds4 .sticks { z-index: 7 !important; }
+.ds4 .abxy,
+.ds4 .dpad,
+.ds4 .arrows { z-index: 8 !important; }
+
+/* L2/R2 — independently measured upper trigger bevels. */
+.ds4 .trigger,
+.ds4 .trigger-button {
+  position: absolute !important;
+  top: 34px !important;
+  height: 25px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  float: none !important;
+  transform: none !important;
+  background: rgba(var(--xfg-cyan), .50) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--xfg-highlight), .92),
+              inset 0 0 8px rgba(var(--xfg-blue), .90) !important;
+}
+.ds4 .trigger { opacity: 0; }
+.ds4 .trigger-button { opacity: 0 !important; }
+.ds4 .trigger.left,
+.ds4 .trigger-button.left {
+  left: 114px !important;
+  top: 35px !important;
+  width: 95px !important;
+  height: 22px !important;
+  right: auto !important;
+  clip-path: polygon(0 96%,7% 68%,20% 40%,40% 16%,60% 0,80% 0,94% 12%,100% 32%,98% 52%,88% 36%,78% 28%,60% 44%,42% 52%,23% 76%,4% 100%) !important;
+}
+.ds4 .trigger.right,
+.ds4 .trigger-button.right {
+  left: 604px !important;
+  top: 36px !important;
+  width: 93px !important;
+  height: 21px !important;
+  right: auto !important;
+  clip-path: polygon(100% 96%,93% 68%,80% 40%,60% 16%,40% 0,20% 0,6% 12%,0 32%,2% 52%,12% 36%,22% 28%,40% 44%,58% 52%,77% 76%,96% 100%) !important;
+}
+.ds4 .trigger-button.pressed { opacity: .94 !important; }
+
+/* L1/R1 — lower/front black shoulder faces, separate from L2/R2. */
+.ds4 .bumper {
+  position: absolute !important;
+  top: 41px !important;
+  height: 30px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  float: none !important;
+  transform: none !important;
+  background: rgba(var(--xfg-cyan), .55) !important;
+  box-shadow: inset 0 0 0 2px rgba(var(--xfg-highlight), .92),
+              inset 0 0 11px rgba(var(--xfg-blue), .90) !important;
+}
+.ds4 .bumper.left {
+  left: 111px !important;
+  top: 45px !important;
+  width: 98px !important;
+  height: 24px !important;
+  right: auto !important;
+  clip-path: polygon(0 57%,7% 50%,14% 43%,24% 37%,33% 30%,43% 23%,52% 17%,62% 13%,72% 7%,81% 3%,90% 0,97% 10%,100% 40%,90% 47%,76% 53%,62% 60%,48% 67%,34% 73%,20% 83%,4% 100%,0 90%) !important;
+}
+.ds4 .bumper.right {
+  left: 604px !important;
+  top: 45px !important;
+  width: 95px !important;
+  height: 24px !important;
+  right: auto !important;
+  clip-path: polygon(100% 57%,93% 50%,86% 43%,76% 37%,67% 30%,57% 23%,48% 17%,38% 13%,28% 7%,19% 3%,10% 0,3% 10%,0 40%,10% 47%,24% 53%,38% 60%,52% 67%,66% 73%,80% 83%,96% 100%,100% 90%) !important;
+}
+.ds4 .bumper.pressed { opacity: .94 !important; }
+
+/* Cross/Circle/Square/Triangle — measured inner button discs. */
+.ds4 .button {
+  position: absolute !important;
+  width: 46px !important;
+  height: 46px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: circle(48% at 50% 50%) !important;
+  box-sizing: border-box !important;
+  transition: none !important;
+}
+.ds4 .button.y { left: 624px !important; top: 104px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.x { left: 566px !important; top: 159px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.b { left: 680px !important; top: 159px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.a { left: 623px !important; top: 217px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.pressed {
+  opacity: .96 !important;
+  background: rgba(var(--xfg-cyan), .48) !important;
+  box-shadow: inset 0 0 0 2px rgba(var(--xfg-highlight), .94),
+              inset 0 0 9px rgba(var(--xfg-blue), .90) !important;
+}
+
+/* Four independent D-pad faces. */
+.ds4 .face {
+  position: absolute !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+.ds4 .face.up { left: 135px !important; top: 117px !important; width: 42px !important; height: 50px !important; clip-path: polygon(16% 0,84% 0,100% 14%,100% 60%,62% 91%,58% 100%,42% 100%,38% 91%,0 60%,0 14%) !important; }
+.ds4 .face.down { left: 136px !important; top: 207px !important; width: 41px !important; height: 47px !important; clip-path: polygon(42% 0,58% 0,100% 39%,100% 85%,88% 97%,76% 100%,24% 100%,12% 97%,0 85%,0 39%) !important; }
+.ds4 .face.left { left: 89px !important; top: 164px !important; width: 57px !important; height: 41px !important; clip-path: polygon(15% 0,59% 0,100% 43%,100% 57%,63% 100%,14% 100%,0 86%,0 17%) !important; }
+.ds4 .face.right { left: 167px !important; top: 164px !important; width: 57px !important; height: 41px !important; clip-path: polygon(0 43%,41% 0,85% 0,100% 17%,100% 86%,86% 100%,37% 100%,0 57%) !important; }
+.ds4 .face.pressed {
+  opacity: .95 !important;
+  background: rgba(var(--xfg-cyan), .48) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--xfg-highlight), .92),
+              inset 0 0 8px rgba(var(--xfg-blue), .88) !important;
+}
+
+/* Fixed wells cover the photographed caps; real textured blue caps travel. */
+.ds4 .sticks::before,
+.ds4 .sticks::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 231px !important;
+  width: 124px !important;
+  height: 124px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 50% 48%, #121a2a 0 47%, #0b101a 56%, #030508 63%, rgba(var(--xfg-blue),.33) 67%, #0c1320 72%, #060910 79%, #010203 100%) !important;
+  box-shadow: inset 0 0 22px rgba(0,0,0,.96), inset 0 0 0 1px rgba(var(--xfg-highlight),.24) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+.ds4 .sticks::before { left: 214px !important; }
+.ds4 .sticks::after { left: 465px !important; }
+.ds4 .stick {
+  position: absolute !important;
+  width: 90px !important;
+  height: 90px !important;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  background-image: url("./xfg-ps5-venom.png?v=1") !important;
+  background-size: 806px 598px !important;
+  background-repeat: no-repeat !important;
+  box-shadow: inset 0 0 7px rgba(0,0,0,.34) !important;
+  clip-path: circle(50% at 50% 50%) !important;
+  will-change: margin-left, margin-top;
+  backface-visibility: hidden;
+  z-index: 1 !important;
+}
+.ds4 .stick.left { left: 231px !important; top: 248px !important; background-position: -231px -248px !important; }
+.ds4 .stick.right { left: 483px !important; top: 248px !important; background-position: -483px -248px !important; }
+.ds4 .stick.pressed {
+  box-shadow: inset 0 0 0 3px rgba(var(--xfg-highlight), .95), inset 0 0 12px rgba(var(--xfg-cyan), .90) !important;
+}
+
+/* Create / Options. */
+.ds4 .back,
+.ds4 .start {
+  position: absolute !important;
+  top: 82px !important;
+  width: 19px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  float: none !important;
+}
+.ds4 .back { left: 210px !important; right: auto !important; }
+.ds4 .start { left: 578px !important; right: auto !important; }
+.ds4 .back.pressed,
+.ds4 .start.pressed {
+  opacity: .95 !important;
+  background: rgba(var(--xfg-cyan), .50) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--xfg-highlight), .94), inset 0 0 8px rgba(var(--xfg-blue), .90) !important;
+}
+
+/* Active black touchpad face; the electric-blue trim remains exposed. */
+.ds4 .touchpad {
+  display: block !important;
+  position: absolute !important;
+  left: 254px !important;
+  top: 43px !important;
+  width: 300px !important;
+  height: 174px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: polygon(5% 0,95% 0,98% 2%,100% 8%,100% 23%,99% 53%,97% 76%,94% 88%,90% 96%,86% 100%,14% 100%,10% 96%,6% 88%,3% 76%,1% 53%,0 23%,0 8%,2% 2%) !important;
+  z-index: 7 !important;
+}
+.ds4 .touchpad.pressed {
+  opacity: .34 !important;
+  background: rgba(var(--xfg-blue), .38) !important;
+  box-shadow: inset 0 0 0 2px rgba(var(--xfg-highlight), .76), inset 0 0 24px rgba(var(--xfg-cyan), .72) !important;
+}
+
+/* Home press follows the central silver-and-black symbiote diamond. */
+.ds4 .meta {
+  display: block !important;
+  position: absolute !important;
+  left: 383px !important;
+  top: 268px !important;
+  width: 42px !important;
+  height: 50px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  background: rgba(var(--xfg-cyan), .88) !important;
+  box-shadow: none !important;
+  clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%) !important;
+  z-index: 9 !important;
+}
+.ds4 .meta.pressed { opacity: .92 !important; }
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .trigger-button,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start,
+.ds4 .touchpad,
+.ds4 .meta {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
