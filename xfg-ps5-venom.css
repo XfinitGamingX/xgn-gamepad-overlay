@@ -18,7 +18,7 @@ body {
   width: 806px !important;
   height: 598px !important;
   margin: 0 !important;
-  background: url("./xfg-ps5-venom.png?v=1") 0 0 / 806px 598px no-repeat !important;
+  background: url("./xfg-ps5-venom.png?v=2") 0 0 / 806px 598px no-repeat !important;
   image-rendering: auto !important;
   filter: none !important;
   isolation: isolate;
@@ -76,21 +76,21 @@ body {
 .ds4 .trigger-button { opacity: 0 !important; }
 .ds4 .trigger.left,
 .ds4 .trigger-button.left {
-  left: 114px !important;
-  top: 35px !important;
-  width: 95px !important;
-  height: 22px !important;
+  left: 109px !important;
+  top: 34px !important;
+  width: 103px !important;
+  height: 36px !important;
   right: auto !important;
-  clip-path: polygon(0 96%,7% 68%,20% 40%,40% 16%,60% 0,80% 0,94% 12%,100% 32%,98% 52%,88% 36%,78% 28%,60% 44%,42% 52%,23% 76%,4% 100%) !important;
+  clip-path: polygon(61% 0,77% 0,89% 8%,97% 22%,99% 36%,98% 53%,92% 44%,83% 47%,70% 56%,55% 64%,41% 72%,25% 83%,10% 97%,2% 92%,0 78%,5% 61%,11% 44%,23% 28%,41% 11%) !important;
 }
 .ds4 .trigger.right,
 .ds4 .trigger-button.right {
-  left: 604px !important;
-  top: 36px !important;
-  width: 93px !important;
-  height: 21px !important;
+  left: 602px !important;
+  top: 35px !important;
+  width: 100px !important;
+  height: 35px !important;
   right: auto !important;
-  clip-path: polygon(100% 96%,93% 68%,80% 40%,60% 16%,40% 0,20% 0,6% 12%,0 32%,2% 52%,12% 36%,22% 28%,40% 44%,58% 52%,77% 76%,96% 100%) !important;
+  clip-path: polygon(36% 0,21% 0,9% 9%,2% 23%,2% 37%,3% 54%,7% 46%,17% 49%,30% 57%,45% 66%,60% 74%,76% 86%,90% 97%,97% 91%,99% 77%,96% 60%,88% 43%,76% 26%,60% 11%) !important;
 }
 .ds4 .trigger-button.pressed { opacity: .94 !important; }
 
@@ -164,10 +164,10 @@ body {
   box-shadow: none !important;
   transition: none !important;
 }
-.ds4 .face.up { left: 135px !important; top: 117px !important; width: 42px !important; height: 50px !important; clip-path: polygon(16% 0,84% 0,100% 14%,100% 60%,62% 91%,58% 100%,42% 100%,38% 91%,0 60%,0 14%) !important; }
-.ds4 .face.down { left: 136px !important; top: 207px !important; width: 41px !important; height: 47px !important; clip-path: polygon(42% 0,58% 0,100% 39%,100% 85%,88% 97%,76% 100%,24% 100%,12% 97%,0 85%,0 39%) !important; }
-.ds4 .face.left { left: 89px !important; top: 164px !important; width: 57px !important; height: 41px !important; clip-path: polygon(15% 0,59% 0,100% 43%,100% 57%,63% 100%,14% 100%,0 86%,0 17%) !important; }
-.ds4 .face.right { left: 167px !important; top: 164px !important; width: 57px !important; height: 41px !important; clip-path: polygon(0 43%,41% 0,85% 0,100% 17%,100% 86%,86% 100%,37% 100%,0 57%) !important; }
+.ds4 .face.up { left: 138px !important; top: 121px !important; width: 37px !important; height: 52px !important; clip-path: polygon(8% 0,89% 0,100% 8%,100% 63%,62% 90%,57% 100%,41% 100%,35% 90%,0 65%,0 10%) !important; }
+.ds4 .face.down { left: 139px !important; top: 204px !important; width: 37px !important; height: 42px !important; clip-path: polygon(41% 0,57% 0,97% 38%,97% 86%,86% 98%,8% 98%,0 86%,0 38%) !important; }
+.ds4 .face.left { left: 94px !important; top: 168px !important; width: 53px !important; height: 37px !important; clip-path: polygon(9% 0,55% 0,98% 35%,98% 54%,55% 97%,9% 97%,0 84%,0 14%) !important; }
+.ds4 .face.right { left: 168px !important; top: 168px !important; width: 54px !important; height: 37px !important; clip-path: polygon(0 35%,41% 0,87% 0,98% 14%,98% 84%,87% 97%,41% 97%,0 54%) !important; }
 .ds4 .face.pressed {
   opacity: .95 !important;
   background: rgba(var(--xfg-cyan), .48) !important;
@@ -200,7 +200,7 @@ body {
   border: 0 !important;
   border-radius: 50% !important;
   opacity: 1 !important;
-  background-image: url("./xfg-ps5-venom.png?v=1") !important;
+  background-image: url("./xfg-ps5-venom.png?v=2") !important;
   background-size: 806px 598px !important;
   background-repeat: no-repeat !important;
   box-shadow: inset 0 0 7px rgba(0,0,0,.34) !important;
