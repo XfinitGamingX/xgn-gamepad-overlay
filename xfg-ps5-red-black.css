@@ -24,7 +24,7 @@ body {
   max-height: none !important;
   margin: 0 !important;
   box-sizing: border-box !important;
-  background: url("./xfg-ps5-red-black.png?v=1") 0 0 / 750px 500px no-repeat !important;
+  background: url("./xfg-ps5-red-black.png?v=2") 0 0 / 750px 500px no-repeat !important;
   filter: none !important;
   isolation: isolate;
   contain: layout style;
@@ -55,6 +55,8 @@ body {
   background: none !important;
   pointer-events: none !important;
   box-sizing: border-box !important;
+  transform: none !important;
+  transform-origin: 0 0 !important;
 }
 
 .ds4 .triggers,
@@ -109,7 +111,7 @@ body {
 
 .ds4 .trigger-button.pressed {
   opacity: .98 !important;
-  transform: translateY(3px) scale(.98) !important;
+  transform: none !important;
 }
 
 /* L1/R1 */
@@ -132,7 +134,7 @@ body {
 
 .ds4 .bumper.pressed {
   opacity: .94 !important;
-  transform: translateY(3px) scale(.98) !important;
+  transform: none !important;
 }
 
 /* Cross/Circle/Square/Triangle */
@@ -154,10 +156,10 @@ body {
 .ds4 .button.a { left: 575px !important; top: 182px !important; right: auto !important; }
 
 .ds4 .button.pressed {
-  opacity: .98 !important;
-  transform: scale(.92) !important;
-  background: radial-gradient(circle, #fff 0 13%, rgba(var(--xfg-accent-rgb),.92) 25%, rgba(var(--xfg-accent-rgb),.45) 52%, transparent 73%) !important;
-  box-shadow: 0 0 10px var(--xfg-accent), 0 0 24px rgba(var(--xfg-accent-rgb),.82) !important;
+  opacity: 1 !important;
+  transform: none !important;
+  background: radial-gradient(circle, transparent 0 47%, rgba(var(--xfg-accent-rgb),.26) 58%, rgba(255,255,255,.72) 72%, rgba(var(--xfg-accent-rgb),.52) 82%, transparent 100%) !important;
+  box-shadow: inset 0 0 10px rgba(var(--xfg-accent-rgb),.7), 0 0 9px var(--xfg-accent), 0 0 19px rgba(var(--xfg-accent-rgb),.68) !important;
   mix-blend-mode: screen;
 }
 
@@ -167,8 +169,8 @@ body {
   margin: 0 !important;
   opacity: 0 !important;
   border-radius: 5px !important;
-  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(var(--xfg-accent-rgb),.58)) !important;
-  box-shadow: inset 0 0 7px rgba(255,255,255,.55), 0 0 11px rgba(var(--xfg-accent-rgb),.78) !important;
+  background: rgba(var(--xfg-accent-rgb),.26) !important;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.68), inset 0 0 9px rgba(var(--xfg-accent-rgb),.72), 0 0 11px rgba(var(--xfg-accent-rgb),.78) !important;
   mix-blend-mode: screen;
 }
 
@@ -177,21 +179,13 @@ body {
 .ds4 .face.left { left: 96px !important; top: 133px !important; width: 47px !important; height: 36px !important; clip-path: polygon(18% 0,66% 0,100% 42%,100% 58%,66% 100%,18% 100%,0 82%,0 18%) !important; }
 .ds4 .face.right { left: 166px !important; top: 133px !important; width: 46px !important; height: 36px !important; clip-path: polygon(0 42%,34% 0,82% 0,100% 18%,100% 82%,82% 100%,34% 100%,0 58%) !important; }
 
-.ds4 .face.pressed { opacity: .92 !important; transform: scale(.92) !important; }
+.ds4 .face.pressed { opacity: .92 !important; transform: none !important; }
 
 /* Fixed wells cover the photographed sticks; live caps travel above them. */
 .ds4 .sticks::before,
 .ds4 .sticks::after {
-  content: "";
-  position: absolute;
-  top: 203px;
-  width: 98px;
-  height: 98px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #0d1115 0 55%, #050608 58% 69%, rgba(var(--xfg-accent-rgb),.5) 72% 77%, #050608 81% 100%);
-  box-shadow: inset 0 0 17px #000, 0 0 7px rgba(var(--xfg-accent-rgb),.5);
-  pointer-events: none;
-  z-index: 0;
+  content: none !important;
+  display: none !important;
 }
 
 .ds4 .sticks::before { left: 212px; }
@@ -202,11 +196,12 @@ body {
   width: 73px !important;
   height: 73px !important;
   margin: 0;
-  border: 1px solid rgba(255,255,255,.34) !important;
+  box-sizing: border-box !important;
+  border: 2px solid rgba(var(--xfg-accent-rgb),.38) !important;
   border-radius: 50% !important;
   opacity: 1 !important;
-  background: radial-gradient(circle at 40% 34%, #515760 0 6%, #242930 10% 23%, #0c1015 28% 59%, #020305 62% 70%, rgba(var(--xfg-accent-rgb),.7) 73% 78%, #030405 82% 100%) !important;
-  box-shadow: inset 0 0 13px #000, 0 0 7px rgba(var(--xfg-accent-rgb),.45) !important;
+  background: radial-gradient(circle, transparent 0 58%, rgba(var(--xfg-accent-rgb),.08) 63%, rgba(var(--xfg-accent-rgb),.34) 72%, transparent 82%) !important;
+  box-shadow: inset 0 0 8px rgba(var(--xfg-accent-rgb),.32), 0 0 7px rgba(var(--xfg-accent-rgb),.5) !important;
   will-change: margin-left, margin-top;
   z-index: 1;
 }
@@ -215,7 +210,7 @@ body {
 .ds4 .stick.right { left: 453px !important; top: 215px !important; }
 
 .ds4 .stick.pressed {
-  box-shadow: inset 0 0 12px #000, 0 0 12px var(--xfg-accent), 0 0 25px rgba(var(--xfg-accent-rgb),.64) !important;
+  box-shadow: inset 0 0 11px rgba(255,255,255,.6), 0 0 12px var(--xfg-accent), 0 0 25px rgba(var(--xfg-accent-rgb),.7) !important;
 }
 
 /* Create / Options */
@@ -228,14 +223,14 @@ body {
   margin: 0 !important;
   border-radius: 10px !important;
   opacity: 0 !important;
-  background: radial-gradient(ellipse, #fff, rgba(var(--xfg-accent-rgb),.75) 50%, transparent 75%) !important;
+  background: rgba(var(--xfg-accent-rgb),.28) !important;
   float: none !important;
 }
 
 .ds4 .back { left: 200px !important; right: auto !important; }
 .ds4 .start { left: 532px !important; right: auto !important; }
 .ds4 .back.pressed,
-.ds4 .start.pressed { opacity: .94 !important; transform: scale(.9) !important; box-shadow: 0 0 12px var(--xfg-accent) !important; }
+.ds4 .start.pressed { opacity: .94 !important; transform: none !important; box-shadow: inset 0 0 0 2px rgba(255,255,255,.68), 0 0 12px var(--xfg-accent) !important; }
 
 .ds4 .touchpad {
   position: absolute !important;
@@ -252,7 +247,7 @@ body {
 
 .ds4 .touchpad.pressed {
   opacity: .72 !important;
-  transform: scale(.99) !important;
+  transform: none !important;
   box-shadow: inset 0 0 0 2px rgba(255,255,255,.5), inset 0 0 24px rgba(var(--xfg-accent-rgb),.62), 0 0 14px rgba(var(--xfg-accent-rgb),.52) !important;
 }
 
@@ -269,7 +264,7 @@ body {
   z-index: 9 !important;
 }
 
-.ds4 .meta.pressed { opacity: .98 !important; transform: scale(.92) !important; box-shadow: 0 0 14px var(--xfg-accent) !important; }
+.ds4 .meta.pressed { opacity: .98 !important; transform: none !important; box-shadow: inset 0 0 0 2px rgba(255,255,255,.7), 0 0 14px var(--xfg-accent) !important; }
 
 .ds4 .button,
 .ds4 .face,
@@ -286,19 +281,21 @@ body {
 
 
 /* Per-photo landmark alignment. */
-.ds4 .button.y { left: 572px !important; top: 75px !important; }
-.ds4 .button.x { left: 522px !important; top: 123px !important; }
-.ds4 .button.b { left: 624px !important; top: 127px !important; }
-.ds4 .button.a { left: 572px !important; top: 180px !important; }
-.ds4 .face.up { left: 136px !important; top: 86px !important; }
-.ds4 .face.down { left: 136px !important; top: 167px !important; }
-.ds4 .face.left { left: 89px !important; top: 132px !important; }
-.ds4 .face.right { left: 172px !important; top: 132px !important; }
-.ds4 .stick.left { left: 226px !important; top: 210px !important; }
-.ds4 .stick.right { left: 450px !important; top: 210px !important; }
-.ds4 .sticks::before { left: 213px !important; top: 197px !important; }
-.ds4 .sticks::after { left: 437px !important; top: 197px !important; }
-.ds4 .back { left: 200px !important; top: 47px !important; }
-.ds4 .start { left: 531px !important; top: 47px !important; }
-.ds4 .meta { left: 360px !important; top: 221px !important; }
-.ds4 .touchpad { left: 233px !important; top: 24px !important; width: 286px !important; height: 155px !important; }
+.ds4 .button.y { left: 565px !important; top: 68px !important; width: 59px !important; height: 59px !important; }
+.ds4 .button.x { left: 514px !important; top: 122px !important; width: 59px !important; height: 59px !important; }
+.ds4 .button.b { left: 617px !important; top: 120px !important; width: 59px !important; height: 59px !important; }
+.ds4 .button.a { left: 565px !important; top: 173px !important; width: 59px !important; height: 59px !important; }
+.ds4 .face.up { left: 128px !important; top: 82px !important; width: 52px !important; height: 65px !important; }
+.ds4 .face.down { left: 128px !important; top: 158px !important; width: 53px !important; height: 65px !important; }
+.ds4 .face.left { left: 82px !important; top: 124px !important; width: 63px !important; height: 53px !important; }
+.ds4 .face.right { left: 163px !important; top: 124px !important; width: 64px !important; height: 53px !important; }
+.ds4 .stick.left { left: 220px !important; top: 205px !important; width: 83px !important; height: 83px !important; }
+.ds4 .stick.right { left: 446px !important; top: 205px !important; width: 83px !important; height: 83px !important; }
+.ds4 .back { left: 198px !important; top: 45px !important; width: 24px !important; height: 42px !important; }
+.ds4 .start { left: 529px !important; top: 45px !important; width: 24px !important; height: 42px !important; }
+.ds4 .meta { left: 349px !important; top: 220px !important; width: 53px !important; height: 44px !important; }
+.ds4 .touchpad { left: 231px !important; top: 22px !important; width: 289px !important; height: 160px !important; }
+.ds4 .trigger.left, .ds4 .trigger-button.left { left: 111px !important; top: 15px !important; width: 94px !important; height: 27px !important; }
+.ds4 .trigger.right, .ds4 .trigger-button.right { left: 545px !important; top: 15px !important; width: 94px !important; height: 27px !important; }
+.ds4 .bumper.left { left: 99px !important; top: 34px !important; width: 116px !important; height: 31px !important; }
+.ds4 .bumper.right { left: 535px !important; top: 34px !important; width: 116px !important; height: 31px !important; }

@@ -23,7 +23,7 @@ body {
   max-height: none !important;
   margin: 0 !important;
   box-sizing: border-box !important;
-  background: url("./xfg-xbox-neon-shadow.png?v=1") 0 0 / 750px 500px no-repeat !important;
+  background: url("./xfg-xbox-neon-shadow.png?v=2") 0 0 / 750px 500px no-repeat !important;
   filter: none !important;
   isolation: isolate;
   contain: layout style;
@@ -49,6 +49,8 @@ body {
   background: none !important;
   pointer-events: none !important;
   box-sizing: border-box !important;
+  transform: none !important;
+  transform-origin: 0 0 !important;
 }
 
 .xbox .triggers,
@@ -103,7 +105,7 @@ body {
 
 .xbox .bumper.left { left: 160px !important; right: auto !important; }
 .xbox .bumper.right { left: 470px !important; right: auto !important; }
-.xbox .bumper.pressed { opacity: .94 !important; transform: translateY(3px) scale(.99) !important; }
+.xbox .bumper.pressed { opacity: .94 !important; transform: none !important; }
 
 .xbox .button {
   position: absolute !important;
@@ -121,22 +123,22 @@ body {
 .xbox .button.a { left: 519px !important; top: 172px !important; right: auto !important; }
 
 .xbox .button.pressed {
-  opacity: .98 !important;
-  transform: scale(.92) !important;
+  opacity: 1 !important;
+  transform: none !important;
   mix-blend-mode: screen;
 }
-.xbox .button.a.pressed { background: radial-gradient(circle,#fff 0 12%,rgba(40,255,74,.9) 25%,transparent 72%) !important; box-shadow: 0 0 12px #29ff52,0 0 24px rgba(41,255,82,.7) !important; }
-.xbox .button.b.pressed { background: radial-gradient(circle,#fff 0 12%,rgba(255,48,65,.9) 25%,transparent 72%) !important; box-shadow: 0 0 12px #ff3041,0 0 24px rgba(255,48,65,.7) !important; }
-.xbox .button.x.pressed { background: radial-gradient(circle,#fff 0 12%,rgba(0,204,255,.9) 25%,transparent 72%) !important; box-shadow: 0 0 12px #00ccff,0 0 24px rgba(0,204,255,.7) !important; }
-.xbox .button.y.pressed { background: radial-gradient(circle,#fff 0 12%,rgba(255,225,30,.9) 25%,transparent 72%) !important; box-shadow: 0 0 12px #ffe11e,0 0 24px rgba(255,225,30,.7) !important; }
+.xbox .button.a.pressed { background: radial-gradient(circle,transparent 0 47%,rgba(40,255,74,.3) 60%,rgba(255,255,255,.74) 73%,rgba(40,255,74,.55) 84%,transparent 100%) !important; box-shadow: inset 0 0 9px rgba(40,255,74,.72),0 0 12px #29ff52,0 0 24px rgba(41,255,82,.7) !important; }
+.xbox .button.b.pressed { background: radial-gradient(circle,transparent 0 47%,rgba(255,48,65,.3) 60%,rgba(255,255,255,.74) 73%,rgba(255,48,65,.55) 84%,transparent 100%) !important; box-shadow: inset 0 0 9px rgba(255,48,65,.72),0 0 12px #ff3041,0 0 24px rgba(255,48,65,.7) !important; }
+.xbox .button.x.pressed { background: radial-gradient(circle,transparent 0 47%,rgba(0,204,255,.3) 60%,rgba(255,255,255,.74) 73%,rgba(0,204,255,.55) 84%,transparent 100%) !important; box-shadow: inset 0 0 9px rgba(0,204,255,.72),0 0 12px #00ccff,0 0 24px rgba(0,204,255,.7) !important; }
+.xbox .button.y.pressed { background: radial-gradient(circle,transparent 0 47%,rgba(255,225,30,.3) 60%,rgba(255,255,255,.74) 73%,rgba(255,225,30,.55) 84%,transparent 100%) !important; box-shadow: inset 0 0 9px rgba(255,225,30,.72),0 0 12px #ffe11e,0 0 24px rgba(255,225,30,.7) !important; }
 
 .xbox .face {
   position: absolute !important;
   margin: 0 !important;
   opacity: 0 !important;
   border-radius: 4px !important;
-  background: linear-gradient(180deg,#fff,rgba(var(--xfg-accent-rgb),.62)) !important;
-  box-shadow: inset 0 0 7px rgba(255,255,255,.55),0 0 10px rgba(var(--xfg-accent-rgb),.76) !important;
+  background: rgba(var(--xfg-accent-rgb),.26) !important;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.68),inset 0 0 8px rgba(var(--xfg-accent-rgb),.68),0 0 10px rgba(var(--xfg-accent-rgb),.76) !important;
   mix-blend-mode: screen;
 }
 
@@ -144,18 +146,12 @@ body {
 .xbox .face.down { left: 272px !important; top: 261px !important; width: 36px !important; height: 44px !important; }
 .xbox .face.left { left: 244px !important; top: 234px !important; width: 46px !important; height: 36px !important; }
 .xbox .face.right { left: 290px !important; top: 234px !important; width: 46px !important; height: 36px !important; }
-.xbox .face.pressed { opacity: .9 !important; transform: scale(.92) !important; }
+.xbox .face.pressed { opacity: .9 !important; transform: none !important; }
 
 .xbox .sticks::before,
 .xbox .sticks::after {
-  content: "";
-  position: absolute;
-  width: 94px;
-  height: 94px;
-  border-radius: 50%;
-  background: radial-gradient(circle,#0d1115 0 55%,#030405 59% 68%,rgba(var(--xfg-accent-rgb),.55) 72% 77%,#030405 82% 100%);
-  box-shadow: inset 0 0 17px #000,0 0 8px rgba(var(--xfg-accent-rgb),.52);
-  z-index: 0;
+  content: none !important;
+  display: none !important;
 }
 
 .xbox .sticks::before { left: 159px; top: 110px; }
@@ -166,18 +162,19 @@ body {
   width: 64px !important;
   height: 64px !important;
   margin: 0;
-  border: 1px solid rgba(255,255,255,.35) !important;
+  box-sizing: border-box !important;
+  border: 2px solid rgba(var(--xfg-accent-rgb),.4) !important;
   border-radius: 50% !important;
   opacity: 1 !important;
-  background: radial-gradient(circle at 40% 34%,#515760 0 6%,#242930 10% 23%,#0c1015 28% 59%,#020305 62% 70%,rgba(var(--xfg-accent-rgb),.7) 73% 78%,#030405 82% 100%) !important;
-  box-shadow: inset 0 0 13px #000,0 0 7px rgba(var(--xfg-accent-rgb),.45) !important;
+  background: radial-gradient(circle,transparent 0 58%,rgba(var(--xfg-accent-rgb),.08) 63%,rgba(var(--xfg-accent-rgb),.36) 72%,transparent 82%) !important;
+  box-shadow: inset 0 0 8px rgba(var(--xfg-accent-rgb),.32),0 0 7px rgba(var(--xfg-accent-rgb),.5) !important;
   will-change: margin-left,margin-top;
   z-index: 1;
 }
 
 .xbox .stick.left { left: 174px !important; top: 125px !important; }
 .xbox .stick.right { left: 428px !important; top: 220px !important; }
-.xbox .stick.pressed { box-shadow: inset 0 0 12px #000,0 0 12px var(--xfg-accent),0 0 25px rgba(var(--xfg-accent-rgb),.64) !important; }
+.xbox .stick.pressed { box-shadow: inset 0 0 11px rgba(255,255,255,.6),0 0 12px var(--xfg-accent),0 0 25px rgba(var(--xfg-accent-rgb),.7) !important; }
 
 .xbox .back,
 .xbox .start {
@@ -188,14 +185,14 @@ body {
   margin: 0 !important;
   border-radius: 50% !important;
   opacity: 0 !important;
-  background: radial-gradient(circle,#fff,rgba(var(--xfg-accent-rgb),.72) 48%,transparent 74%) !important;
+  background: rgba(var(--xfg-accent-rgb),.28) !important;
   float: none !important;
 }
 
 .xbox .back { left: 308px !important; right: auto !important; }
 .xbox .start { left: 405px !important; right: auto !important; }
 .xbox .back.pressed,
-.xbox .start.pressed { opacity: .96 !important; transform: scale(.9) !important; box-shadow: 0 0 12px var(--xfg-accent) !important; }
+.xbox .start.pressed { opacity: .96 !important; transform: none !important; box-shadow: inset 0 0 0 2px rgba(255,255,255,.68),0 0 12px var(--xfg-accent) !important; }
 
 .xbox .meta,
 .xbox .touchpad {
@@ -208,7 +205,7 @@ body {
 .xbox .meta { left: 354px !important; top: 66px !important; width: 42px !important; height: 42px !important; }
 .xbox .touchpad { left: 357px !important; top: 172px !important; width: 36px !important; height: 36px !important; }
 .xbox .meta.pressed,
-.xbox .touchpad.pressed { opacity: .98 !important; transform: scale(.92) !important; box-shadow: 0 0 13px var(--xfg-accent) !important; }
+.xbox .touchpad.pressed { opacity: .98 !important; transform: none !important; box-shadow: inset 0 0 0 2px rgba(255,255,255,.7),0 0 13px var(--xfg-accent) !important; }
 
 .xbox .button,
 .xbox .face,
@@ -224,21 +221,21 @@ body {
 
 
 /* Per-photo landmark alignment. */
-.xbox .button.y { left: 520px !important; top: 85px !important; }
-.xbox .button.x { left: 475px !important; top: 131px !important; }
-.xbox .button.b { left: 565px !important; top: 131px !important; }
-.xbox .button.a { left: 520px !important; top: 172px !important; }
-.xbox .face.up { left: 272px !important; top: 202px !important; }
-.xbox .face.down { left: 272px !important; top: 259px !important; }
-.xbox .face.left { left: 237px !important; top: 235px !important; }
-.xbox .face.right { left: 297px !important; top: 235px !important; }
-.xbox .stick.left { left: 174px !important; top: 125px !important; }
-.xbox .stick.right { left: 428px !important; top: 220px !important; }
-.xbox .sticks::before { left: 159px !important; top: 110px !important; }
-.xbox .sticks::after { left: 413px !important; top: 205px !important; }
-.xbox .back { left: 308px !important; top: 134px !important; }
-.xbox .start { left: 405px !important; top: 134px !important; }
-.xbox .meta { left: 354px !important; top: 66px !important; }
+.xbox .button.y { left: 518px !important; top: 87px !important; width: 44px !important; height: 44px !important; }
+.xbox .button.x { left: 474px !important; top: 132px !important; width: 44px !important; height: 44px !important; }
+.xbox .button.b { left: 563px !important; top: 131px !important; width: 44px !important; height: 44px !important; }
+.xbox .button.a { left: 518px !important; top: 172px !important; width: 44px !important; height: 44px !important; }
+.xbox .face.up { left: 272px !important; top: 202px !important; width: 36px !important; height: 44px !important; }
+.xbox .face.down { left: 272px !important; top: 259px !important; width: 36px !important; height: 44px !important; }
+.xbox .face.left { left: 237px !important; top: 235px !important; width: 46px !important; height: 36px !important; }
+.xbox .face.right { left: 297px !important; top: 235px !important; width: 46px !important; height: 36px !important; }
+.xbox .stick.left { left: 175px !important; top: 125px !important; width: 64px !important; height: 64px !important; }
+.xbox .stick.right { left: 426px !important; top: 220px !important; width: 64px !important; height: 64px !important; }
+.xbox .back { left: 314px !important; top: 142px !important; width: 26px !important; height: 22px !important; }
+.xbox .start { left: 409px !important; top: 142px !important; width: 26px !important; height: 22px !important; }
+.xbox .meta { left: 349px !important; top: 66px !important; width: 50px !important; height: 49px !important; }
+.xbox .trigger.left { left: 160px !important; top: 19px !important; width: 126px !important; height: 34px !important; }
+.xbox .trigger.right { left: 469px !important; top: 19px !important; width: 126px !important; height: 34px !important; }
 .xbox .bumper.left { left: 160px !important; top: 27px !important; width: 126px !important; height: 31px !important; }
-.xbox .bumper.right { left: 470px !important; top: 27px !important; width: 126px !important; height: 31px !important; }
-.xbox .touchpad { left: 357px !important; top: 172px !important; }
+.xbox .bumper.right { left: 469px !important; top: 27px !important; width: 126px !important; height: 31px !important; }
+.xbox .touchpad { left: 356px !important; top: 180px !important; width: 36px !important; height: 21px !important; }
