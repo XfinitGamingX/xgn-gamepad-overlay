@@ -1,4 +1,4 @@
-/* Captain America DualSense v1 — measured for the 806x598 universal bridge canvas. */
+/* Captain America DualSense v2 — heart-pad / robotic-hands edition, measured for the 806x598 bridge canvas. */
 :root {
   --captain-red: 226, 21, 30;
   --captain-blue: 24, 101, 181;
@@ -22,7 +22,7 @@ body {
   width: 806px !important;
   height: 598px !important;
   margin: 0 !important;
-  background: url("./xfg-ps5-captain-america.png?v=1") 0 var(--art-y) / 806px var(--art-h) no-repeat !important;
+  background: url("./xfg-ps5-captain-america.png?v=2") 0 var(--art-y) / 806px var(--art-h) no-repeat !important;
   image-rendering: auto !important;
   filter: none !important;
   isolation: isolate;
@@ -73,7 +73,7 @@ body {
   border: 0 !important;
   float: none !important;
   opacity: 0 !important;
-  background-image: url("./xfg-ps5-captain-america.png?v=1") !important;
+  background-image: url("./xfg-ps5-captain-america.png?v=2") !important;
   background-size: 806px var(--art-h) !important;
   background-repeat: no-repeat !important;
   box-sizing: border-box !important;
@@ -194,7 +194,7 @@ body {
   border: 0 !important;
   border-radius: 50% !important;
   opacity: 1 !important;
-  background-image: url("./xfg-ps5-captain-america.png?v=1") !important;
+  background-image: url("./xfg-ps5-captain-america.png?v=2") !important;
   background-size: 806px var(--art-h) !important;
   background-repeat: no-repeat !important;
   box-shadow: inset 0 0 7px rgba(0,0,0,.38) !important;
