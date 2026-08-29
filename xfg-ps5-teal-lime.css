@@ -15,13 +15,19 @@ body {
 }
 
 .controller.ds4 {
-  position: relative !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
   width: 750px !important;
   height: 500px !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
   background: url("./xfg-ps5-teal-lime.png?v=1") 0 0 / 750px 500px no-repeat !important;
   filter: none !important;
   isolation: isolate;
-  contain: layout paint style;
+  contain: layout style;
 }
 
 /* Compact mode owns .disconnected visibility so unused player slots stay hidden. */
