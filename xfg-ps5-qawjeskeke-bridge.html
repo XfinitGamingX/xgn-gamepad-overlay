@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=806,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>XFG QAWJESKEKE Universal Controller Overlay</title>
+  <link rel="stylesheet" href="./xfg-ps5-qawjeskeke-galaxy.css?v=2">
+  <style>
+    html,body{width:806px;height:598px;margin:0;overflow:hidden;background:transparent!important}
+    .controller{position:absolute;inset:0;margin:0!important}
+  </style>
+</head>
+<body>
+  <div class="controller ds4 active half edit" id="controller">
+    <div class="plshalpme"></div>
+    <div class="triggers"><span class="trigger left"></span><span class="trigger right"></span><span class="trigger-button left"></span><span class="trigger-button right"></span></div>
+    <div class="bumpers"><span class="bumper left"></span><span class="bumper right"></span></div>
+    <div class="touchpad"></div><div class="quadrant"></div><div class="meta"></div>
+    <div class="arrows"><span class="back"></span><span class="start"></span></div>
+    <div class="abxy"><span class="button a"></span><span class="button b"></span><span class="button x"></span><span class="button y"></span></div>
+    <div class="sticks"><span class="stick left"></span><span class="stick right"></span></div>
+    <div class="wheels"></div>
+    <div class="dpad"><span class="face up"></span><span class="face down"></span><span class="face left"></span><span class="face right"></span></div>
+    <div class="fstick"></div>
+  </div>
+  <script>
+    (() => {
+      const selectors = [
+        '.button.a','.button.b','.button.x','.button.y',
+        '.bumper.left','.bumper.right','.trigger.left','.trigger.right',
+        '.back','.start','.stick.left','.stick.right',
+        '.face.up','.face.down','.face.left','.face.right','.meta','.touchpad'
+      ];
+      const controls = selectors.map(selector => document.querySelector(selector));
+      const triggerButtons = [document.querySelector('.trigger-button.left'), document.querySelector('.trigger-button.right')];
+      const sticks = [document.querySelector('.stick.left'), document.querySelector('.stick.right')];
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, Number(value) || 0));
+
+      function apply(state) {
+        const buttons = Array.isArray(state.buttons) ? state.buttons : [];
+        const axes = Array.isArray(state.axes) ? state.axes : [0,0,0,0];
+        const triggers = Array.isArray(state.triggers) ? state.triggers : [0,0];
+        controls.forEach((control, index) => control && control.classList.toggle('pressed', !!buttons[index]));
+
+        for (let index = 0; index < 2; index++) {
+          const pressure = clamp(triggers[index], 0, 1);
+          controls[6 + index].style.opacity = pressure > .02 ? String(.24 + pressure * .72) : '0';
+          triggerButtons[index].classList.toggle('pressed', !!buttons[6 + index] || pressure > .08);
+        }
+
+        sticks[0].style.marginLeft = `${(clamp(axes[0],-1,1)*22).toFixed(2)}px`;
+        sticks[0].style.marginTop = `${(clamp(axes[1],-1,1)*22).toFixed(2)}px`;
+        sticks[1].style.marginLeft = `${(clamp(axes[2],-1,1)*22).toFixed(2)}px`;
+        sticks[1].style.marginTop = `${(clamp(axes[3],-1,1)*22).toFixed(2)}px`;
+      }
+
+      function demo() {
+        const started = performance.now();
+        const frame = now => {
+          const seconds = (now-started)/1000;
+          const buttons = new Array(18).fill(false);
+          buttons[Math.floor(seconds*2)%18] = true;
+          apply({
+            buttons,
+            triggers:[(Math.sin(seconds*2)+1)/2,(Math.cos(seconds*2)+1)/2],
+            axes:[Math.cos(seconds*2),Math.sin(seconds*2),Math.cos(seconds*2+Math.PI),Math.sin(seconds*2+Math.PI)]
+          });
+          requestAnimationFrame(frame);
+        };
+        requestAnimationFrame(frame);
+      }
+
+      if (new URLSearchParams(location.search).get('demo') === '1') {
+        demo();
+        return;
+      }
+
+      let events;
+      let reconnectTimer;
+      let connectionNumber = 0;
+
+      function connect() {
+        clearTimeout(reconnectTimer);
+        if (events) events.close();
+        const thisConnection = ++connectionNumber;
+        events = new EventSource('http://127.0.0.1:8765/events');
+        events.onmessage = event => {
+          if (thisConnection !== connectionNumber) return;
+          try { apply(JSON.parse(event.data)); } catch (_) {}
+        };
+        events.onerror = () => {
+          if (thisConnection !== connectionNumber) return;
+          events.close();
+          reconnectTimer = setTimeout(connect, 1200);
+        };
+      }
+
+      connect();
+    })();
+  </script>
+</body>
+</html>
