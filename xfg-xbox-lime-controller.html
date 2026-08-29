@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=750, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="color-scheme" content="dark">
+  <title>XFG Lime Controller v7</title>
+  <link rel="stylesheet" href="./xgn-gamepad-edit.css?v=7">
+  <style>
+    #xfg-status {
+      display: none;
+      position: fixed;
+      left: 10px;
+      bottom: 10px;
+      max-width: 710px;
+      padding: 7px 10px;
+      border: 1px solid rgba(190, 255, 54, 0.72);
+      border-radius: 7px;
+      background: rgba(4, 10, 2, 0.88);
+      color: #dcff8a;
+      font: 600 13px/1.35 Consolas, monospace;
+      white-space: pre-wrap;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    html.xfg-debug #xfg-status {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <main class="controller xbox disconnected" id="xfg-controller" aria-label="XFG lime Xbox controller input overlay">
+    <div class="triggers">
+      <span class="trigger left" data-button="6"></span>
+      <span class="trigger right" data-button="7"></span>
+    </div>
+
+    <div class="bumpers">
+      <span class="bumper left" data-button="4"></span>
+      <span class="bumper right" data-button="5"></span>
+    </div>
+
+    <div class="touchpad" data-button="17"></div>
+    <div class="quadrant"></div>
+    <div class="meta" data-button="16"></div>
+
+    <div class="arrows">
+      <span class="back" data-button="8"></span>
+      <span class="start" data-button="9"></span>
+    </div>
+
+    <div class="abxy">
+      <span class="button a" data-button="0"></span>
+      <span class="button b" data-button="1"></span>
+      <span class="button x" data-button="2"></span>
+      <span class="button y" data-button="3"></span>
+    </div>
+
+    <div class="sticks">
+      <span class="stick left" data-button="10" data-axis-x="0" data-axis-y="1"></span>
+      <span class="stick right" data-button="11" data-axis-x="2" data-axis-y="3"></span>
+    </div>
+
+    <div class="dpad">
+      <span class="face up" data-button="12"></span>
+      <span class="face down" data-button="13"></span>
+      <span class="face left" data-button="14"></span>
+      <span class="face right" data-button="15"></span>
+    </div>
+  </main>
+
+  <output id="xfg-status" aria-live="polite"></output>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var params = new URLSearchParams(window.location.search);
+      var debug = params.get("debug") === "1";
+      var demo = params.get("demo") === "1";
+      var strictSlot = params.get("strict") === "1";
+      var parsedPlayer = parseInt(params.get("p") || "1", 10);
+      var preferredIndex = Number.isFinite(parsedPlayer) ? Math.max(0, parsedPlayer - 1) : 0;
+      var controller = document.getElementById("xfg-controller");
+      var status = document.getElementById("xfg-status");
+      var inputs = Array.prototype.slice.call(document.querySelectorAll("[data-button]"));
+      var sticks = Array.prototype.slice.call(document.querySelectorAll("[data-axis-x]"));
+      var snapshots = new Map();
+      var selectedIndex = null;
+      var lastFrameAt = performance.now();
+      var lastPollAt = 0;
+      var rafId = 0;
+      var polling = false;
+      var lastError = "";
+      var demoOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 15, 13, 14, 10, 11, 16, 17];
+
+      document.documentElement.classList.toggle("xfg-debug", debug);
+
+      function numericButtonValue(button) {
+        if (button == null) return 0;
+        if (typeof button === "number") return Math.max(0, Math.min(1, button));
+        if (typeof button.value === "number") return Math.max(0, Math.min(1, button.value));
+        return button.pressed ? 1 : 0;
+      }
+
+      function buttonPressed(button, threshold) {
+        if (button == null) return false;
+        if (typeof button === "object" && button.pressed === true) return true;
+        return numericButtonValue(button) > threshold;
+      }
+
+      function axisValue(pad, index) {
+        if (!pad || !pad.axes || typeof pad.axes[index] !== "number") return 0;
+        var value = pad.axes[index];
+        if (Math.abs(value) < 0.06) return 0;
+        return Math.max(-1, Math.min(1, value));
+      }
+
+      function clearInputs() {
+        inputs.forEach(function (element) {
+          element.classList.remove("pressed");
+          element.style.removeProperty("--xfg-trigger-level");
+        });
+        sticks.forEach(function (stick) {
+          stick.style.transform = "translate3d(0, 0, 0)";
+        });
+      }
+
+      function renderPad(pad) {
+        inputs.forEach(function (element) {
+          var index = Number(element.dataset.button);
+          var button = pad.buttons && pad.buttons[index];
+          var isTrigger = element.classList.contains("trigger");
+          var threshold = isTrigger ? 0.05 : 0.18;
+          var pressed = buttonPressed(button, threshold);
+          element.classList.toggle("pressed", pressed);
+          if (isTrigger) {
+            element.style.setProperty("--xfg-trigger-level", numericButtonValue(button).toFixed(3));
+          }
+        });
+
+        sticks.forEach(function (stick) {
+          var x = axisValue(pad, Number(stick.dataset.axisX));
+          var y = axisValue(pad, Number(stick.dataset.axisY));
+          stick.style.transform = "translate3d(" + (x * 18).toFixed(2) + "px, " + (y * 18).toFixed(2) + "px, 0)";
+        });
+      }
+
+      function snapshotPad(pad) {
+        return {
+          buttons: Array.prototype.map.call(pad.buttons || [], numericButtonValue),
+          axes: Array.prototype.slice.call(pad.axes || [])
+        };
+      }
+
+      function activityScore(pad) {
+        var previous = snapshots.get(pad.index);
+        var next = snapshotPad(pad);
+        var score = 0;
+
+        next.buttons.forEach(function (value, index) {
+          var oldValue = previous && previous.buttons[index] || 0;
+          if (value > 0.18) score += 12;
+          if (Math.abs(value - oldValue) > 0.05) score += 8;
+        });
+
+        next.axes.forEach(function (value, index) {
+          var oldValue = previous && previous.axes[index] || 0;
+          if (Math.abs(value) > 0.28 && Math.abs(value - oldValue) > 0.035) score += 5;
+        });
+
+        snapshots.set(pad.index, next);
+        return score;
+      }
+
+      function choosePad(pads) {
+        if (!pads.length) return null;
+
+        if (strictSlot) {
+          return pads.find(function (pad) { return pad.index === preferredIndex; }) || null;
+        }
+
+        var scored = pads.map(function (pad) {
+          return { pad: pad, score: activityScore(pad) };
+        }).sort(function (a, b) {
+          return b.score - a.score;
+        });
+
+        if (scored[0].score > 0) return scored[0].pad;
+
+        var current = pads.find(function (pad) { return pad.index === selectedIndex; });
+        if (current) return current;
+
+        var preferred = pads.find(function (pad) { return pad.index === preferredIndex; });
+        return preferred || pads[0];
+      }
+
+      function gamepads() {
+        if (!navigator.getGamepads) {
+          throw new Error("Gamepad API is not available in this browser source");
+        }
+        return Array.prototype.filter.call(navigator.getGamepads(), Boolean);
+      }
+
+      function setStatus(message) {
+        status.textContent = message;
+        controller.dataset.inputStatus = message;
+      }
+
+      function renderDemo(now) {
+        var stepLength = 460;
+        var activeLength = 330;
+        var step = Math.floor(now / stepLength) % demoOrder.length;
+        var activeButton = demoOrder[step];
+        var active = now % stepLength < activeLength;
+
+        inputs.forEach(function (element) {
+          var index = Number(element.dataset.button);
+          element.classList.toggle("pressed", active && index === activeButton);
+        });
+
+        var orbit = now / 440;
+        sticks[0].style.transform = "translate3d(" + (Math.cos(orbit) * 17).toFixed(2) + "px, " + (Math.sin(orbit) * 17).toFixed(2) + "px, 0)";
+        sticks[1].style.transform = "translate3d(" + (Math.cos(-orbit * 0.83) * 15).toFixed(2) + "px, " + (Math.sin(-orbit * 0.83) * 15).toFixed(2) + "px, 0)";
+        controller.classList.remove("disconnected");
+        setStatus("DEMO MODE | button index " + activeButton + " | use the normal URL for live input");
+      }
+
+      function poll(source) {
+        if (polling) return;
+        polling = true;
+
+        try {
+          var now = performance.now();
+          lastPollAt = now;
+
+          if (demo) {
+            renderDemo(now);
+            lastError = "";
+            return;
+          }
+
+          var pads = gamepads();
+          var pad = choosePad(pads);
+
+          if (!pad) {
+            selectedIndex = null;
+            controller.classList.add("disconnected");
+            clearInputs();
+            setStatus("WAITING | Connect the controller, focus the source once, then press A");
+            return;
+          }
+
+          selectedIndex = pad.index;
+          controller.classList.remove("disconnected");
+          renderPad(pad);
+          lastError = "";
+
+          var pressed = [];
+          Array.prototype.forEach.call(pad.buttons || [], function (button, index) {
+            if (buttonPressed(button, 0.18)) pressed.push(index);
+          });
+
+          setStatus(
+            "CONNECTED | raw index " + pad.index +
+            " | " + (pad.mapping || "unmapped") +
+            " | buttons " + (pressed.length ? pressed.join(",") : "-") +
+            "\n" + pad.id +
+            " | poll " + source
+          );
+        } catch (error) {
+          controller.classList.add("disconnected");
+          clearInputs();
+          lastError = error && error.name ? error.name + ": " + error.message : String(error);
+          setStatus("BLOCKED/ERROR | " + lastError + "\nTry Source Interaction/focus. If still blocked, TikTok LIVE Studio is withholding Gamepad API access.");
+        } finally {
+          polling = false;
+        }
+      }
+
+      function frame(now) {
+        rafId = requestAnimationFrame(frame);
+        lastFrameAt = now;
+        poll("animation frame");
+      }
+
+      function wake(reason) {
+        poll(reason);
+        if (!rafId || performance.now() - lastFrameAt > 500) {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(frame);
+        }
+      }
+
+      window.addEventListener("gamepadconnected", function (event) {
+        selectedIndex = event.gamepad.index;
+        wake("gamepadconnected");
+      });
+
+      window.addEventListener("gamepaddisconnected", function (event) {
+        snapshots.delete(event.gamepad.index);
+        if (selectedIndex === event.gamepad.index) selectedIndex = null;
+        wake("gamepaddisconnected");
+      });
+
+      window.addEventListener("focus", function () { wake("focus"); });
+      window.addEventListener("pageshow", function () { wake("pageshow"); });
+      window.addEventListener("pointerdown", function () { wake("pointer"); });
+      window.addEventListener("keydown", function () { wake("keyboard"); });
+      document.addEventListener("visibilitychange", function () { wake("visibilitychange"); });
+
+      setInterval(function () {
+        var now = performance.now();
+        poll("250ms watchdog");
+        if (now - lastFrameAt > 500) {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(frame);
+        }
+      }, 250);
+
+      window.__xfgController = {
+        poll: function () { poll("manual test"); },
+        selectedIndex: function () { return selectedIndex; },
+        lastPollAt: function () { return lastPollAt; },
+        lastError: function () { return lastError; }
+      };
+
+      rafId = requestAnimationFrame(frame);
+      wake("startup");
+    }());
+  </script>
+</body>
+</html>
