@@ -1,0 +1,323 @@
+/* qawjeskeke DualSense v1 - measured for the final 806x598 PNG. */
+:root {
+  --qaw-pink: 255, 27, 185;
+  --qaw-cyan: 38, 236, 255;
+  --qaw-white: 238, 253, 255;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  width: 806px !important;
+  height: 598px !important;
+  margin: 0 !important;
+  background: url("./xfg-ps5-qawjeskeke.png?v=1") 0 0 / 806px 598px no-repeat !important;
+  image-rendering: auto !important;
+  filter: none !important;
+  isolation: isolate;
+  contain: layout paint style;
+}
+
+.controller.ds4 > .plshalpme,
+.ds4 .quadrant,
+.ds4 .wheels,
+.ds4 .fstick { display: none !important; }
+
+.ds4 .triggers,
+.ds4 .bumpers,
+.ds4 .abxy,
+.ds4 .dpad,
+.ds4 .sticks,
+.ds4 .arrows {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 806px !important;
+  height: 598px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  pointer-events: none !important;
+  transform: none !important;
+}
+
+.ds4 .triggers { z-index: 5 !important; }
+.ds4 .bumpers { z-index: 6 !important; }
+.ds4 .sticks { z-index: 7 !important; }
+.ds4 .abxy,
+.ds4 .dpad,
+.ds4 .arrows { z-index: 8 !important; }
+
+/* Curved upper L2/R2 hardware, split at the visible shoulder seam. */
+.ds4 .trigger,
+.ds4 .trigger-button {
+  position: absolute !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  float: none !important;
+  transform: none !important;
+}
+.ds4 .trigger { opacity: 0; }
+.ds4 .trigger-button { opacity: 0 !important; }
+.ds4 .trigger.left,
+.ds4 .trigger-button.left {
+  left: 118px !important;
+  top: 36px !important;
+  width: 104px !important;
+  height: 21px !important;
+  right: auto !important;
+  background: rgba(var(--qaw-pink), .56) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white), .9), inset 0 0 8px rgba(var(--qaw-pink), .86) !important;
+  clip-path: polygon(48px 0,72px 0,84px 3px,92px 7px,95px 10px,95px 14px,94px 16px,91px 12px,83px 7px,77px 6px,32px 13px,9px 18px,3px 20px,0 20px,3px 16px,14px 11px,30px 6px) !important;
+}
+.ds4 .trigger.right,
+.ds4 .trigger-button.right {
+  left: 604px !important;
+  top: 34px !important;
+  width: 94px !important;
+  height: 23px !important;
+  right: auto !important;
+  background: rgba(var(--qaw-cyan), .53) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white), .9), inset 0 0 8px rgba(var(--qaw-cyan), .86) !important;
+  clip-path: polygon(14px 0,37px 0,53px 3px,68px 8px,81px 14px,90px 19px,93px 22px,88px 22px,78px 18px,66px 14px,51px 10px,35px 8px,18px 6px,2px 5px) !important;
+}
+.ds4 .trigger-button.pressed { opacity: .94 !important; }
+
+/* Lower/front L1/R1 hardware, below the shoulder seam only. */
+.ds4 .bumper {
+  position: absolute !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  float: none !important;
+  transform: none !important;
+}
+.ds4 .bumper.left {
+  left: 114px !important;
+  top: 41px !important;
+  width: 100px !important;
+  height: 27px !important;
+  right: auto !important;
+  background: rgba(var(--qaw-pink), .56) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white), .9), inset 0 0 9px rgba(var(--qaw-pink), .88) !important;
+  clip-path: polygon(93px 0,97px 3px,99px 7px,99px 9px,95px 12px,76px 13px,56px 15px,31px 19px,10px 25px,0 26px,0 17px,6px 13px,32px 8px,60px 4px) !important;
+}
+.ds4 .bumper.right {
+  left: 602px !important;
+  top: 41px !important;
+  width: 96px !important;
+  height: 29px !important;
+  right: auto !important;
+  background: rgba(var(--qaw-cyan), .53) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white), .9), inset 0 0 9px rgba(var(--qaw-cyan), .88) !important;
+  clip-path: polygon(5px 0,19px 2px,41px 5px,63px 9px,81px 12px,90px 17px,95px 21px,95px 27px,90px 28px,62px 22px,34px 18px,6px 14px,0 11px,0 6px) !important;
+}
+.ds4 .bumper.pressed { opacity: .94 !important; }
+
+/* Four independently measured ABXY inner discs. */
+.ds4 .button {
+  position: absolute !important;
+  width: 44px !important;
+  height: 44px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: circle(48% at 50% 50%) !important;
+  box-sizing: border-box !important;
+}
+.ds4 .button.y { left: 625px !important; top: 98px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.x { left: 567px !important; top: 152px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.b { left: 680px !important; top: 151px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.a { left: 625px !important; top: 207px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.y.pressed,
+.ds4 .button.a.pressed {
+  opacity: .96 !important;
+  background: rgba(var(--qaw-cyan), .49) !important;
+  box-shadow: inset 0 0 0 2px rgba(var(--qaw-white), .94), inset 0 0 10px rgba(var(--qaw-cyan), .9) !important;
+}
+.ds4 .button.x.pressed,
+.ds4 .button.b.pressed {
+  opacity: .96 !important;
+  background: rgba(var(--qaw-pink), .51) !important;
+  box-shadow: inset 0 0 0 2px rgba(var(--qaw-white), .94), inset 0 0 10px rgba(var(--qaw-pink), .9) !important;
+}
+
+/* Each D-pad mask stays inside its silver inner border. */
+.ds4 .face {
+  position: absolute !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.ds4 .face.up {
+  left: 140px !important;
+  top: 118px !important;
+  width: 37px !important;
+  height: 45px !important;
+  clip-path: polygon(6px 0,30px 0,36px 5px,36px 28px,24px 41px,18px 44px,12px 41px,1px 29px,1px 6px) !important;
+}
+.ds4 .face.down {
+  left: 144px !important;
+  top: 190px !important;
+  width: 33px !important;
+  height: 39px !important;
+  clip-path: polygon(15px 0,32px 11px,32px 34px,27px 38px,6px 38px,0 34px,0 11px) !important;
+}
+.ds4 .face.left {
+  left: 102px !important;
+  top: 158px !important;
+  width: 46px !important;
+  height: 32px !important;
+  clip-path: polygon(6px 0,25px 0,45px 12px,45px 18px,31px 31px,5px 31px,0 26px,0 7px) !important;
+}
+.ds4 .face.right {
+  left: 173px !important;
+  top: 158px !important;
+  width: 47px !important;
+  height: 32px !important;
+  clip-path: polygon(18px 0,39px 0,46px 6px,46px 26px,41px 31px,17px 31px,0 21px,0 12px) !important;
+}
+.ds4 .face.pressed {
+  opacity: .95 !important;
+  background: rgba(var(--qaw-pink), .52) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white), .92), inset 0 0 9px rgba(var(--qaw-pink), .9) !important;
+}
+
+/* Fixed wells erase the photographed caps; these PNG crops travel with live axes. */
+.ds4 .sticks::before,
+.ds4 .sticks::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 216px !important;
+  width: 126px !important;
+  height: 126px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 50% 48%, #1b1420 0 47%, #0e0a12 56%, #040306 63%, rgba(var(--qaw-pink),.2) 67%, #150a19 72%, #07040a 80%, #010102 100%) !important;
+  box-shadow: inset 0 0 24px rgba(0,0,0,.96), inset 0 0 0 1px rgba(var(--qaw-cyan),.2) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+.ds4 .sticks::before { left: 213px !important; }
+.ds4 .sticks::after { left: 465px !important; }
+.ds4 .stick {
+  position: absolute !important;
+  width: 90px !important;
+  height: 90px !important;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  background-image: url("./xfg-ps5-qawjeskeke.png?v=1") !important;
+  background-size: 806px 598px !important;
+  background-repeat: no-repeat !important;
+  box-shadow: inset 0 0 7px rgba(0,0,0,.34) !important;
+  clip-path: circle(50% at 50% 50%) !important;
+  will-change: margin-left, margin-top;
+  backface-visibility: hidden;
+  z-index: 1 !important;
+}
+.ds4 .stick.left { left: 231px !important; top: 234px !important; background-position: -231px -234px !important; }
+.ds4 .stick.right { left: 483px !important; top: 234px !important; background-position: -483px -234px !important; }
+.ds4 .stick.pressed {
+  box-shadow: inset 0 0 0 3px rgba(var(--qaw-white),.96), inset 0 0 13px rgba(var(--qaw-cyan),.92) !important;
+}
+
+.ds4 .back,
+.ds4 .start {
+  position: absolute !important;
+  top: 78px !important;
+  width: 18px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  float: none !important;
+}
+.ds4 .back { left: 213px !important; right: auto !important; }
+.ds4 .start { left: 578px !important; right: auto !important; }
+.ds4 .back.pressed {
+  opacity: .95 !important;
+  background: rgba(var(--qaw-pink),.52) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white),.92), inset 0 0 8px rgba(var(--qaw-pink),.9) !important;
+}
+.ds4 .start.pressed {
+  opacity: .95 !important;
+  background: rgba(var(--qaw-cyan),.49) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white),.92), inset 0 0 8px rgba(var(--qaw-cyan),.9) !important;
+}
+
+.ds4 .touchpad {
+  display: block !important;
+  position: absolute !important;
+  left: 252px !important;
+  top: 44px !important;
+  width: 305px !important;
+  height: 166px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: polygon(5% 0,95% 0,98% 2%,100% 8%,100% 23%,99% 53%,97% 76%,94% 88%,90% 96%,86% 100%,14% 100%,10% 96%,6% 88%,3% 76%,1% 53%,0 23%,0 8%,2% 2%) !important;
+  z-index: 7 !important;
+}
+.ds4 .touchpad.pressed {
+  opacity: .34 !important;
+  background: rgba(var(--qaw-cyan),.3) !important;
+  box-shadow: inset 0 0 0 2px rgba(var(--qaw-white),.76), inset 0 0 25px rgba(var(--qaw-pink),.8) !important;
+}
+
+.ds4 .meta {
+  display: block !important;
+  position: absolute !important;
+  left: 390px !important;
+  top: 294px !important;
+  width: 32px !important;
+  height: 33px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0 !important;
+  background: rgba(var(--qaw-cyan),.83) !important;
+  box-shadow: none !important;
+  clip-path: polygon(50% 100%,4% 51%,0 24%,14% 3%,33% 3%,50% 20%,67% 3%,86% 3%,100% 24%,96% 51%) !important;
+  z-index: 9 !important;
+}
+.ds4 .meta.pressed {
+  opacity: .94 !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--qaw-white),.94), inset 0 0 9px rgba(var(--qaw-pink),.92) !important;
+}
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .trigger-button,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start,
+.ds4 .touchpad,
+.ds4 .meta {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
