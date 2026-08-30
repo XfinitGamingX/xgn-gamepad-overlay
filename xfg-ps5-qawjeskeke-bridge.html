@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=806,initial-scale=1,maximum-scale=1,user-scalable=no">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>XFG QAWJESKEKE Universal Controller Overlay</title>
-  <link rel="stylesheet" href="./xfg-ps5-qawjeskeke-galaxy.css?v=2">
+  <link rel="stylesheet" href="./xfg-ps5-qawjeskeke-galaxy.css?v=3">
   <style>
     html,body{width:806px;height:598px;margin:0;overflow:hidden;background:transparent!important}
     .controller{position:absolute;inset:0;margin:0!important}
+    #bridge-status{display:none;position:absolute;left:14px;bottom:14px;z-index:9999;max-width:760px;padding:9px 12px;border-radius:9px;background:#090711e8;border:1px solid #ff4f87;color:#fff;font:700 14px/1.25 Segoe UI,Arial,sans-serif;box-shadow:0 5px 20px #000a}
+    #bridge-status.on{border-color:#61f6a8;color:#78f5b3}
   </style>
 </head>
 <body>
@@ -24,6 +26,7 @@
     <div class="dpad"><span class="face up"></span><span class="face down"></span><span class="face left"></span><span class="face right"></span></div>
     <div class="fstick"></div>
   </div>
+  <div id="bridge-status"></div>
   <script>
     (() => {
       const selectors = [
@@ -71,7 +74,8 @@
         requestAnimationFrame(frame);
       }
 
-      if (new URLSearchParams(location.search).get('demo') === '1') {
+      const parameters = new URLSearchParams(location.search);
+      if (parameters.get('demo') === '1') {
         demo();
         return;
       }
@@ -79,21 +83,62 @@
       let events;
       let reconnectTimer;
       let connectionNumber = 0;
+      let received = false;
+      let polling = false;
+      const diagnostics = parameters.get('diagnostics') === '1';
+      const status = document.getElementById('bridge-status');
+      if (diagnostics) status.style.display = 'block';
+      const setStatus = (message, online = false) => {
+        if (!diagnostics) return;
+        status.textContent = message;
+        status.classList.toggle('on', online);
+      };
+      const receive = state => {
+        received = true;
+        window.__xfgLastState = state;
+        document.documentElement.dataset.bridge = 'connected';
+        apply(state);
+        setStatus(state.connected ? `Bridge connected • ${state.device}` : 'Bridge connected • no controller detected', !!state.connected);
+      };
+
+      async function poll() {
+        if (!polling) return;
+        try {
+          const response = await fetch(`http://127.0.0.1:8765/api/state?t=${Date.now()}`, { mode: 'cors', cache: 'no-store' });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          receive(await response.json());
+          setTimeout(poll, 40);
+        } catch (_) {
+          document.documentElement.dataset.bridge = 'blocked';
+          setStatus('Bridge blocked or closed • keep v3 open and allow local-network access');
+          setTimeout(poll, 750);
+        }
+      }
+
+      function startPolling() {
+        if (polling) return;
+        polling = true;
+        setStatus('Trying compatibility connection…');
+        poll();
+      }
 
       function connect() {
         clearTimeout(reconnectTimer);
         if (events) events.close();
         const thisConnection = ++connectionNumber;
+        received = false;
+        setStatus('Connecting to XFG bridge v3…');
         events = new EventSource('http://127.0.0.1:8765/events');
         events.onmessage = event => {
           if (thisConnection !== connectionNumber) return;
-          try { apply(JSON.parse(event.data)); } catch (_) {}
+          try { receive(JSON.parse(event.data)); } catch (_) {}
         };
         events.onerror = () => {
           if (thisConnection !== connectionNumber) return;
           events.close();
-          reconnectTimer = setTimeout(connect, 1200);
+          startPolling();
         };
+        reconnectTimer = setTimeout(() => { if (!received) { events.close(); startPolling(); } }, 1800);
       }
 
       connect();
