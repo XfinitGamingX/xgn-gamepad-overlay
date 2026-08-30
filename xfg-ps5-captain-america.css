@@ -1,9 +1,10 @@
-/* Captain America DualSense v2 — heart-pad / robotic-hands edition, measured for the 806x598 bridge canvas. */
+/* Captain America DualSense v3 — high-contrast electric-blue press states. */
 :root {
   --captain-red: 226, 21, 30;
   --captain-blue: 24, 101, 181;
   --captain-white: 245, 249, 255;
   --captain-silver: 205, 216, 229;
+  --press-blue: 20, 211, 255;
   --art-y: 30.333px;
   --art-h: 537.333px;
 }
@@ -22,7 +23,7 @@ body {
   width: 806px !important;
   height: 598px !important;
   margin: 0 !important;
-  background: url("./xfg-ps5-captain-america.png?v=2") 0 var(--art-y) / 806px var(--art-h) no-repeat !important;
+  background: url("./xfg-ps5-captain-america.png?v=3") 0 var(--art-y) / 806px var(--art-h) no-repeat !important;
   image-rendering: auto !important;
   filter: none !important;
   isolation: isolate;
@@ -73,7 +74,7 @@ body {
   border: 0 !important;
   float: none !important;
   opacity: 0 !important;
-  background-image: url("./xfg-ps5-captain-america.png?v=2") !important;
+  background-image: url("./xfg-ps5-captain-america.png?v=3") !important;
   background-size: 806px var(--art-h) !important;
   background-repeat: no-repeat !important;
   box-sizing: border-box !important;
@@ -89,7 +90,16 @@ body {
 .ds4 .start.pressed,
 .ds4 .meta.pressed {
   opacity: 1 !important;
-  filter: brightness(1.48) saturate(1.24) drop-shadow(0 0 6px rgba(var(--captain-white),.9)) !important;
+  filter: brightness(1.62) saturate(2.45) hue-rotate(210deg) drop-shadow(0 0 3px rgba(var(--captain-white),1)) drop-shadow(0 0 11px rgba(var(--press-blue),1)) !important;
+  box-shadow: inset 0 0 0 3px rgba(var(--captain-white),.98), inset 0 0 12px rgba(0,38,88,.96) !important;
+}
+
+/* Shoulder presses use a solid electric-blue fill so L1/R1/L2/R2 are obvious. */
+.ds4 .bumper.pressed,
+.ds4 .trigger-button.pressed {
+  background: rgba(var(--press-blue),.94) !important;
+  filter: drop-shadow(0 0 3px rgba(var(--captain-white),1)) drop-shadow(0 0 10px rgba(var(--press-blue),1)) !important;
+  box-shadow: inset 0 0 0 2px rgba(var(--captain-white),1), inset 0 0 10px rgba(0,54,112,.96) !important;
 }
 
 /* Triangle, Square, Circle, Cross. */
@@ -194,7 +204,7 @@ body {
   border: 0 !important;
   border-radius: 50% !important;
   opacity: 1 !important;
-  background-image: url("./xfg-ps5-captain-america.png?v=2") !important;
+  background-image: url("./xfg-ps5-captain-america.png?v=3") !important;
   background-size: 806px var(--art-h) !important;
   background-repeat: no-repeat !important;
   box-shadow: inset 0 0 7px rgba(0,0,0,.38) !important;
@@ -206,7 +216,8 @@ body {
 .ds4 .stick.left { left: 228px !important; top: 217px !important; background-position: -228px -186.667px !important; }
 .ds4 .stick.right { left: 482px !important; top: 217px !important; background-position: -482px -186.667px !important; }
 .ds4 .stick.pressed {
-  box-shadow: inset 0 0 0 3px rgba(var(--captain-white),.97), inset 0 0 14px rgba(var(--captain-red),.95),0 0 9px rgba(var(--captain-blue),.95) !important;
+  filter: brightness(1.28) saturate(1.42) drop-shadow(0 0 10px rgba(var(--press-blue),1)) !important;
+  box-shadow: inset 0 0 0 4px rgba(var(--captain-white),1), inset 0 0 0 8px rgba(var(--press-blue),.96), inset 0 0 16px rgba(0,35,86,.98) !important;
 }
 
 /* Shield touchpad and center shield/home button. */
@@ -226,9 +237,9 @@ body {
   z-index: 7 !important;
 }
 .ds4 .touchpad.pressed {
-  opacity: .45 !important;
-  background: radial-gradient(circle at 50% 48%,rgba(var(--captain-white),.68) 0 20%,rgba(var(--captain-red),.55) 21% 44%,rgba(var(--captain-blue),.42) 45% 70%,transparent 71%) !important;
-  box-shadow: inset 0 0 0 2px rgba(var(--captain-white),.82), inset 0 0 28px rgba(var(--captain-blue),.86) !important;
+  opacity: .76 !important;
+  background: radial-gradient(circle at 50% 48%,rgba(var(--captain-white),.94) 0 16%,rgba(var(--press-blue),.88) 17% 48%,rgba(0,65,145,.72) 49% 72%,transparent 73%) !important;
+  box-shadow: inset 0 0 0 3px rgba(var(--captain-white),.98), inset 0 0 32px rgba(var(--press-blue),.98),0 0 11px rgba(var(--press-blue),.92) !important;
 }
 .ds4 .meta {
   display: block !important;
@@ -240,6 +251,11 @@ body {
   background-position: -369px -217.667px !important;
   clip-path: circle(48% at 50% 50%) !important;
   z-index: 9 !important;
+}
+.ds4 .meta.pressed {
+  filter: grayscale(1) brightness(1.42) contrast(1.16) sepia(1) saturate(7) hue-rotate(165deg)
+    drop-shadow(0 0 3px rgba(var(--captain-white),1))
+    drop-shadow(0 0 11px rgba(var(--press-blue),1)) !important;
 }
 
 .ds4 .touchpad,
