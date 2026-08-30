@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+}
+
+html[data-xfg-preview="checker"] body {
+  background-color: #16090c !important;
+  background-image:
+    linear-gradient(45deg, #2a1117 25%, transparent 25%),
+    linear-gradient(-45deg, #2a1117 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #2a1117 75%),
+    linear-gradient(-45deg, transparent 75%, #2a1117 75%) !important;
+  background-position: 0 0, 0 40px, 40px -40px, -40px 0 !important;
+  background-size: 80px 80px !important;
+}
+
+.xfg-overlay,
+.xfg-stage,
+.xfg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.xfg-overlay {
+  overflow: hidden;
+  isolation: isolate;
+  contain: strict;
+  pointer-events: none;
+}
+
+.xfg-stage {
+  overflow: hidden;
+}
+
+.xfg-layer {
+  display: block;
+  object-fit: fill;
+  background: transparent;
+  transform: none;
+  filter: none;
+  user-select: none;
+}
+
+.xfg-shell {
+  z-index: 0;
+}
+
+.xfg-life {
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-xfg-force-motion="true"]) .xfg-life {
+    /* Motion remains JS-controlled so OBS captures stay deterministic. */
+  }
+}
