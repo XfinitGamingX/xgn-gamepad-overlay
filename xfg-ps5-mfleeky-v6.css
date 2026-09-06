@@ -1,0 +1,522 @@
+/* MFLEEKY PS5/DualSense skin for GamePad Viewer Classic (s=5). */
+:root {
+  --mf-pink: #ff2aa7;
+  --mf-pink-rgb: 255, 42, 167;
+  --mf-purple: #9e22ff;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.ds4 {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 750px !important;
+  height: 500px !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: -250px 0 0 -375px !important;
+  background: url("./xfg-ps5-mfleeky.png?v=6") 0 0 / 750px 500px no-repeat !important;
+  filter: none !important;
+  isolation: isolate;
+  contain: layout paint style;
+  -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NTAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNzUwIDUwMCI+PHBhdGggZmlsbD0id2hpdGUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTExMiAxOEM5NiAxOSA4NiAyNCA3OSAzM0M2MSAzNSA1MCA0NyA0NyA2NUwyOCAyNTNDMjIgMzEzIDI3IDQwNyA1OCA0NTJDNzAgNDcwIDg5IDQ3OCAxMTIgNDcyTDE5MSAzNDZDMjA2IDMzMyAyMjIgMzMwIDI0MCAzMzRDMzE4IDM0MSA0MzIgMzQxIDUxMCAzMzRDNTI4IDMzMCA1NDQgMzMzIDU1OSAzNDZMNjM4IDQ3MkM2NjEgNDc4IDY4MCA0NzAgNjkyIDQ1MkM3MjMgNDA3IDcyOCAzMTMgNzIyIDI1M0w3MDMgNjVDNzAwIDQ3IDY4OSAzNSA2NzEgMzNDNjY0IDI0IDY1NCAxOSA2MzggMThMNTY3IDE5QzU1NCAyMCA1NDMgMjYgNTM1IDM0QzUxOCAyNSA0OTkgMjIgNDc3IDIySDI3NEMyNTIgMjIgMjMyIDI1IDIxNSAzNEMyMDcgMjYgMTk2IDIwIDE4MyAxOVpNMTk4IDMzOEMyMTUgMzMwIDIzMCAzMzAgMjQ2IDMzNEMzMjIgMzQxIDQyOCAzNDEgNTA0IDMzNEM1MjEgMzMwIDUzNiAzMzEgNTUzIDMzOUM1ODMgMzgyIDYxMSA0MzMgNjM4IDUwMEgxMTJDMTM5IDQzMyAxNjggMzgxIDE5OCAzMzhaIi8+PC9zdmc+") 0 0 / 750px 500px no-repeat;
+  mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NTAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNzUwIDUwMCI+PHBhdGggZmlsbD0id2hpdGUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTExMiAxOEM5NiAxOSA4NiAyNCA3OSAzM0M2MSAzNSA1MCA0NyA0NyA2NUwyOCAyNTNDMjIgMzEzIDI3IDQwNyA1OCA0NTJDNzAgNDcwIDg5IDQ3OCAxMTIgNDcyTDE5MSAzNDZDMjA2IDMzMyAyMjIgMzMwIDI0MCAzMzRDMzE4IDM0MSA0MzIgMzQxIDUxMCAzMzRDNTI4IDMzMCA1NDQgMzMzIDU1OSAzNDZMNjM4IDQ3MkM2NjEgNDc4IDY4MCA0NzAgNjkyIDQ1MkM3MjMgNDA3IDcyOCAzMTMgNzIyIDI1M0w3MDMgNjVDNzAwIDQ3IDY4OSAzNSA2NzEgMzNDNjY0IDI0IDY1NCAxOSA2MzggMThMNTY3IDE5QzU1NCAyMCA1NDMgMjYgNTM1IDM0QzUxOCAyNSA0OTkgMjIgNDc3IDIySDI3NEMyNTIgMjIgMjMyIDI1IDIxNSAzNEMyMDcgMjYgMTk2IDIwIDE4MyAxOVpNMTk4IDMzOEMyMTUgMzMwIDIzMCAzMzAgMjQ2IDMzNEMzMjIgMzQxIDQyOCAzNDEgNTA0IDMzNEM1MjEgMzMwIDUzNiAzMzEgNTUzIDMzOUM1ODMgMzgyIDYxMSA0MzMgNjM4IDUwMEgxMTJDMTM5IDQzMyAxNjggMzgxIDE5OCAzMzhaIi8+PC9zdmc+") 0 0 / 750px 500px no-repeat;
+}
+
+.controller.ds4.disconnected {
+  display: none !important;
+}
+
+.ds4 > .plshalpme,
+.ds4 .quadrant,
+.ds4 .wheels,
+.ds4 .fstick {
+  display: none !important;
+}
+
+.ds4 .triggers,
+.ds4 .bumpers,
+.ds4 .abxy,
+.ds4 .dpad,
+.ds4 .sticks,
+.ds4 .arrows {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 750px !important;
+  height: 500px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
+}
+
+.ds4 .triggers { z-index: 8 !important; }
+.ds4 .bumpers { z-index: 9 !important; }
+.ds4 .sticks { z-index: 7 !important; }
+.ds4 .abxy,
+.ds4 .dpad,
+.ds4 .arrows { z-index: 10 !important; }
+
+/* L2 / R2 retain analog pressure from GamePad Viewer's inline opacity. */
+.ds4 .trigger,
+.ds4 .trigger-button {
+  position: absolute !important;
+  top: 17px !important;
+  width: 90px !important;
+  height: 27px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 8px 8px 3px 3px !important;
+  float: none !important;
+  transform: none !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(var(--mf-pink-rgb),.78) 45%, rgba(108,0,72,.32)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.72), inset 0 0 10px rgba(var(--mf-pink-rgb),.8), 0 0 10px rgba(var(--mf-pink-rgb),.72) !important;
+  clip-path: polygon(4% 100%, 8% 55%, 19% 20%, 43% 0, 78% 0, 94% 28%, 100% 70%, 77% 60%, 47% 67%, 20% 88%) !important;
+}
+
+.ds4 .trigger { opacity: 0; }
+.ds4 .trigger-button { opacity: 0 !important; }
+.ds4 .trigger.left,
+.ds4 .trigger-button.left { left: 112px !important; right: auto !important; }
+.ds4 .trigger.right,
+.ds4 .trigger-button.right { left: 548px !important; right: auto !important; transform: scaleX(-1) !important; }
+.ds4 .trigger-button.pressed { opacity: .96 !important; }
+
+/* L1 / R1 */
+.ds4 .bumper {
+  position: absolute !important;
+  top: 28px !important;
+  width: 105px !important;
+  height: 25px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  border-radius: 9px !important;
+  float: none !important;
+  transform: none !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(var(--mf-pink-rgb),.68), rgba(88,0,61,.28)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.66), 0 0 11px rgba(var(--mf-pink-rgb),.74) !important;
+}
+
+.ds4 .bumper.left { left: 103px !important; right: auto !important; }
+.ds4 .bumper.right { left: 542px !important; right: auto !important; }
+.ds4 .bumper.pressed { opacity: .94 !important; }
+
+/* Triangle / Square / Circle / Cross: pink appears only while pressed. */
+.ds4 .button {
+  position: absolute !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  transform: none !important;
+}
+
+.ds4 .button.y { left: 573px !important; top: 79px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.x { left: 525px !important; top: 123px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.b { left: 619px !important; top: 123px !important; right: auto !important; bottom: auto !important; }
+.ds4 .button.a { left: 573px !important; top: 168px !important; right: auto !important; bottom: auto !important; }
+
+.ds4 .button.pressed {
+  opacity: 1 !important;
+  background: radial-gradient(circle, rgba(255,255,255,.28) 0 30%, rgba(var(--mf-pink-rgb),.48) 48%, rgba(var(--mf-pink-rgb),.84) 67%, transparent 76%) !important;
+  box-shadow: inset 0 0 8px rgba(255,255,255,.62), inset 0 0 0 2px rgba(var(--mf-pink-rgb),.92), 0 0 10px var(--mf-pink), 0 0 20px rgba(var(--mf-pink-rgb),.65) !important;
+  mix-blend-mode: screen;
+}
+
+/* D-pad directional caps. */
+.ds4 .face {
+  position: absolute !important;
+  margin: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  border-radius: 6px !important;
+  transform: none !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.58), rgba(var(--mf-pink-rgb),.72) 50%, rgba(98,0,71,.32)) !important;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.54), inset 0 0 9px rgba(var(--mf-pink-rgb),.82), 0 0 11px rgba(var(--mf-pink-rgb),.7) !important;
+}
+
+.ds4 .face.up {
+  left: 129px !important; top: 82px !important; width: 44px !important; height: 49px !important;
+  clip-path: polygon(18% 0,82% 0,100% 15%,100% 64%,58% 100%,42% 100%,0 64%,0 15%) !important;
+}
+.ds4 .face.down {
+  left: 129px !important; top: 163px !important; width: 44px !important; height: 49px !important;
+  clip-path: polygon(42% 0,58% 0,100% 36%,100% 84%,82% 100%,18% 100%,0 84%,0 36%) !important;
+}
+.ds4 .face.left {
+  left: 85px !important; top: 126px !important; width: 49px !important; height: 44px !important;
+  clip-path: polygon(17% 0,65% 0,100% 42%,100% 58%,65% 100%,17% 100%,0 82%,0 18%) !important;
+}
+.ds4 .face.right {
+  left: 171px !important; top: 127px !important; width: 49px !important; height: 44px !important;
+  clip-path: polygon(0 42%,35% 0,83% 0,100% 18%,100% 82%,83% 100%,35% 100%,0 58%) !important;
+}
+.ds4 .face.pressed { opacity: .93 !important; }
+
+/* Fixed black wells cover the baked caps; the live caps visibly travel above them. */
+.ds4 .sticks::before,
+.ds4 .sticks::after {
+  content: "";
+  position: absolute;
+  top: 197px;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 48%, #111217 0 56%, #050508 66%, #18111a 73%, rgba(255,42,167,.28) 77%, #050508 84%, #010102 100%);
+  box-shadow: inset 0 0 18px rgba(0,0,0,.96), inset 0 0 0 2px rgba(255,42,167,.16);
+  pointer-events: none;
+  z-index: 0;
+}
+.ds4 .sticks::before { left: 195px; }
+.ds4 .sticks::after { left: 448px; }
+
+.ds4 .stick {
+  position: absolute !important;
+  width: 78px !important;
+  height: 78px !important;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  background-color: #08080b !important;
+  background-image: url("./xfg-ps5-mfleeky.png?v=6") !important;
+  background-size: 750px 500px !important;
+  background-repeat: no-repeat !important;
+  box-shadow: inset 0 0 13px rgba(0,0,0,.95), inset 0 0 0 2px rgba(255,255,255,.06), 0 0 0 1px rgba(255,42,167,.18) !important;
+  will-change: margin-left, margin-top;
+  backface-visibility: hidden;
+  z-index: 1;
+}
+.ds4 .stick.left { left: 208px !important; top: 210px !important; background-position: -208px -210px !important; }
+.ds4 .stick.right { left: 461px !important; top: 210px !important; background-position: -461px -210px !important; }
+.ds4 .stick.pressed {
+  box-shadow: inset 0 0 12px rgba(0,0,0,.94), 0 0 0 2px rgba(255,255,255,.34), 0 0 9px var(--mf-pink), 0 0 18px rgba(var(--mf-pink-rgb),.62) !important;
+}
+
+/* Create / Options */
+.ds4 .back,
+.ds4 .start {
+  position: absolute !important;
+  top: 59px !important;
+  width: 21px !important;
+  height: 35px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  opacity: 0 !important;
+  float: none !important;
+  background: radial-gradient(ellipse, rgba(255,255,255,.58), rgba(var(--mf-pink-rgb),.72) 54%, rgba(93,0,65,.18) 76%) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.6), 0 0 9px rgba(var(--mf-pink-rgb),.78) !important;
+}
+.ds4 .back { left: 194px !important; right: auto !important; }
+.ds4 .start { left: 535px !important; right: auto !important; width: 22px !important; }
+.ds4 .back.pressed,
+.ds4 .start.pressed { opacity: .95 !important; }
+
+/* Touchpad click: low-opacity pink sheen keeps MFLEEKY readable. */
+.ds4 .touchpad {
+  position: absolute !important;
+  left: 228px !important;
+  top: 21px !important;
+  width: 294px !important;
+  height: 169px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  clip-path: polygon(4% 0,96% 0,100% 5%,100% 92%,96% 100%,4% 100%,0 92%,0 5%) !important;
+  z-index: 11;
+}
+.ds4 .touchpad.pressed {
+  opacity: .42 !important;
+  background: radial-gradient(ellipse, rgba(255,255,255,.32), rgba(var(--mf-pink-rgb),.38) 58%, rgba(114,0,79,.2)) !important;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.38), inset 0 0 20px rgba(var(--mf-pink-rgb),.62) !important;
+}
+
+/* Crown-shaped PS/Home press mask. */
+.ds4 .meta {
+  position: absolute !important;
+  left: 350px !important;
+  top: 243px !important;
+  width: 50px !important;
+  height: 50px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  clip-path: polygon(8% 85%,5% 38%,26% 57%,35% 18%,50% 48%,65% 18%,74% 57%,95% 38%,92% 85%,82% 100%,18% 100%) !important;
+  z-index: 12;
+}
+.ds4 .meta.pressed {
+  opacity: .96 !important;
+  background: radial-gradient(circle, rgba(255,255,255,.82), rgba(var(--mf-pink-rgb),.62) 45%, rgba(123,0,84,.18) 75%) !important;
+  box-shadow: inset 0 0 8px rgba(255,255,255,.7), 0 0 9px var(--mf-pink), 0 0 18px rgba(var(--mf-pink-rgb),.66) !important;
+}
+
+.ds4 .button,
+.ds4 .face,
+.ds4 .trigger,
+.ds4 .trigger-button,
+.ds4 .bumper,
+.ds4 .back,
+.ds4 .start,
+.ds4 .touchpad,
+.ds4 .meta {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+}
+
+
+
+/* Version 2: use the PNG's real alpha instead of clipping the controller. */
+.controller.ds4 {
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
+/* L1/R1 follow the visible lower shoulder bands in the artwork. */
+.ds4 .bumper {
+  top: 40px !important;
+  height: 29px !important;
+  border-radius: 10px 10px 5px 5px !important;
+  clip-path: polygon(2% 8%, 18% 0, 81% 0, 98% 14%, 94% 78%, 78% 100%, 18% 100%, 4% 76%) !important;
+}
+.ds4 .bumper.left { left: 112px !important; width: 93px !important; }
+.ds4 .bumper.right { left: 543px !important; width: 94px !important; transform: scaleX(-1) !important; }
+
+
+
+
+/* Final stick correction: original bezels plus a clean travel cavity. */
+.ds4 .sticks::before,
+.ds4 .sticks::after {
+  background-image:
+    radial-gradient(circle at 50% 50%, #050508 0 39px, transparent 40px),
+    url("./xfg-ps5-mfleeky.png?v=6") !important;
+  background-size: 104px 104px, 750px 500px !important;
+  background-repeat: no-repeat !important;
+}
+.ds4 .sticks::before { background-position: 0 0, -195px -197px !important; }
+.ds4 .sticks::after { background-position: 0 0, -448px -197px !important; }
+
+
+
+
+/* Version 4: pixel-fitted press surfaces traced from the actual artwork. */
+.ds4 .face {
+  border-radius: 0 !important;
+  clip-path: none !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,42,167,.88) 46%, rgba(129,0,91,.72)) !important;
+  box-shadow: none !important;
+  mix-blend-mode: screen !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: 0 0 !important;
+  mask-position: 0 0 !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+}
+
+.ds4 .face.up {
+  left: 135px !important;
+  top: 92px !important;
+  width: 35px !important;
+  height: 46px !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAuCAAAAACHLP9bAAAArElEQVR42u3UwRGEIBAF0Za7EACYgfkHtBDAwAYwe7BcURQS8F95RVEcGrY55xbR02RxVLMhimS9LMdgK9Gc78pvxD8JVdXkAXzS3pIHF7W/6Iyd6W+2U7YDQ5mU4Qyvec1rGlOGpJg1D0heTfkObikFfJROW2SxALap3KkaewylnyjoNEjC8bCHluVPXdZblMK5TTfoeMsfXevaErAhjQgQZEjqb3oilan/BX4cgZPndYnt8gAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAuCAAAAACHLP9bAAAArElEQVR42u3UwRGEIBAF0Za7EACYgfkHtBDAwAYwe7BcURQS8F95RVEcGrY55xbR02RxVLMhimS9LMdgK9Gc78pvxD8JVdXkAXzS3pIHF7W/6Iyd6W+2U7YDQ5mU4Qyvec1rGlOGpJg1D0heTfkObikFfJROW2SxALap3KkaewylnyjoNEjC8bCHluVPXdZblMK5TTfoeMsfXevaErAhjQgQZEjqb3oilan/BX4cgZPndYnt8gAAAABJRU5ErkJggg==") !important;
+}
+
+.ds4 .face.down {
+  left: 135px !important;
+  top: 158px !important;
+  width: 35px !important;
+  height: 45px !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAtCAAAAAABuI31AAAArElEQVR42u3UvQ3CMBCG4c8obewBkmwQeti/YADEBM4AvvMAHw2g/Ni51ChveXpsXWMD88KQSKYhoFoXhSQpsauSid9iMAlTbxJy6kxSRGtSQFuyQSWyQmWyQDUyQ3XyQyGSFuoTLdRP3C+G5uWxX+sdYaUHDC44zWn+xqhtZDx0jx7YZxRDZDSqcPXnrMw3cfCufbSz8eeEEkC+ZyocACw+df8MAOSqACAA8AbZDkUiOY1X5gAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAtCAAAAAABuI31AAAArElEQVR42u3UvQ3CMBCG4c8obewBkmwQeti/YADEBM4AvvMAHw2g/Ni51ChveXpsXWMD88KQSKYhoFoXhSQpsauSid9iMAlTbxJy6kxSRGtSQFuyQSWyQmWyQDUyQ3XyQyGSFuoTLdRP3C+G5uWxX+sdYaUHDC44zWn+xqhtZDx0jx7YZxRDZDSqcPXnrMw3cfCufbSz8eeEEkC+ZyocACw+df8MAOSqACAA8AbZDkUiOY1X5gAAAABJRU5ErkJggg==") !important;
+}
+
+.ds4 .face.left {
+  left: 97px !important;
+  top: 129px !important;
+  width: 45px !important;
+  height: 38px !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAmCAAAAAB1tk2FAAAA7klEQVR42rWVsRWDMAxED3rkAQwbkDrJ/kWSOiMAvWwPoBQ8ngEnIBW51t9nPds6VQAAOHo7IFwisgIKVQBA9CACgCh5Jd0TILHY4YcgXxSYefAFPMpvDW4Lu+EAFm7XbI2mwYHc0+utRWRc447lDG/JQEvIN6OgczU1NPKvGa/JhAfRaS5GxIKLBa8Eao19rYfRkMUb0UTDUgmihQ79/7xtdSfLW3Jr8I7R4D33m45dms1grOyGHBIdG2BNnvjV66STixuvkzZihTsyJDK73T+ZNkeVf2M/Sfxzm8oVLTMl3aaCxm4A0BvLvNqOqg/Owc0yBmnf4wAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAmCAAAAAB1tk2FAAAA7klEQVR42rWVsRWDMAxED3rkAQwbkDrJ/kWSOiMAvWwPoBQ8ngEnIBW51t9nPds6VQAAOHo7IFwisgIKVQBA9CACgCh5Jd0TILHY4YcgXxSYefAFPMpvDW4Lu+EAFm7XbI2mwYHc0+utRWRc447lDG/JQEvIN6OgczU1NPKvGa/JhAfRaS5GxIKLBa8Eao19rYfRkMUb0UTDUgmihQ79/7xtdSfLW3Jr8I7R4D33m45dms1grOyGHBIdG2BNnvjV66STixuvkzZihTsyJDK73T+ZNkeVf2M/Sfxzm8oVLTMl3aaCxm4A0BvLvNqOqg/Owc0yBmnf4wAAAABJRU5ErkJggg==") !important;
+}
+
+.ds4 .face.right {
+  left: 162px !important;
+  top: 129px !important;
+  width: 46px !important;
+  height: 37px !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAlCAAAAAAYFYQoAAAA9UlEQVR42rWVMZLDIAxFP6SN4QB4ZuvMuI9z9b3AZuvcIIYewQGUIrEzIVlbKvY3aJjHL4RG3+Bd/nG6y1yBhggAMA3qDLqf7l4b97xPYynvxmHKmfiTaAot7PrIfyuG1pp4TZN/oSOvK/ca+sVeQHP2dqZ/AwSyKvqBS+k7LqZhVbQT9mSeBBXNjF5DsyEHhQxraNiiwwf6T3co8ap70Gd528miyu1psKAxifligXRMqs6kYySSNdQsq+68PfT0tZS7Q1VsAuy/95vuVfWrdKIFpzGWbXfx/mXm7JsVvMZTvvomPcK5a2PjGR+VSxs2vg2lJpxuWyUA15WHNAAAAAAASUVORK5CYII=") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAlCAAAAAAYFYQoAAAA9UlEQVR42rWVMZLDIAxFP6SN4QB4ZuvMuI9z9b3AZuvcIIYewQGUIrEzIVlbKvY3aJjHL4RG3+Bd/nG6y1yBhggAMA3qDLqf7l4b97xPYynvxmHKmfiTaAot7PrIfyuG1pp4TZN/oSOvK/ca+sVeQHP2dqZ/AwSyKvqBS+k7LqZhVbQT9mSeBBXNjF5DsyEHhQxraNiiwwf6T3co8ap70Gd528miyu1psKAxifligXRMqs6kYySSNdQsq+68PfT0tZS7Q1VsAuy/95vuVfWrdKIFpzGWbXfx/mXm7JsVvMZTvvomPcK5a2PjGR+VSxs2vg2lJpxuWyUA15WHNAAAAAAASUVORK5CYII=") !important;
+}
+.ds4 .face.pressed { opacity: .9 !important; }
+
+.ds4 .bumper {
+  top: 17px !important;
+  height: 32px !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+  transform: none !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.56), rgba(255,42,167,.92) 48%, rgba(105,0,73,.8)) !important;
+  box-shadow: none !important;
+  mix-blend-mode: screen !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: 0 0 !important;
+  mask-position: 0 0 !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+}
+
+.ds4 .bumper.left {
+  left: 112px !important;
+  top: 17px !important;
+  width: 93px !important;
+  height: 32px !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAgCAAAAABVpisAAAABJElEQVR42rXWQXLDIAwF0M9MtogDpL1Bvbfvv0j2yRHqA0gcgC6A1Da4MUVmaWYef4RBGDQNBwD0cMUEDwLw9qs5LpOBvVkAhiqzEuAnDwBBWvUkV93VCgD85PMCRkteLeLH+ZBOpk1OYx5F3ulk7M02yzE/DwxczqABUAD2daIO+jUue7Gpm67rOrFhudxVtdj4/uJNdqXYMfumMkRKsSt117cX+vWubVvOu0p0vyrnxjx6c1ZRgCAwOkWJdy8q3cM9P3rl1Dcqu0pku+L6yS/b0Tq7ezj6D/2Kuyfn7O2JF82t/Y7cd8vG/LdOTe5RNted6RT3TWUkdLkp+2fxsPoN3OGm7FI/Gd1wUZn4E+u4Kz1VWVPOejp42nTUeZDybawzfgD6bIqywDUmUAAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAgCAAAAABVpisAAAABJElEQVR42rXWQXLDIAwF0M9MtogDpL1Bvbfvv0j2yRHqA0gcgC6A1Da4MUVmaWYef4RBGDQNBwD0cMUEDwLw9qs5LpOBvVkAhiqzEuAnDwBBWvUkV93VCgD85PMCRkteLeLH+ZBOpk1OYx5F3ulk7M02yzE/DwxczqABUAD2daIO+jUue7Gpm67rOrFhudxVtdj4/uJNdqXYMfumMkRKsSt117cX+vWubVvOu0p0vyrnxjx6c1ZRgCAwOkWJdy8q3cM9P3rl1Dcqu0pku+L6yS/b0Tq7ezj6D/2Kuyfn7O2JF82t/Y7cd8vG/LdOTe5RNted6RT3TWUkdLkp+2fxsPoN3OGm7FI/Gd1wUZn4E+u4Kz1VWVPOejp42nTUeZDybawzfgD6bIqywDUmUAAAAABJRU5ErkJggg==") !important;
+}
+
+.ds4 .bumper.right {
+  left: 543px !important;
+  top: 17px !important;
+  width: 94px !important;
+  height: 32px !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAgCAAAAAC+kZADAAABNklEQVR42rWWTW6DMBCF31QsO+MDwBW6h/svaNYpB6jSZF2GA9BFgoMS7Nh4+jYICb1v/jyY8CwHOTpsafxQACOSResXIQDgnkkCn+sMTN2EWXPthbhnAAh6rxipCG9ff/JL3ydEahKof+Zsjb+nxklK9O6rwR7pHM+huj6Yd7lD4IZ56lSj0e8NfslBQync7L8diqSBFCqYSOAG3QC8wUrSDEMjm9GzDUCGxyaQQWcjTSCTzj7MUXu2r/2qCQffgwpCEGNA7aeImp5BTNYp3CpEp/ewNZWkdW5VQRIJnHsuYIyXVuNVESpgaHsZE4ruGbkU1S61p/43nMXQzJHJrdaeibxX6yVk98ALIQFSeJ7ukG2GyXENd8RuG2wyjJfNwlgQ5rvsyljuqf9h72+s0YVWKgc5/gGYU6BMx6ysuQAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAgCAAAAAC+kZADAAABNklEQVR42rWWTW6DMBCF31QsO+MDwBW6h/svaNYpB6jSZF2GA9BFgoMS7Nh4+jYICb1v/jyY8CwHOTpsafxQACOSResXIQDgnkkCn+sMTN2EWXPthbhnAAh6rxipCG9ff/JL3ydEahKof+Zsjb+nxklK9O6rwR7pHM+huj6Yd7lD4IZ56lSj0e8NfslBQync7L8diqSBFCqYSOAG3QC8wUrSDEMjm9GzDUCGxyaQQWcjTSCTzj7MUXu2r/2qCQffgwpCEGNA7aeImp5BTNYp3CpEp/ewNZWkdW5VQRIJnHsuYIyXVuNVESpgaHsZE4ruGbkU1S61p/43nMXQzJHJrdaeibxX6yVk98ALIQFSeJ7ukG2GyXENd8RuG2wyjJfNwlgQ5rvsyljuqf9h72+s0YVWKgc5/gGYU6BMx6ysuQAAAABJRU5ErkJggg==") !important;
+}
+.ds4 .bumper.pressed { opacity: .9 !important; }
+
+
+
+
+/* Version 5: L2/R2 use the exact visible shoulder-button pixels too. */
+.ds4 .trigger,
+.ds4 .trigger-button {
+  border-radius: 0 !important;
+  clip-path: none !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.54), rgba(255,42,167,.94) 48%, rgba(105,0,73,.82)) !important;
+  box-shadow: none !important;
+  mix-blend-mode: screen !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: 0 0 !important;
+  mask-position: 0 0 !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+}
+
+.ds4 .trigger.left,\n.ds4 .trigger-button.left {
+  left: 112px !important;
+  right: auto !important;
+  top: 17px !important;
+  width: 93px !important;
+  height: 32px !important;
+  transform: none !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAgCAAAAABVpisAAAABJElEQVR42rXWQXLDIAwF0M9MtogDpL1Bvbfvv0j2yRHqA0gcgC6A1Da4MUVmaWYef4RBGDQNBwD0cMUEDwLw9qs5LpOBvVkAhiqzEuAnDwBBWvUkV93VCgD85PMCRkteLeLH+ZBOpk1OYx5F3ulk7M02yzE/DwxczqABUAD2daIO+jUue7Gpm67rOrFhudxVtdj4/uJNdqXYMfumMkRKsSt117cX+vWubVvOu0p0vyrnxjx6c1ZRgCAwOkWJdy8q3cM9P3rl1Dcqu0pku+L6yS/b0Tq7ezj6D/2Kuyfn7O2JF82t/Y7cd8vG/LdOTe5RNted6RT3TWUkdLkp+2fxsPoN3OGm7FI/Gd1wUZn4E+u4Kz1VWVPOejp42nTUeZDybawzfgD6bIqywDUmUAAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAgCAAAAABVpisAAAABJElEQVR42rXWQXLDIAwF0M9MtogDpL1Bvbfvv0j2yRHqA0gcgC6A1Da4MUVmaWYef4RBGDQNBwD0cMUEDwLw9qs5LpOBvVkAhiqzEuAnDwBBWvUkV93VCgD85PMCRkteLeLH+ZBOpk1OYx5F3ulk7M02yzE/DwxczqABUAD2daIO+jUue7Gpm67rOrFhudxVtdj4/uJNdqXYMfumMkRKsSt117cX+vWubVvOu0p0vyrnxjx6c1ZRgCAwOkWJdy8q3cM9P3rl1Dcqu0pku+L6yS/b0Tq7ezj6D/2Kuyfn7O2JF82t/Y7cd8vG/LdOTe5RNted6RT3TWUkdLkp+2fxsPoN3OGm7FI/Gd1wUZn4E+u4Kz1VWVPOejp42nTUeZDybawzfgD6bIqywDUmUAAAAABJRU5ErkJggg==") !important;
+}
+
+.ds4 .trigger.right,\n.ds4 .trigger-button.right {
+  left: 543px !important;
+  right: auto !important;
+  top: 17px !important;
+  width: 94px !important;
+  height: 32px !important;
+  transform: none !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAgCAAAAAC+kZADAAABNklEQVR42rWWTW6DMBCF31QsO+MDwBW6h/svaNYpB6jSZF2GA9BFgoMS7Nh4+jYICb1v/jyY8CwHOTpsafxQACOSResXIQDgnkkCn+sMTN2EWXPthbhnAAh6rxipCG9ff/JL3ydEahKof+Zsjb+nxklK9O6rwR7pHM+huj6Yd7lD4IZ56lSj0e8NfslBQync7L8diqSBFCqYSOAG3QC8wUrSDEMjm9GzDUCGxyaQQWcjTSCTzj7MUXu2r/2qCQffgwpCEGNA7aeImp5BTNYp3CpEp/ewNZWkdW5VQRIJnHsuYIyXVuNVESpgaHsZE4ruGbkU1S61p/43nMXQzJHJrdaeibxX6yVk98ALIQFSeJ7ukG2GyXENd8RuG2wyjJfNwlgQ5rvsyljuqf9h72+s0YVWKgc5/gGYU6BMx6ysuQAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAgCAAAAAC+kZADAAABNklEQVR42rWWTW6DMBCF31QsO+MDwBW6h/svaNYpB6jSZF2GA9BFgoMS7Nh4+jYICb1v/jyY8CwHOTpsafxQACOSResXIQDgnkkCn+sMTN2EWXPthbhnAAh6rxipCG9ff/JL3ydEahKof+Zsjb+nxklK9O6rwR7pHM+huj6Yd7lD4IZ56lSj0e8NfslBQync7L8diqSBFCqYSOAG3QC8wUrSDEMjm9GzDUCGxyaQQWcjTSCTzj7MUXu2r/2qCQffgwpCEGNA7aeImp5BTNYp3CpEp/ewNZWkdW5VQRIJnHsuYIyXVuNVESpgaHsZE4ruGbkU1S61p/43nMXQzJHJrdaeibxX6yVk98ALIQFSeJ7ukG2GyXENd8RuG2wyjJfNwlgQ5rvsyljuqf9h72+s0YVWKgc5/gGYU6BMx6ysuQAAAABJRU5ErkJggg==") !important;
+}
+.ds4 .trigger-button.pressed { opacity: .9 !important; }
+
+
+
+
+/* Version 6: four independent, non-overlapping shoulder-button surfaces. */
+.ds4 .bumper,
+.ds4 .trigger,
+.ds4 .trigger-button {
+  border-radius: 0 !important;
+  clip-path: none !important;
+  box-shadow: none !important;
+  mix-blend-mode: screen !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: 0 0 !important;
+  mask-position: 0 0 !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+}
+.ds4 .bumper {
+  background: linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,42,167,.94) 52%, rgba(105,0,73,.82)) !important;
+}
+.ds4 .trigger,
+.ds4 .trigger-button {
+  background: linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,42,167,.94) 48%, rgba(105,0,73,.84)) !important;
+}
+
+.ds4 .bumper.left {
+  left: 112px !important;
+  right: auto !important;
+  top: 22px !important;
+  width: 93px !important;
+  height: 27px !important;
+  transform: none !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAbCAAAAAA7G9xuAAAA7klEQVR42rWWTQ6DIBCF3yRuHQ5gegO7r/dPU/deoT0AwwHoAjSlShWZviWQL18eP4GgHQMA4HsvQKPIZQLQPloAIE9QojNh4RKHMYt6eqLLq+lGUTdNawHS1l3y7G2J+75u6n60maO6pb1/cIuwO/TCGjLbSno1fOd1c6Sqm8RLcK/XFb85TAC6sUpXPNzgMnTmsavRdYODl+01ZCbDZ9CLbo4cTiRzubEb3C/oiVdMfKxhxzehcxH3KHbu3fJfuDvNiK/iRvfLZLLCFdzoLts3oxq8aiYcYh1uQo8ta5Jnerx42uhAt1cJvw/9vAHeOG9WB9auPwAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAbCAAAAAA7G9xuAAAA7klEQVR42rWWTQ6DIBCF3yRuHQ5gegO7r/dPU/deoT0AwwHoAjSlShWZviWQL18eP4GgHQMA4HsvQKPIZQLQPloAIE9QojNh4RKHMYt6eqLLq+lGUTdNawHS1l3y7G2J+75u6n60maO6pb1/cIuwO/TCGjLbSno1fOd1c6Sqm8RLcK/XFb85TAC6sUpXPNzgMnTmsavRdYODl+01ZCbDZ9CLbo4cTiRzubEb3C/oiVdMfKxhxzehcxH3KHbu3fJfuDvNiK/iRvfLZLLCFdzoLts3oxq8aiYcYh1uQo8ta5Jnerx42uhAt1cJvw/9vAHeOG9WB9auPwAAAABJRU5ErkJggg==") !important;
+}
+
+.ds4 .bumper.right {
+  left: 543px !important;
+  right: auto !important;
+  top: 23px !important;
+  width: 94px !important;
+  height: 26px !important;
+  transform: none !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAaCAAAAAAbcLTIAAAA9ElEQVR42rWUSw6DMAxExxLLOrkAvQfcf5EDtD1AVbFH5gDpIg1QlZBvvYRoXsZjBwAA9LO11s5XrbXWaFcEAND3HgAgFsAyLgBgpZ38c39lsVgplZDu4JtyyEcDK134l9ogxVacPEcgX1ZyILRPNlrZ0dNvsmmQNCtdQV4Z0XdQ9DlfRIlET71hEFPt/gRSodclLE2qBLK3Qurk4my4gOGtDJN/FILtpXIGpkEkoekrI5ciMqZm6nqY60QyRya3WyUTuXUrCikeeEVIgFTu0wY5ZlSv63kiTeTDjHbyXwyPaCzvGWyY1J/kHYINnz5otaWhbm89nWasR1JbtwAAAABJRU5ErkJggg==") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAaCAAAAAAbcLTIAAAA9ElEQVR42rWUSw6DMAxExxLLOrkAvQfcf5EDtD1AVbFH5gDpIg1QlZBvvYRoXsZjBwAA9LO11s5XrbXWaFcEAND3HgAgFsAyLgBgpZ38c39lsVgplZDu4JtyyEcDK134l9ogxVacPEcgX1ZyILRPNlrZ0dNvsmmQNCtdQV4Z0XdQ9DlfRIlET71hEFPt/gRSodclLE2qBLK3Qurk4my4gOGtDJN/FILtpXIGpkEkoekrI5ciMqZm6nqY60QyRya3WyUTuXUrCikeeEVIgFTu0wY5ZlSv63kiTeTDjHbyXwyPaCzvGWyY1J/kHYINnz5otaWhbm89nWasR1JbtwAAAABJRU5ErkJggg==") !important;
+}
+
+.ds4 .trigger.left,\n.ds4 .trigger-button.left {
+  left: 115px !important;
+  right: auto !important;
+  top: 17px !important;
+  width: 85px !important;
+  height: 19px !important;
+  transform: none !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAATCAAAAADEnx73AAAAyUlEQVR42q3SQQ6CMBBA0T+JSzsegDO4h7N7ANh7BGNc07q2LjCExim0gVnS5OWXjlA+FwC9X/4OxquHcfFBCkUVXO8AUePUR0IXAKIvVX+i6SUyELoQ/aZaJiZ4aJ+yTtaJ03xerayTtaKPQHzLUaSP018FiKaqWkHOrzRvgLUDKq5Xrc7zrOxrUaaVR1bdzszn5dTVzM08W1XNZBbmWappLrxSLlGbITHrrptRVYdmx3WNOaHaO92fl7Y2N3eWA/JS9TF5I0fOF7JYcyORShcJAAAAAElFTkSuQmCC") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAATCAAAAADEnx73AAAAyUlEQVR42q3SQQ6CMBBA0T+JSzsegDO4h7N7ANh7BGNc07q2LjCExim0gVnS5OWXjlA+FwC9X/4OxquHcfFBCkUVXO8AUePUR0IXAKIvVX+i6SUyELoQ/aZaJiZ4aJ+yTtaJ03xerayTtaKPQHzLUaSP018FiKaqWkHOrzRvgLUDKq5Xrc7zrOxrUaaVR1bdzszn5dTVzM08W1XNZBbmWappLrxSLlGbITHrrptRVYdmx3WNOaHaO92fl7Y2N3eWA/JS9TF5I0fOF7JYcyORShcJAAAAAElFTkSuQmCC") !important;
+}
+
+.ds4 .trigger.right,\n.ds4 .trigger-button.right {
+  left: 550px !important;
+  right: auto !important;
+  top: 17px !important;
+  width: 85px !important;
+  height: 19px !important;
+  transform: none !important;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAATCAAAAADEnx73AAAAz0lEQVR42q3VMQ7CMAwF0P+ZSTojuAJ7ewDO3u4cAUXMdZgJQ1EVSNrEBW+VrKdf21KIqBrYa4NcjWcBMKKyCACwBADTG9qFPgmA7zyCVKqWpjcAsEhGdJ1MHAdT5BK5APM0HHZQloQCzNueFf+uhGk57QlqW4LvRFZuAJGtwUXygRl/zAdWb+cDM9OpDC6SuFxsVgRPXJaS1G3za8CsW0t5KB8DpuaWCkMRad0GtRjctVPcLepK8Pfetqv54E/vW/e7mgQP98vjT+r8mEz2C/92ZhMuvx44AAAAAElFTkSuQmCC") !important;
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAATCAAAAADEnx73AAAAz0lEQVR42q3VMQ7CMAwF0P+ZSTojuAJ7ewDO3u4cAUXMdZgJQ1EVSNrEBW+VrKdf21KIqBrYa4NcjWcBMKKyCACwBADTG9qFPgmA7zyCVKqWpjcAsEhGdJ1MHAdT5BK5APM0HHZQloQCzNueFf+uhGk57QlqW4LvRFZuAJGtwUXygRl/zAdWb+cDM9OpDC6SuFxsVgRPXJaS1G3za8CsW0t5KB8DpuaWCkMRad0GtRjctVPcLepK8Pfetqv54E/vW/e7mgQP98vjT+r8mEz2C/92ZhMuvx44AAAAAElFTkSuQmCC") !important;
+}
+.ds4 .bumper.pressed,
+.ds4 .trigger-button.pressed { opacity: .88 !important; }
+
